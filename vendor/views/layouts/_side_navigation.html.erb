@@ -1,0 +1,45 @@
+
+<div class="sidebar-background">
+  <div class="primary-sidebar-background"></div>
+</div>
+
+<div class="primary-sidebar">
+
+  <!-- Main nav -->
+  <ul class="nav navbar-collapse collapse navbar-collapse-primary">
+    <%= partial 'layouts/collapsed_sidebar' %>
+  </ul>
+
+  <div class="hidden-sm hidden-xs">
+    <div class="text-center" style="margin-top: 60px">
+      <div class="easy-pie-chart-percent" style="display: inline-block" data-percent="89"><span>89%</span></div>
+      <div style="padding-top: 20px"><b>CPU Usage</b></div>
+    </div>
+
+    <hr class="divider" style="margin-top: 60px">
+
+    <div class="sparkline-box side">
+
+      <div class="sparkline-row">
+        <h4 class="gray"><span>Orders</span> 847</h4>
+        <div class="sparkline big" data-color="gray"><!--<%= random_numbers(12).join(",") %>--></div>
+      </div>
+
+      <hr class="divider">
+      <div class="sparkline-row">
+        <h4 class="dark-green"><span>Income</span> $43.330</h4>
+        <div class="sparkline big" data-color="darkGreen"><!--<%= random_numbers(12).join(",") %>--></div>
+      </div>
+
+      <hr class="divider">
+      <div class="sparkline-row">
+        <h4 class="blue"><span>Reviews</span> 223</h4>
+        <div class="sparkline big" data-color="blue"><!--<%= random_numbers(12).join(",") %>--></div>
+      </div>
+
+      <hr class="divider">
+    </div>
+  </div>
+
+
+</div>

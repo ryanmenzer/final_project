@@ -1,5 +1,7 @@
 UnusUniRails3::Application.routes.draw do
 
+  get 'index' => "homes#index"
+
   devise_for :users, :controllers => { :registrations => "milia/registrations" }
   
   map.locales 'locales/:locale', :controller => 'locales', :action => 'show'
