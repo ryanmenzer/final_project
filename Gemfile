@@ -22,7 +22,7 @@ end
 
 gem 'jquery-rails'
 
-
+gem 'faker'
 
 gem 'dotenv-rails', :groups => [:development, :test]
 gem 'milia'
