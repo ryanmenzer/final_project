@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.15'
+gem 'rails', '3.2.13'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -25,7 +25,7 @@ gem 'jquery-rails'
 gem 'faker'
 
 gem 'dotenv-rails', :groups => [:development, :test]
-gem 'milia'
+gem 'milia', '~> 0.3.38'
 gem 'devise'
 
 
