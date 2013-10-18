@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
 
   before_filter :authenticate_tenant!   # authenticate user and setup tenant
 
-  # before_filter :configure_permitted_parameters, if: :devise_controller?
+  before_filter :configure_permitted_parameters, if: :devise_controller?
   
   before_filter :set_locale
 
@@ -11,6 +11,9 @@ class ApplicationController < ActionController::Base
   #   I18n.locale = params[:locale] || I18n.default_locale
   # end
 
+  def set_locale
+    I18n.locale=params[:locale]
+  end
   # def set_locale
   # locale = params[:locale] || session[:locale] || I18n.default_locale.to_s
   # locale = I18n.available_locales.include?(locale.to_sym) ? locale : 18n.default_locale.to_s
@@ -18,9 +21,9 @@ class ApplicationController < ActionController::Base
   # end
 
   # Sets locale dependent on: user logged in with locale / locale stored in session / otherwise use default
-  def set_locale
-    I18n.locale = (current_user.locale if current_user) || session[:locale] || I18n.default_locale
-  end
+  # def set_locale
+  #   I18n.locale = (current_user.locale if current_user) || session[:locale] || I18n.default_locale
+  # end
 
   #Automatically include locale for routes/resource routes in URL query string
   def default_url_options(options={})
@@ -75,9 +78,9 @@ class ApplicationController < ActionController::Base
 
   protected
 
-  # def configure_permitted_parameters
-  #   devise_parameter_sanitizer.for(:sign_up) << :username
-  # end
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.for(:sign_up) << :username
+  end
 
 
 end

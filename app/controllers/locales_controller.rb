@@ -1,14 +1,14 @@
 class LocalesController < ApplicationController
 
-	# def show
-	#   if current_user # if logged in
-	#     current_user.locale = params[:locale] # change users locality
-	#     current_user.save
-	#   end        
-	#   session[:locale] = params[:locale]               
-	#   redirect_to :back
-	#   end
-	# end
+	def show
+	  if current_user # if logged in
+	    current_user.locale = params[:locale] # change users locality
+	    current_user.save
+	  end        
+	  session[:locale] = params[:locale]               
+	  redirect_to :back
+	  end
+	end
 
 end
 	
