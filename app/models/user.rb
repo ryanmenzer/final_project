@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
   has_many   :projects
   has_and_belongs_to_many :sponsorships
   has_and_belongs_to_many :groups
-  # has_and_belongs_to_many :tenants
+  has_and_belongs_to_many :tenants
 
   has_many   :receivers, as: :receiverable
   has_many   :images, as: :imageable
