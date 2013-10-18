@@ -1,7 +1,7 @@
 class CreateSponsorships < ActiveRecord::Migration
   def change
     create_table :sponsorships do |t|
-      t.integer :tenant_id,       null: false
+      t.integer :tenant_id
       t.integer :initiative_id,   null: false
       t.integer :frequency_id
       t.boolean :recuring_payment

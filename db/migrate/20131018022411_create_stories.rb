@@ -1,7 +1,7 @@
 class CreateStories < ActiveRecord::Migration
   def change
     create_table :stories do |t|
-      t.integer :tenant_id, null: false
+      t.integer :tenant_id
       t.integer :author_id, null: false
       t.string  :title,     null: false
       t.text    :content

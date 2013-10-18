@@ -1,6 +1,9 @@
 class Category < ActiveRecord::Base
 
-  belongs_to :tenant
+  acts_as_universal
+  belongs_to  :tenant
+
+  # belongs_to :tenant
   has_many   :users
 
 end

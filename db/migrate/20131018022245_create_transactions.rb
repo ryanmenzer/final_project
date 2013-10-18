@@ -1,7 +1,7 @@
 class CreateTransactions < ActiveRecord::Migration
   def change
     create_table :transactions do |t|
-      t.integer :tenant_id,           null: false
+      t.integer :tenant_id
       t.integer :transaction_type_id, null: false
       t.integer :sponsorship_id,      null: false
       t.date    :date,                null: false
