@@ -1,7 +1,7 @@
 class CreateImages < ActiveRecord::Migration
   def change
     create_table :images do |t|
-      t.integer :tenant_id,    null: false
+      t.integer :tenant_id
       t.string  :title,        null: false
       t.string  :url,          null: false
       t.integer :imageable_id

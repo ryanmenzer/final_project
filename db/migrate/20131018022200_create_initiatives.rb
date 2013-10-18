@@ -1,7 +1,7 @@
 class CreateInitiatives < ActiveRecord::Migration
   def change
     create_table :initiatives do |t|
-      t.integer :tenant_id,          null: false
+      t.integer :tenant_id
       t.integer :initiative_type_id, null: false
       t.string  :title,              null: false
       t.text    :description
