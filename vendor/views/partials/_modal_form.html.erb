@@ -1,0 +1,71 @@
+<!-- find me in partials/modal_form -->
+
+<div id="modal-form" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h6 id="modal-formLabel">Modal Heading</h6>
+      </div>
+      <div class="modal-body">
+        <form class="form-horizontal fill-up separate-sections">
+          <div>
+            <label>Enter your name here</label>
+            <input type="text" name="regular" placeholder="Your name" />
+          </div>
+
+          <div class="divider"><span></span></div>
+
+          <div class="row">
+            <div class="col-lg-6">
+              <label>And a dropdown with search:</label>
+              <%= select_tag :colors, options: @colorList.shuffle, class: "chzn-select" %>
+            </div>
+            <div class="col-lg-6">
+              <label>or without search...</label>
+              <%= select_tag :colors, options: @colorList.shuffle, class: "uniform" %>
+            </div>
+          </div>
+
+          <div class="divider"><span></span></div>
+
+          <div>
+            <textarea rows="4" placeholder="Enter your comments here"></textarea>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-6">
+              <div>
+                <input type="checkbox" class="icheck" checked id="icheckModal1">
+                <label for="icheckModal1">The number one option</label>
+              </div>
+
+              <div>
+                <input type="checkbox" class="icheck" id="icheckModal2">
+                <label for="icheckModal2">The number two option</label>
+              </div>
+            </div>
+
+            <div class="col-lg-6">
+              <div>
+                <input type="radio" name="optionsRadios" class="icheck" checked id="iradioModal1">
+                <label for="iradioModal1">The number one option</label>
+              </div>
+
+              <div>
+                <input type="radio" name="optionsRadios" class="icheck" id="iradioModal2">
+                <label for="iradioModal2">The number two option</label>
+              </div>
+            </div>
+
+          </div>
+        </form>
+
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-default" data-dismiss="modal">Close</button>
+        <button class="btn btn-blue">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
