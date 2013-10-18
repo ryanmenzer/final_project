@@ -1,6 +1,8 @@
 class Sponsorship < ActiveRecord::Base
 
-  belongs_to :tenant
+  acts_as_tenant
+
+  # belongs_to :tenant
   belongs_to :frequency
   belongs_to :initiative
   belongs_to :sponsor, class_name: "User"

@@ -11,10 +11,10 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131018163222) do
+ActiveRecord::Schema.define(:version => 20131018163118) do
 
   create_table "categories", :force => true do |t|
-    t.integer  "tenant_id",  :null => false
+    t.integer  "tenant_id"
     t.string   "name",       :null => false
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(:version => 20131018163222) do
   add_index "frequencies", ["title"], :name => "index_frequencies_on_title"
 
   create_table "groups", :force => true do |t|
-    t.integer  "tenant_id",  :null => false
+    t.integer  "tenant_id"
     t.integer  "manager_id", :null => false
     t.string   "name"
     t.datetime "created_at", :null => false
@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(:version => 20131018163222) do
   add_index "groups", ["tenant_id"], :name => "index_groups_on_tenant_id"
 
   create_table "groups_users", :id => false, :force => true do |t|
-    t.integer  "user_id",    :null => false
+    t.integer  "user_id"
     t.integer  "group_id",   :null => false
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(:version => 20131018163222) do
   add_index "groups_users", ["user_id"], :name => "index_groups_users_on_user_id"
 
   create_table "images", :force => true do |t|
-    t.integer  "tenant_id",      :null => false
+    t.integer  "tenant_id"
     t.string   "title",          :null => false
     t.string   "url",            :null => false
     t.integer  "imageable_id"
@@ -70,7 +70,7 @@ ActiveRecord::Schema.define(:version => 20131018163222) do
   add_index "images", ["url"], :name => "index_images_on_url"
 
   create_table "initiatives", :force => true do |t|
-    t.integer  "tenant_id",                            :null => false
+    t.integer  "tenant_id"
     t.integer  "initiative_type_id",                   :null => false
     t.string   "title",                                :null => false
     t.text     "description"
@@ -89,7 +89,7 @@ ActiveRecord::Schema.define(:version => 20131018163222) do
   add_index "initiatives", ["title"], :name => "index_initiatives_on_title"
 
   create_table "paypal_settings", :force => true do |t|
-    t.integer  "tenant_id",     :null => false
+    t.integer  "tenant_id"
     t.string   "api_username"
     t.string   "api_password"
     t.string   "api_signature"
@@ -111,7 +111,7 @@ ActiveRecord::Schema.define(:version => 20131018163222) do
   add_index "projects", ["tenant_id"], :name => "index_projects_on_tenant_id"
 
   create_table "receivers", :force => true do |t|
-    t.integer  "tenant_id",         :null => false
+    t.integer  "tenant_id"
     t.integer  "initiative_id",     :null => false
     t.integer  "receiverable_id",   :null => false
     t.string   "receiverable_type", :null => false
@@ -130,7 +130,7 @@ ActiveRecord::Schema.define(:version => 20131018163222) do
   end
 
   create_table "roles", :force => true do |t|
-    t.integer  "tenant_id",  :null => false
+    t.integer  "tenant_id"
     t.string   "name",       :null => false
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
@@ -139,7 +139,7 @@ ActiveRecord::Schema.define(:version => 20131018163222) do
   add_index "roles", ["tenant_id"], :name => "index_roles_on_tenant_id"
 
   create_table "sessions", :force => true do |t|
-    t.string   "session_id", :null => false
+    t.string   "session_id"
     t.text     "data"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
@@ -149,7 +149,7 @@ ActiveRecord::Schema.define(:version => 20131018163222) do
   add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
 
   create_table "sponsorships", :force => true do |t|
-    t.integer  "tenant_id",        :null => false
+    t.integer  "tenant_id"
     t.integer  "initiative_id",    :null => false
     t.integer  "frequency_id"
     t.boolean  "recuring_payment"
@@ -177,7 +177,7 @@ ActiveRecord::Schema.define(:version => 20131018163222) do
   add_index "sponsorships_users", ["sponsorship_id"], :name => "index_sponsorships_users_on_sponsorship_id"
 
   create_table "stories", :force => true do |t|
-    t.integer  "tenant_id",      :null => false
+    t.integer  "tenant_id"
     t.integer  "author_id",      :null => false
     t.string   "title",          :null => false
     t.text     "content"
@@ -193,6 +193,7 @@ ActiveRecord::Schema.define(:version => 20131018163222) do
   add_index "stories", ["title"], :name => "index_stories_on_title"
 
   create_table "tenants", :force => true do |t|
+    t.integer  "tenant_id"
     t.string   "org_name",           :null => false
     t.integer  "primary_contact_id"
     t.datetime "created_at",         :null => false
@@ -202,8 +203,8 @@ ActiveRecord::Schema.define(:version => 20131018163222) do
   add_index "tenants", ["org_name"], :name => "index_tenants_on_org_name"
 
   create_table "tenants_users", :id => false, :force => true do |t|
-    t.integer "user_id"
     t.integer "tenant_id"
+    t.integer "user_id"
   end
 
   add_index "tenants_users", ["tenant_id"], :name => "index_tenants_users_on_tenant_id"
@@ -219,7 +220,7 @@ ActiveRecord::Schema.define(:version => 20131018163222) do
   add_index "transaction_types", ["tenant_id"], :name => "index_transaction_types_on_tenant_id"
 
   create_table "transactions", :force => true do |t|
-    t.integer  "tenant_id",           :null => false
+    t.integer  "tenant_id"
     t.integer  "transaction_type_id", :null => false
     t.integer  "sponsorship_id",      :null => false
     t.date     "date",                :null => false
@@ -245,11 +246,28 @@ ActiveRecord::Schema.define(:version => 20131018163222) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.integer  "tenant_id"
+    t.integer  "category_id",                            :null => false
+    t.integer  "role_id",                                :null => false
+    t.string   "full_name"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "gender"
+    t.string   "nationality"
+    t.string   "phone_number"
+    t.date     "date_of_birth"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
   end
 
+  add_index "users", ["category_id"], :name => "index_users_on_category_id"
+  add_index "users", ["date_of_birth"], :name => "index_users_on_date_of_birth"
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+  add_index "users", ["first_name"], :name => "index_users_on_first_name"
+  add_index "users", ["last_name"], :name => "index_users_on_last_name"
+  add_index "users", ["nationality"], :name => "index_users_on_nationality"
+  add_index "users", ["phone_number"], :name => "index_users_on_phone_number"
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+  add_index "users", ["role_id"], :name => "index_users_on_role_id"
 
 end
