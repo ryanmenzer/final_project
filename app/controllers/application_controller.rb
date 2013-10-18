@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
 
   before_filter :authenticate_tenant!   # authenticate user and setup tenant
 
-  before_filter :configure_permitted_parameters, if: :devise_controller?
+  # before_filter :configure_permitted_parameters, if: :devise_controller?
   
   before_filter :set_locale
 
