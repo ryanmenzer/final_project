@@ -33,6 +33,7 @@ gem 'milia', '~> 0.3.38'
 gem 'recaptcha', :require => 'recaptcha/rails'
 gem 'devise'
 
+gem "mandrill-api", "~> 1.0.49"
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
