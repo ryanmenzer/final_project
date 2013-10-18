@@ -1,9 +1,11 @@
-class ApplicationController < ActionController::Base
+  class ApplicationController < ActionController::Base
   protect_from_forgery
 
   before_filter :authenticate_tenant!   # authenticate user and setup tenant
+  before_filter :authenticate_user!
+  before_filter :set_current_tenant
 
-  before_filter :configure_permitted_parameters, if: :devise_controller?
+  # before_filter :configure_permitted_parameters, if: :devise_controller?
   
   before_filter :set_locale
 
@@ -30,12 +32,14 @@ class ApplicationController < ActionController::Base
     { :locale => I18n.locale }
   end
 
-# ------------------------------------------------------------------------------
-# authenticate_tenant! -- authorization & tenant setup
-# -- authenticates user
-# -- sets current tenant
-# -- sets up app environment for this user
-# ------------------------------------------------------------------------------
+  protected
+
+  # ------------------------------------------------------------------------------
+  # authenticate_tenant! -- authorization & tenant setup
+  # -- authenticates user
+  # -- sets current tenant
+  # -- sets up app environment for this user
+  # ------------------------------------------------------------------------------
   def authenticate_tenant!()
 
     unless authenticate_user!
@@ -62,12 +66,12 @@ class ApplicationController < ActionController::Base
     return klass.send( :new, option_obj )
   end
 
-# ------------------------------------------------------------------------------
+  # ------------------------------------------------------------------------------
   # prep_signup_view -- prepares for the signup view
   # args:
   #   tenant: either existing tenant obj or params for tenant
   #   user:   either existing user obj or params for user
-# ------------------------------------------------------------------------------
+  # ------------------------------------------------------------------------------
   def prep_signup_view(tenant=nil, user=nil, coupon='')
     @user   = klass_option_obj( User, user )
     @tenant = klass_option_obj( Tenant, tenant )
@@ -75,12 +79,10 @@ class ApplicationController < ActionController::Base
     # @eula   = Eula.get_latest.first
  end
 
-
   protected
 
-  def configure_permitted_parameters
-    devise_parameter_sanitizer.for(:sign_up) << :username
-  end
-
+  # def configure_permitted_parameters
+  #   devise_parameter_sanitizer.for(:sign_up) << :username
+  # end
 
 end

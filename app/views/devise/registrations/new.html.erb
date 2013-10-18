@@ -16,6 +16,8 @@
   <div><%= f.label :language "Language" %><br />
   <%= f.select :language, [['English', 'en'], ['Norsk','nn']] %></div>  
 
+  <div><%= recaptcha_tags %></div>
+
   <div><%= f.submit "Sign up" %></div>
 <% end %>
 

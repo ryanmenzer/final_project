@@ -19,4 +19,7 @@ UnusUniRails3::Application.routes.draw do
   # end
 
   get 'index' => "homes#index"
+
+    resources :emails
+
 end
