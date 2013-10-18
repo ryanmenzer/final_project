@@ -1,0 +1,20 @@
+<%= form_for @image, :html => {:multipart => true} do |f| %>
+  <%= f.error_messages %>
+  <%= f.hidden_field :gallery_id %> <!-- we can change this field to a different one -->
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.file_field :image %>
+  </p>
+  <p>
+    <%= f.label :remote_image_url, "or image URL" %><br />
+    <%= f.text_field :remote_image_url %>
+  </p>
+  <p><%= f.submit %></p>
+
+  <p>
+    <%= f.label :remove_image, "Remove image" %><%= f.checkbox :remove_image %>
+  </p>
+<% end %>
