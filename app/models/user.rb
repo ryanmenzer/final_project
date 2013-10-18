@@ -14,11 +14,14 @@ class User < ActiveRecord::Base
   belongs_to :role
   belongs_to :category
 
+  has_one    :primary_contact, class_name: "Tenant"
+
   has_many   :groups
   has_many   :stories
   has_many   :projects
   has_and_belongs_to_many :sponsorships
   has_and_belongs_to_many :groups
+  has_and_belongs_to_many :tenants
 
   has_many   :receivers, as: :receiverable
   has_many   :images, as: :imageable
