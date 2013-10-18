@@ -30,6 +30,7 @@ gem 'faker'
 
 gem 'dotenv-rails', :groups => [:development, :test]
 gem 'milia', '~> 0.3.38'
+gem 'recaptcha', :require => 'recaptcha/rails'
 gem 'devise'
 
 
