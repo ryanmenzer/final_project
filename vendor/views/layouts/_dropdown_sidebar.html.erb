@@ -1,0 +1,41 @@
+<% menu.each do |primary, primary_options| %>
+
+    <% if primary_options[:items].keys.count > 1 %>
+
+        <li class="dark-nav to-right <%= nav_active(primary: primary.to_s) %>">
+
+          <span class="glow"></span>
+          <% link_to "/pages/#{primary}/#{primary_options[:primary][:link]}.html", relative: true, class:"dropdown-toggle", "data-toggle" => "dropdown" do %>
+              <i class="<%= primary_options[:primary][:icon] %> icon-2x"></i>
+                    <span>
+                      <%= primary_options[:primary][:label] %>
+                      <i class="icon-caret-right"></i>
+                    </span>
+
+          <% end %>
+
+          <ul class="dropdown-menu">
+            <% primary_options[:items].each do |secondary, secondary_options| %>
+                <li class="<%= nav_active(secondary: secondary.to_s) %>">
+                  <% link_to "/pages/#{primary}/#{secondary}.html", relative: true do %>
+                      <i class="<%= secondary_options[:icon]%>"></i> <%= secondary_options[:label] %>
+                  <% end %>
+                </li>
+            <% end %>
+          </ul>
+
+        </li>
+
+    <% else %>
+
+        <li class="<%= nav_active(primary: primary.to_s) %>">
+          <span class="glow"></span>
+          <% link_to "/pages/#{primary}/#{primary_options[:primary][:link]}.html", relative: true do %>
+              <i class="<%= primary_options[:primary][:icon] %> icon-2x"></i>
+              <span><%= primary_options[:primary][:label] %></span>
+          <% end %>
+        </li>
+
+    <% end %>
+
+<% end %>

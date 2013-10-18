@@ -1,0 +1,59 @@
+---
+layout: only_topbar
+---
+
+<% @no_controls = true %>
+
+<div class="col-md-4 col-md-offset-4">
+
+
+  <div class="padded">
+    <div class="login box" style="margin-top: 80px;">
+
+      <div class="box-header">
+        <span class="title">Login</span>
+      </div>
+
+      <div class="box-content padded">
+        <form class="separate-sections">
+          <div class="input-group addon-left">
+            <span class="input-group-addon" href="#">
+              <i class="icon-user"></i>
+            </span>
+            <input type="text" placeholder="username">
+          </div>
+
+          <div class="input-group addon-left">
+            <span class="input-group-addon" href="#">
+              <i class="icon-key"></i>
+            </span>
+            <input type="password" placeholder="password">
+          </div>
+
+          <div>
+            <% link_to "/pages/dashboard/dashboard.html", relative: true, class: "btn btn-blue btn-block" do %>
+                Login <i class="icon-signin"></i>
+            <% end %>
+          </div>
+
+        </form>
+
+        <div>
+          <% link_to "/pages/other/sign_up.html", relative: true do %>
+              Don't have an account? <strong>Sign Up</strong>
+          <% end %>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <a href="#" class="btn btn-facebook btn-block"><i class="icon-facebook-sign"></i> Facebook</a>
+      </div>
+      <div class="col-md-6">
+        <a href="#" class="btn btn-twitter btn-block"><i class="icon-twitter"></i> Twitter</a>
+      </div>
+    </div>
+  </div>
+</div>
