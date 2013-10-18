@@ -1,10 +1,14 @@
 UnusUniRails3::Application.routes.draw do
 
-  get 'index' => "homes#index"
-
   devise_for :users, :controllers => { :registrations => "milia/registrations" }
+
+  match 'locales/:locale', :to => 'locale#show'
+  # map.locales 'locales/:locale', :controller => 'locales', :action => 'show'
+
   
-  map.locales 'locales/:locale', :controller => 'locales', :action => 'show'
+
+
+
   # We can now include links in views for switching languages as below:
   # link_to "Norsk", locales_path('no')
 

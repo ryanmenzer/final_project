@@ -31,7 +31,7 @@ gem 'faker'
 gem 'dotenv-rails', :groups => [:development, :test]
 gem 'milia', '~> 0.3.38'
 gem 'devise'
-
+gem 'devise-i18n-views'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
