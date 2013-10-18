@@ -1,0 +1,56 @@
+<% names = %w(Michael John Alex Janine) %>
+
+<ul class="chat-box timeline">
+
+  <li class="arrow-box-left gray">
+    <div class="avatar"><%= image_tag "avatars/avatar1.jpg", class: "avatar-small" %></div>
+    <div class="info">
+      <span class="name">
+        <span class="label label-green">COMMENT</span> <strong class="indent"><%= names.sample %></strong> posted a comment on this task: <strong>Core Admin</strong>
+      </span>
+      <span class="time"><i class="icon-time"></i> 3 minutes ago</span>
+    </div>
+    <div class="content">
+      <blockquote>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+      </blockquote>
+      <div>
+        <a href="#"><i class="icon-paper-clip"></i> <b>project_news.docx</b></a>
+      </div>
+    </div>
+  </li>
+
+  <li class="arrow-box-left gray">
+    <div class="avatar"><%= image_tag "avatars/avatar2.jpg", class: "avatar-small" %></div>
+    <div class="info">
+      <span class="name">
+        <span class="label label-blue">TASK</span> <strong class="indent"><%= names.sample %></strong> completed this task: <strong class="strikethrough">Core Admin</strong>
+      </span>
+      <span class="time"><i class="icon-time"></i> 6 minutes ago</span>
+    </div>
+  </li>
+
+  <li class="arrow-box-left gray">
+    <div class="avatar"><%= image_tag "avatars/avatar3.jpg", class: "avatar-small" %></div>
+    <div class="info">
+      <span class="name">
+        <span class="label label-purple">FILE</span> <strong class="indent"><%= names.sample %></strong> added 3 new files in project: <strong>Core Admin</strong>
+      </span>
+      <span class="time"><i class="icon-time"></i> 12 minutes ago</span>
+    </div>
+    <div class="content">
+      <ul class="thumbnails padded">
+        <% 3.times do %>
+            <li class="col-md-3">
+              <a href="#" class="thumbnail">
+                <img src="http://placehold.it/240x100" alt="">
+              </a>
+            </li>
+        <% end %>
+      </ul>
+    </div>
+  </li>
+</ul>
+
+<%= partial 'partials/closable_chat' %>
