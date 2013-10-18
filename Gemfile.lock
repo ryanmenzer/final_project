@@ -60,7 +60,6 @@ GEM
     faker (1.2.0)
       i18n (~> 0.5)
     fssm (0.2.10)
-
     hike (1.2.3)
     i18n (0.6.1)
     journey (1.0.4)
@@ -106,6 +105,7 @@ GEM
     rake (10.1.0)
     rdoc (3.12.2)
       json (~> 1.4)
+    recaptcha (0.3.5)
     sass (3.2.12)
     sass-rails (3.2.6)
       railties (~> 3.2.0)
@@ -146,6 +146,7 @@ DEPENDENCIES
   pg
   quiet_assets
   rails (= 3.2.13)
+  recaptcha
   sass-rails (~> 3.2.3)
   thin
   uglifier (>= 1.0.3)
