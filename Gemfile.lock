@@ -1,12 +1,12 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    actionmailer (3.2.15)
-      actionpack (= 3.2.15)
-      mail (~> 2.5.4)
-    actionpack (3.2.15)
-      activemodel (= 3.2.15)
-      activesupport (= 3.2.15)
+    actionmailer (3.2.13)
+      actionpack (= 3.2.13)
+      mail (~> 2.5.3)
+    actionpack (3.2.13)
+      activemodel (= 3.2.13)
+      activesupport (= 3.2.13)
       builder (~> 3.0.0)
       erubis (~> 2.7.0)
       journey (~> 1.0.4)
@@ -14,19 +14,19 @@ GEM
       rack-cache (~> 1.2)
       rack-test (~> 0.6.1)
       sprockets (~> 2.2.1)
-    activemodel (3.2.15)
-      activesupport (= 3.2.15)
+    activemodel (3.2.13)
+      activesupport (= 3.2.13)
       builder (~> 3.0.0)
-    activerecord (3.2.15)
-      activemodel (= 3.2.15)
-      activesupport (= 3.2.15)
+    activerecord (3.2.13)
+      activemodel (= 3.2.13)
+      activesupport (= 3.2.13)
       arel (~> 3.0.2)
       tzinfo (~> 0.3.29)
-    activeresource (3.2.15)
-      activemodel (= 3.2.15)
-      activesupport (= 3.2.15)
-    activesupport (3.2.15)
-      i18n (~> 0.6, >= 0.6.4)
+    activeresource (3.2.13)
+      activemodel (= 3.2.13)
+      activesupport (= 3.2.13)
+    activesupport (3.2.13)
+      i18n (= 0.6.1)
       multi_json (~> 1.0)
     arel (3.0.2)
     bcrypt-ruby (3.1.2)
@@ -39,6 +39,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.6.3)
+<<<<<<< HEAD
     compass (0.12.2)
       chunky_png (~> 1.2)
       fssm (>= 0.2.7)
@@ -46,6 +47,8 @@ GEM
     compass-rails (2.0.alpha.0)
       compass (>= 0.12.2, < 0.14)
     daemons (1.1.9)
+=======
+>>>>>>> master
     devise (2.1.2)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.1)
@@ -57,9 +60,14 @@ GEM
     erubis (2.7.0)
     eventmachine (1.0.3)
     execjs (2.0.2)
+<<<<<<< HEAD
     fssm (0.2.10)
+=======
+    faker (1.2.0)
+      i18n (~> 0.5)
+>>>>>>> master
     hike (1.2.3)
-    i18n (0.6.5)
+    i18n (0.6.1)
     journey (1.0.4)
     jquery-rails (3.0.4)
       railties (>= 3.0, < 5.0)
@@ -68,9 +76,15 @@ GEM
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+<<<<<<< HEAD
     milia (0.3.34)
       devise (= 2.1.2)
       rails (>= 3.2.9)
+=======
+    milia (0.3.38)
+      devise (= 2.1.2)
+      rails (= 3.2.13)
+>>>>>>> master
     mime-types (1.25)
     multi_json (1.8.2)
     orm_adapter (0.4.0)
@@ -85,17 +99,17 @@ GEM
       rack
     rack-test (0.6.2)
       rack (>= 1.0)
-    rails (3.2.15)
-      actionmailer (= 3.2.15)
-      actionpack (= 3.2.15)
-      activerecord (= 3.2.15)
-      activeresource (= 3.2.15)
-      activesupport (= 3.2.15)
+    rails (3.2.13)
+      actionmailer (= 3.2.13)
+      actionpack (= 3.2.13)
+      activerecord (= 3.2.13)
+      activeresource (= 3.2.13)
+      activesupport (= 3.2.13)
       bundler (~> 1.0)
-      railties (= 3.2.15)
-    railties (3.2.15)
-      actionpack (= 3.2.15)
-      activesupport (= 3.2.15)
+      railties (= 3.2.13)
+    railties (3.2.13)
+      actionpack (= 3.2.13)
+      activesupport (= 3.2.13)
       rack-ssl (~> 1.3.2)
       rake (>= 0.8.7)
       rdoc (~> 3.4)
@@ -137,11 +151,16 @@ DEPENDENCIES
   compass-rails (~> 2.0.alpha.0)
   devise
   dotenv-rails
+  faker
   jquery-rails
-  milia
+  milia (~> 0.3.38)
   pg
+<<<<<<< HEAD
   quiet_assets
   rails (= 3.2.15)
+=======
+  rails (= 3.2.13)
+>>>>>>> master
   sass-rails (~> 3.2.3)
   thin
   uglifier (>= 1.0.3)

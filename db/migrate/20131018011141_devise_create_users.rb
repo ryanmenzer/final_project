@@ -42,8 +42,8 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string  :nationality
       t.string  :phone_number
       t.date    :date_of_birth
-      
-      
+
+
 
       t.timestamps
     end
@@ -61,6 +61,5 @@ class DeviseCreateUsers < ActiveRecord::Migration
     add_index :users, :nationality
     add_index :users, :phone_number
     add_index :users, :date_of_birth
-    add_index :users, :tenant_id
   end
 end

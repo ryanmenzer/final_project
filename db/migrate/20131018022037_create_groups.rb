@@ -1,7 +1,7 @@
 class CreateGroups < ActiveRecord::Migration
   def change
     create_table :groups do |t|
-      t.integer :tenant_id,  null: false
+      t.integer :tenant_id
       t.integer :manager_id, null: false
       t.string  :name
 
