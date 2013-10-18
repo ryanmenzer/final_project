@@ -1,0 +1,28 @@
+<div class="box closable-chat-box">
+  <div class="box-content padded">
+
+    <div class="fields">
+      <div class="avatar"><%= image_tag "avatars/avatar2.jpg", class: "avatar-small" %></div>
+      <ul>
+        <li><b>Add a comment for project <a href="#">Core Admin</a></b></li>
+        <li class="note">Click on the textarea below to expand it!</li>
+      </ul>
+    </div>
+
+    <form class="fill-up" action="/">
+
+      <div class="chat-message-box">
+        <textarea name="ttt" id="ttt" rows="5" placeholder="add a comment (click to expand!)"></textarea>
+      </div>
+
+      <div class="clearfix actions">
+        <span class="note">An optional note can go here</span>
+        <div class="pull-right faded-toolbar">
+          <a href="#" class="tip" title="Attach files"><i class="icon-paper-clip"></i></a>
+          <a href="#" class="btn btn-blue btn-xs">Send</a>
+        </div>
+      </div>
+    </form>
+
+  </div>
+</div>

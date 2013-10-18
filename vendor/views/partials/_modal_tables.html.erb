@@ -1,0 +1,19 @@
+<!-- find me in partials/modal_tables -->
+
+<div id="modal-tables" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h6 id="modal-tablesLabel">Modal Heading</h6>
+      </div>
+      <div class="modal-body nopadding">
+        <%= partial "partials/data_tables_custom", locals: { custom_class: "dTable-small"} %>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-default" data-dismiss="modal">Close</button>
+        <button class="btn btn-blue">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
