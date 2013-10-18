@@ -1,6 +1,8 @@
 class Project < ActiveRecord::Base
 
-  belongs_to :tenant
+  acts_as_tenant
+
+  # belongs_to :tenant
   belongs_to :manager, class_name: "User"
   has_many   :stories
   has_many   :receivers, as: :receiverable
