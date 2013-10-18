@@ -1,0 +1,44 @@
+<% menu.each do |primary, primary_options| %>
+
+    <% if primary_options[:items].keys.count > 1 %>
+
+        <li class="dark-nav <%= nav_active(primary: primary.to_s) %>">
+
+          <span class="glow"></span>
+
+          <% id = random_string %>
+
+          <% link_to "##{id}", class:"accordion-toggle #{nav_collapse(primary: primary.to_s)} ", "data-toggle" => "collapse" do %>
+              <i class="<%= primary_options[:primary][:icon] %> icon-2x"></i>
+                    <span>
+                      <%= primary_options[:primary][:label] %>
+                      <i class="icon-caret-down"></i>
+                    </span>
+
+          <% end %>
+
+          <ul id="<%= "#{id}" %>" class="collapse <%= "in" if nav_collapse(primary: primary.to_s) != "collapsed" %>">
+            <% primary_options[:items].each do |secondary, secondary_options| %>
+                <li class="<%= nav_active(secondary: secondary.to_s) %>">
+                  <% link_to "/pages/#{primary}/#{secondary}.html", relative: true do %>
+                      <i class="<%= secondary_options[:icon]%>"></i> <%= secondary_options[:label] %>
+                  <% end %>
+                </li>
+            <% end %>
+          </ul>
+
+        </li>
+
+    <% else %>
+
+        <li class="<%= nav_active(primary: primary.to_s) %>">
+          <span class="glow"></span>
+          <% link_to "/pages/#{primary}/#{primary_options[:primary][:link]}.html", relative: true do %>
+              <i class="<%= primary_options[:primary][:icon] %> icon-2x"></i>
+              <span><%= primary_options[:primary][:label] %></span>
+          <% end %>
+        </li>
+
+    <% end %>
+
+<% end %>

@@ -1,0 +1,58 @@
+<!-- find me in partials/chat -->
+
+<div class="box">
+  <div class="box-header">
+    <div class="title">Chat box</div>
+
+    <ul class="box-toolbar">
+      <li>
+        <i class="icon-refresh"></i>
+      </li>
+      <li>
+        <input type="checkbox" class="iButton-icons" checked="checked" />
+      </li>
+      <li class="toolbar-link">
+        <a href="#" class="dropdown" data-toggle="dropdown"><i class="icon-cog"></i></a>
+        <ul class="dropdown-menu">
+          <li><a href="#"><i class="icon-plus-sign"></i> Add</a></li>
+          <li><a href="#"><i class="icon-remove-sign"></i> Remove</a></li>
+          <li><a href="#"><i class="icon-pencil"></i> Edit</a></li>
+        </ul>
+      </li>
+    </ul>
+
+  </div>
+
+  <div class="box-content">
+
+    <ul class="chat-box">
+
+      <% names = %w(Michael John Alex Janine) %>
+
+      <% current_side = "left" %>
+
+      <% %w(left right right left right).each do |side| %>
+
+          <% add_divider = side != current_side %>
+
+          <% if add_divider %>
+              <li class="divider"><span></span></li>
+          <% end %>
+
+          <li class="arrow-box-<%= side %> <%= "gray" if side == "right" %>">
+            <div class="avatar"><%= image_tag "avatars/avatar#{add_divider ? 1 : 2}.jpg", class: "avatar-small" %></div>
+            <div class="info">
+              <span class="name"><strong><%= names.sample %></strong> said:</span>
+              <span class="time">3 minutes ago</span>
+            </div>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+          </li>
+
+          <% current_side = side %>
+
+      <% end %>
+
+
+    </ul>
+  </div>
+</div>
