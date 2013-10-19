@@ -4,15 +4,15 @@ function log(obj) {
 
 // create a new instance of the Mandrill class with your API key
 // The app won't work until you put in API key below
-var m = new mandrill.Mandrill('put your api key here');
+var m = new mandrill.Mandrill('luDyP0TvxOc6zdmbEsaP8Q');
 
 // create a variable for the API call parameters
 var params = {
     "message": {
         "from_email":"titipongpisit2013@gmail.com",
         "to":[{"email":"titipongpisit@hotmail.com"}],
-        "subject": "Sending a text email from the Mandrill API",
-        "text": "We can now send an email form our app"
+        "subject": "Sending a text email from the Mandrill API(1)",
+        "text": "Send email using a form."
     }
 };
 
@@ -20,7 +20,12 @@ function sendTheMail() {
 // Send the email!
 
     m.messages.send(params, function(res) {
-        log(res);
+        console.log(res);
+        var url = '/emailresponses'
+        // var data = res
+        $.post(url, data);
+        // $.get();
+        // alert(res)
     }, function(err) {
         log(err);
     });
@@ -29,9 +34,12 @@ function sendTheMail() {
 
 $(document).ready(function() {
     console.log('ready');
-  $('#email').click(function(event){
+  $('#email').submit(function(event){
+    console.log("we target the right thing.")
+    alert("Hey");
     event.preventDefault();
-    console.log('click' );
+    // console.log('click' );
+    // console.log(res);
     sendTheMail();
   });
 });

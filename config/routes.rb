@@ -16,11 +16,11 @@ UnusUniRails3::Application.routes.draw do
   #   resources :books
   # end
 
-  get 'index' => "homes#index"
+  root to: "homes#index"
   
-  scope "(:locale)", locale: /en|no|es|tl/ do
-    resources :emails
-  end
+  # scope "(:locale)", locale: /en|no|es|tl/ do
+  #   resources :emails
+  # end
 
 
   devise_for :users, :controllers => { :registrations => "milia/registrations" }
@@ -28,5 +28,7 @@ UnusUniRails3::Application.routes.draw do
 
   get 'newimage' => "images#new"
   post 'newimage' => "images#create"
+
+  resources :emailresponses
 
 end
