@@ -15,19 +15,20 @@ class Tenant < ActiveRecord::Base
   end
 
 
-  # def self.create_new_tenant(params)
 
-  #   tenant = Tenant.new(:org_name => params[:tenant][:org_name])
+  def self.create_new_tenant(params)
 
-  #   if new_signups_not_permitted?(params)
+    tenant = Tenant.new(:org_name => params[:tenant][:org_name])
 
-  #      raise ::Milia::Control::MaxTenantExceeded, "Sorry, new accounts not permitted at this time"
+    if new_signups_not_permitted?(params)
 
-  #   else
-  #     tenant.save!    # create the tenant
-  #   end
-  #   return tenant
-  # end
+       raise ::Milia::Control::MaxTenantExceeded, "Sorry, new accounts not permitted at this time"
+
+    else
+      tenant.save!    # create the tenant
+    end
+    return tenant
+  end
 
 
 end
