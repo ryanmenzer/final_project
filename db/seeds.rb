@@ -46,12 +46,16 @@ puts "Setting up 5 test admins"
   u = User.new(email: Faker::Internet.email,
                password: "password",
                password_confirmation: "password",
-               category_id: 1,
-               role_id: 1,
-               full_name: Faker::Name.name,
-               gender: ["male", "female"].sample)
+               role_id: 1)
   # u.tenant_id = tenant.id
   u.save(validate: false)
+
+  person =  Person.create(full_name: Faker::Name.name,
+                          user_id: u.id,
+                          category_id: 1,
+                          gender: ["male", "female"].sample,
+                          nationality: ["American", "Norwegian","Phillipino"].sample)
+
 end
 
 ## Create staff with the worker role
@@ -63,15 +67,18 @@ Tenant.all.each do |tenant|
 
   num.times do
     print "."
-    u= User.new(email: Faker::Internet.email,
-                password: "password",
-                password_confirmation: "password",
-                category_id: 1,
-                role_id: 2,
-                full_name: Faker::Name.name,
-                gender: ["male", "female"].sample)
-    # u.tenant_id = tenant.id
+    u = User.new(email: Faker::Internet.email,
+                 password: "password",
+                 password_confirmation: "password",
+                 role_id: 1)
     u.save(validate: false)
+
+    person =  Person.new(full_name: Faker::Name.name,
+                         user_id: u.id,
+                         category_id: 1,
+                         gender: ["male", "female"].sample,
+                         nationality: ["American", "Norwegian","Phillipino"].sample)
+    person.save
   end
   puts ""
 end
@@ -86,15 +93,11 @@ Tenant.all.each do |tenant|
 
   num.times do
     print "."
-    u = User.new(email: Faker::Internet.email,
-                password: "password",
-                password_confirmation: "password",
-                category_id: 3,
-                role_id: 3,
-                full_name: Faker::Name.name,
-                gender: ["male", "female"].sample)
-    # u.tenant_id = tenant.id
-    u.save(validate: false)
+    p = Person.new(full_name: Faker::Name.name,
+                   category_id: 3,
+                   gender: ["male", "female"].sample,
+                   nationality: ["American", "Norwegian","Norwegian"].sample)
+    p.save
   end
   puts ""
 end
@@ -109,15 +112,11 @@ Tenant.all.each do |tenant|
 
   num.times do
     print "."
-    u = User.new(email: Faker::Internet.email,
-                 password: "password",
-                 password_confirmation: "password",
-                 category_id: 2,
-                 role_id: 3,
-                 full_name: Faker::Name.name,
-                 gender: ["male", "female"].sample)
-    # u.tenant_id = tenant.id
-    u.save(validate: false)
+    u = Person.new(full_name: Faker::Name.name,
+                   category_id: 2,
+                   gender: ["male", "female"].sample,
+                   nationality: "Phillipino")
+    u.save
   end
   puts ""
 end
@@ -126,8 +125,8 @@ end
 
 Tenant.all.each do |tenant|
   Tenant.set_current_tenant tenant.id
-  recipients = tenant.users.where("category_id = 2")
-  authors = tenant.users.where("category_id = 1")
+  recipients = Person.where("category_id = 2")
+  authors = Person.where("category_id = 1")
   authors.shuffle!
 
   puts "Adding stories to #{recipients.length} recipients for tenant #{tenant.id} (#{tenant.org_name})"

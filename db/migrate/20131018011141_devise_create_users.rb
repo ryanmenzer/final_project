@@ -2,8 +2,10 @@ class DeviseCreateUsers < ActiveRecord::Migration
   def change
     create_table(:users) do |t|
       ## Database authenticatable
-      t.string :email,              :null => false, :default => ""
-      t.string :encrypted_password, :null => false, :default => ""
+      t.string  :email,              :null => false, :default => ""
+      t.string  :encrypted_password, :null => false, :default => ""
+      t.integer :tenant_id
+      t.integer :role_id,     null: false
 
       ## Recoverable
       t.string   :reset_password_token
@@ -32,16 +34,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
 
       ## Token authenticatable
       # t.string :authentication_token
-      t.integer :tenant_id
-      t.integer :category_id, null: false
-      t.integer :role_id,     null: false
-      t.string  :full_name
-      t.string  :first_name
-      t.string  :last_name
-      t.string  :gender
-      t.string  :nationality
-      t.string  :phone_number
-      t.date    :date_of_birth
+
 
 
 
@@ -50,16 +43,10 @@ class DeviseCreateUsers < ActiveRecord::Migration
 
     add_index :users, :email,                :unique => true
     add_index :users, :reset_password_token, :unique => true
+    add_index :users, :tenant_id
+    add_index :users, :role_id
     # add_index :users, :confirmation_token,   :unique => true
     # add_index :users, :unlock_token,         :unique => true
     # add_index :users, :authentication_token, :unique => true
-
-    add_index :users, :category_id
-    add_index :users, :role_id
-    add_index :users, :first_name
-    add_index :users, :last_name
-    add_index :users, :nationality
-    add_index :users, :phone_number
-    add_index :users, :date_of_birth
   end
 end
