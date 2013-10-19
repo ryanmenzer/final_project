@@ -1,4 +1,4 @@
-class Role < ActiveRecord::Base
+Dauclass Role < ActiveRecord::Base
 
   acts_as_universal
 

@@ -5,3 +5,11 @@
 <span class="label label-info">Info</span>
 <span class="label label-warning">Warning</span>
 <span class="label label-danger">Danger</span>
+
+<p>User count: <%= @user.count %></p>
+
+<ul>
+  <% @user.each do |user| %>
+    <li><%= user.full_name %></li>
+  <% end %>
+</ul>
