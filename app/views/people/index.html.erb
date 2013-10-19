@@ -1,6 +1,5 @@
 <% @people.each do |person| %>
-  <%= person.id %>
-	<%= person.full_name %>
+  <a href="people/<%= person.id %>"><%= person.id %> <%= person.full_name %></a>
 	<br>
 <% end %>
 
