@@ -15,6 +15,12 @@ class PeopleController < ApplicationController
 		render 'new_person'
 	end
 
+	def show
+		@person = Person.find(params[:id])
+		cid = @person.category_id
+		@category = Category.find(cid)
+	end
+
 end
              #      people GET    /people(.:format)              people#index
              #             POST   /people(.:format)              people#create
