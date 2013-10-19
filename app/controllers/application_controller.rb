@@ -84,6 +84,12 @@
 
   # def configure_permitted_parameters
   #   devise_parameter_sanitizer.for(:sign_up) << :username
-  # end
+  #
+
+  helper_method :all_users
+
+  def all_users
+    @users ||= Tenant.current_tenant.users.all
+  end
 
 end

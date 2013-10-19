@@ -15,11 +15,13 @@ require 'faker'
 # Tenant.destroy_all
 # User.destroy_all
 
-
+puts "Adding categories..."
 
 Category.create(name: "Staff")
 Category.create(name: "Recipient")
 Category.create(name: "Supporter")
+
+puts "Adding roles..."
 
 Role.create(name: "Administrator")
 Role.create(name: "Worker")
@@ -28,10 +30,14 @@ Role.create(name: "Guest")
 
 ## Setup five different tenants
 
+puts "Setting up 5 test tenants"
+
 5.times do
   tenant = Tenant.new(org_name: Faker::Company.name)
   tenant.save
 end
+
+puts "Setting up 5 test admins"
 
 5.times do |index|
   tenant = Tenant.all[index]
@@ -44,6 +50,7 @@ end
                role_id: 1,
                full_name: Faker::Name.name,
                gender: ["male", "female"].sample)
+  # u.tenant_id = tenant.id
   u.save(validate: false)
 end
 
@@ -63,6 +70,7 @@ Tenant.all.each do |tenant|
                 role_id: 2,
                 full_name: Faker::Name.name,
                 gender: ["male", "female"].sample)
+    # u.tenant_id = tenant.id
     u.save(validate: false)
   end
   puts ""
@@ -85,6 +93,7 @@ Tenant.all.each do |tenant|
                 role_id: 3,
                 full_name: Faker::Name.name,
                 gender: ["male", "female"].sample)
+    # u.tenant_id = tenant.id
     u.save(validate: false)
   end
   puts ""
@@ -107,6 +116,7 @@ Tenant.all.each do |tenant|
                  role_id: 3,
                  full_name: Faker::Name.name,
                  gender: ["male", "female"].sample)
+    # u.tenant_id = tenant.id
     u.save(validate: false)
   end
   puts ""
