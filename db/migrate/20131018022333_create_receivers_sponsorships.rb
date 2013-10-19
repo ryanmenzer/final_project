@@ -6,5 +6,7 @@ class CreateReceiversSponsorships < ActiveRecord::Migration
 
       t.timestamps
     end
+    add_index :receivers_sponsorships, :receiver_id
+    add_index :receivers_sponsorships, :sponsorship_id
   end
 end
