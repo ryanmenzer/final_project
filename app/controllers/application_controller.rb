@@ -79,6 +79,7 @@
     # @eula   = Eula.get_latest.first
  end
 
+
   protected
 
   # def configure_permitted_parameters

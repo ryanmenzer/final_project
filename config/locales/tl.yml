@@ -6,7 +6,8 @@
 # Corrected by Christine Roque : christine@change.org
 # Additional correction by: https://github.com/Lioness8257
 
-tl:
+"tl":
+  hi: Kumusta mundo!
   date:
     formats:
       default: "%d/%m/%Y"

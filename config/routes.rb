@@ -5,8 +5,6 @@ UnusUniRails3::Application.routes.draw do
   match 'locales/:locale', :to => 'locale#show'
   # map.locales 'locales/:locale', :controller => 'locales', :action => 'show'
 
-  
-
 
 
   # We can now include links in views for switching languages as below:
@@ -19,7 +17,9 @@ UnusUniRails3::Application.routes.draw do
   # end
 
   get 'index' => "homes#index"
-
+  
+  scope "(:locale)", locale: /en|no|es|tl/ do
     resources :emails
+  end
 
 end
