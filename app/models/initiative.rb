@@ -2,7 +2,15 @@ class Initiative < ActiveRecord::Base
 
   acts_as_tenant
 
-  # belongs_to :tenant
+  attr_accessible :manager_id,
+                  :title,
+                  :description,
+                  :goal,
+                  :acrive,
+                  :start_date,
+                  :end_date
+
+  belongs_to :manager, class_name: "Person"
   has_many   :sponsorships
   has_many   :receivers
   has_many   :stories

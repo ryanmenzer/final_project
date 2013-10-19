@@ -4,7 +4,7 @@ class CreateSponsorships < ActiveRecord::Migration
       t.integer :tenant_id
       t.integer :initiative_id,   null: false
       t.integer :frequency_id
-      t.boolean :recuring_payment
+      t.boolean :recurring_payment
       t.float   :amount
       t.boolean :active
       t.date    :start_date
