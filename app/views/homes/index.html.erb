@@ -1,18 +1,38 @@
-<h3>Example heading <span class="label label-default">New</span></h3>
-<span class="label label-default">Default</span>
-<span class="label label-primary">Primary</span>
-<span class="label label-success">Success</span>
-<span class="label label-info">Info</span>
-<span class="label label-warning">Warning</span>
-<span class="label label-danger">Danger</span>
+<div class="box-header">
 
-<h1><%= @error %></h1>
+  <!-- notice the nav-tabs-left -->
 
+  <ul class="nav nav-tabs nav-tabs-left">
+    <li class="active"><a href="#home" data-toggle="tab"><i class="icon-home"></i></a></li>
+    <li><a href="#messages" data-toggle="tab"><i class="icon-comments-alt"></i> <span>Messages</span></a></li>
+    <li><a href="#settings" data-toggle="tab"><i class="icon-cog"></i> <span>Settings</span></a></li>
+  </ul>
 
-<p>User count: <%= @user.count %></p>
+  <div class="title">
 
-<ul>
-  <% @user.each do |user| %>
-    <li><%= user.full_name %></li>
-  <% end %>
-</ul>
+    <table class="table table-hover">
+      <thead>
+        <tr class="info">
+          <td>Name</td>
+          <td>Email</td>
+          <td>Gender</td>
+          <td>Category</td>
+        </tr>
+      </thead>
+      <tbody>
+        <% @user.each do |user| %>
+          <tr>
+            <td><%= user.full_name %></td>
+            <td><%= user.email %></td>
+            <td><%= user.gender %></td>
+            <td><%= user.category.name %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+<div>
+
+</div>
