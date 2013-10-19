@@ -11,7 +11,7 @@ class Tenant < ActiveRecord::Base
 
     if new_signups_not_permitted?(params)
 
-       raise ::Milia::Control::MaxTenantExceeded, "Sorry, new accounts not permitted at this time"
+      raise ::Milia::Control::MaxTenantExceeded, "Sorry, new accounts not permitted at this time"
 
     else
       tenant.save!    # create the tenant
