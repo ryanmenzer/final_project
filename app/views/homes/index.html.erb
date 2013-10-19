@@ -14,18 +14,16 @@
       <thead>
         <tr class="info">
           <td>Name</td>
-          <td>Email</td>
           <td>Gender</td>
           <td>Category</td>
         </tr>
       </thead>
       <tbody>
-        <% @user.each do |user| %>
+        <% @people.each do |person| %>
           <tr>
-            <td><%= user.full_name %></td>
-            <td><%= user.email %></td>
-            <td><%= user.gender %></td>
-            <td><%= user.category.name %></td>
+            <td><%= person.full_name %></td>
+            <td><%= person.gender %></td>
+            <td><%= person.category.name %></td>
           </tr>
         <% end %>
       </tbody>
