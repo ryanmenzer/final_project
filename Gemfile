@@ -27,6 +27,9 @@ gem "thin"
 
 gem 'faker'
 
+gem 'carrierwave'
+gem 'mini_magick'
+gem 'fog'
 
 gem 'dotenv-rails', :groups => [:development, :test]
 gem 'milia', '~> 0.3.38'
