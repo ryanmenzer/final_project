@@ -13,7 +13,6 @@
 
 ActiveRecord::Schema.define(:version => 20131019162202) do
 
-
   create_table "categories", :force => true do |t|
     t.integer  "tenant_id"
     t.string   "name",       :null => false
@@ -63,7 +62,6 @@ ActiveRecord::Schema.define(:version => 20131019162202) do
     t.string   "imageable_type"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
-    t.string   "image"
   end
 
   add_index "images", ["creator_id"], :name => "index_images_on_creator_id"
