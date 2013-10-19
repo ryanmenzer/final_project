@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131018163118) do
+ActiveRecord::Schema.define(:version => 20131019012822) do
 
   create_table "categories", :force => true do |t|
     t.integer  "tenant_id"
@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(:version => 20131018163118) do
     t.string   "imageable_type"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
+    t.string   "image"
   end
 
   add_index "images", ["imageable_id"], :name => "index_images_on_imageable_id"
