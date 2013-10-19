@@ -18,10 +18,10 @@ UnusUniRails3::Application.routes.draw do
 
   get 'index' => "homes#index"
   
-  scope "(:locale)", locale: /en|no|es|tl/ do
-    resources :emails
-  end
-
+  # scope "(:locale)", locale: /en|no|es|tl/ do
+  #   resources :emails
+  # end
+  resources :people
 
   devise_for :users, :controllers => { :registrations => "milia/registrations" }
   resources :emails
