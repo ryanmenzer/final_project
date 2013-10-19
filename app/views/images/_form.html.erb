@@ -1,9 +1,9 @@
-<%= form_for @image, :html => {:multipart => true} do |f| %>
-  <%= f.error_messages %>
-  <%= f.hidden_field :gallery_id %> <!-- we can change this field to a different one -->
+<%= form_for @image, :url => { :action => "create" }, :html => {:multipart => true} do |f| %>
+
+   <!-- we can change this field to a different one -->
   <p>
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
   </p>
   <p>
     <%= f.file_field :image %>
@@ -12,9 +12,10 @@
     <%= f.label :remote_image_url, "or image URL" %><br />
     <%= f.text_field :remote_image_url %>
   </p>
+  <p>
+    <%= check_box_tag(:remove_image) %>
+    <%= label_tag(:remove_image, "Delete image") %>
+  </p>
   <p><%= f.submit %></p>
 
-  <p>
-    <%= f.label :remove_image, "Remove image" %><%= f.checkbox :remove_image %>
-  </p>
 <% end %>
