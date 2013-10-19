@@ -139,7 +139,7 @@ ActiveRecord::Schema.define(:version => 20131018163118) do
   add_index "roles", ["tenant_id"], :name => "index_roles_on_tenant_id"
 
   create_table "sessions", :force => true do |t|
-    t.string   "session_id"
+    t.string   "session_id", :null => false
     t.text     "data"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
