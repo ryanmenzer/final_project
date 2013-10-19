@@ -1,13 +1,15 @@
 class Image < ActiveRecord::Base
 
-	attr_accessible :something, #column name where image goes
-								:remote_image_url 
-
   acts_as_tenant
 
-  # belongs_to :tenant
+  attr_accessible :title,
+                  :url,
+                  :creator_id,
+                  :imageable_id,
+                  :imageable_type
+
   belongs_to :imageable, polymorphic: true
 
-  mount_uploader :image, ImageUploader
+  # mount_uploader :image, ImageUploader
 
 end

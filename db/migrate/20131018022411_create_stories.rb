@@ -11,6 +11,7 @@ class CreateStories < ActiveRecord::Migration
       t.timestamps
     end
     add_index :stories, :tenant_id
+    add_index :stories, :author_id
     add_index :stories, :title
     add_index :stories, :storyable_id
     add_index :stories, :storyable_type
