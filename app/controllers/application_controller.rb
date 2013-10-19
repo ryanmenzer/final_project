@@ -6,7 +6,7 @@
   before_filter :set_current_tenant
 
   # before_filter :configure_permitted_parameters, if: :devise_controller?
-  
+
   before_filter :set_locale
 
   # def set_locale
@@ -75,8 +75,6 @@
   def prep_signup_view(tenant=nil, user=nil, coupon='')
     @user   = klass_option_obj( User, user )
     @tenant = klass_option_obj( Tenant, tenant )
-    # @coupon = coupon
-    # @eula   = Eula.get_latest.first
  end
 
 
