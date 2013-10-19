@@ -5,6 +5,17 @@ class Tenant < ActiveRecord::Base
   # has_and_belongs_to_many :users
   # belongs_to              :primary_contact, class_name: "User"
 
+
+  def self.create_new_tenant(org_name)
+    return Tenant.create(org_name: org_name)
+  end
+
+  def self.tenant_signup(user, tenant, other = nil)
+    # do any needed tenant initial setup
+  end
+
+
+
   def self.create_new_tenant(params)
 
     tenant = Tenant.new(:org_name => params[:tenant][:org_name])

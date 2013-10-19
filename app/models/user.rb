@@ -1,9 +1,11 @@
 class User < ActiveRecord::Base
 
   acts_as_universal_and_determines_account
+  # acts_as_tenant
 
   belongs_to :role
   belongs_to :category
+
 
   # has_one    :primary_contact, class_name: "Tenant"
 
@@ -12,7 +14,7 @@ class User < ActiveRecord::Base
   has_many   :projects
   has_and_belongs_to_many :sponsorships
   has_and_belongs_to_many :groups
-  # has_and_belongs_to_many :tenants
+  has_and_belongs_to_many :tenants
 
   has_many   :receivers, as: :receiverable
   has_many   :images, as: :imageable
