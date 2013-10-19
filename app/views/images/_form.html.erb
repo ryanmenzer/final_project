@@ -1,4 +1,4 @@
-<%= form_for @image, :url => { :action => "create" }, :html => {:multipart => true} do |f| %>
+<%= form_for @image, :html => {:multipart => true} do |f| %>
 
    <!-- we can change this field to a different one -->
   <p>
@@ -6,15 +6,7 @@
     <%= f.text_field :title %>
   </p>
   <p>
-    <%= f.file_field :image %>
-  </p>
-  <p>
-    <%= f.label :remote_image_url, "or image URL" %><br />
-    <%= f.text_field :remote_image_url %>
-  </p>
-  <p>
-    <%= check_box_tag(:remove_image) %>
-    <%= label_tag(:remove_image, "Delete image") %>
+    <%= f.file_field :url %>
   </p>
   <p><%= f.submit %></p>
 
