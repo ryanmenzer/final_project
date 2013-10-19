@@ -1,7 +1,8 @@
 class Frequency < ActiveRecord::Base
 
   acts_as_universal
-  belongs_to  :tenant
+
+  attr_accessible :name
 
   has_many   :sponsorships
 

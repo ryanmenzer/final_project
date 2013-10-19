@@ -2,12 +2,20 @@ class Sponsorship < ActiveRecord::Base
 
   acts_as_tenant
 
-  # belongs_to :tenant
+  attr_accessible :frequency_id,
+                  :initiative_id,
+                  :recurring_payment,
+                  :amount,
+                  :active,
+                  :start_date,
+                  :end_date
+
   belongs_to :frequency
   belongs_to :initiative
-  belongs_to :sponsor, class_name: "User"
-  has_many :transactions
+
+  has_and_belongs_to_many :people
   has_and_belongs_to_many :receivers
-  has_and_belongs_to_many :users
+
+  has_many :transactions
 
 end
