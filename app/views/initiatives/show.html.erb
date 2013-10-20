@@ -1,0 +1,22 @@
+<h1>Name: <%= @initiative.title %></h1>
+<br>
+	<p>
+	  Description: <%= @initiative.description %> 
+	</p>
+	<p>
+    Goal: <%= @initiative.goal %>
+	</p>
+	<p>
+		Active: <%= @initiative.active %>
+	</p>
+	<p>
+    Start Date: <%= @initiative.start_date %>
+	</p>
+	<p>
+		End Date: <%= @initiative.end_date %>
+	</p>
+
+
+	<%= button_to "Edit", :edit_initiative, :class => "btn btn-blue", :controller => :initiatives, :method => :get %>
+	<%= button_to 'Destroy', @initiative, :class => "btn btn-blue", :confirm => 'Are you sure?', :method => :delete %>
+	<%= button_to 'Back', initiatives_path, :class => "btn btn-blue", :method => :get %>
