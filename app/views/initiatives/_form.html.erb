@@ -1,0 +1,46 @@
+<%= form_for @initiative, { :action => "create"} do |f| %>
+  <% if @initiative.errors.any? %>
+  <div id="errorExplanation">
+    <h2><%= pluralize(@initiative.errors.count, "error") %> prohibited this post from being saved:</h2>
+  <ul>
+    <% @user.errors.full_messages.each do |msg| %>
+      <li><%= msg %> </li>
+    <% end %>
+    </ul>
+  </div>
+  <% end %>
+
+  <p>
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </p>
+
+  <p>
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
+  </p>
+
+  <p>
+    <%= f.label :goal %><br>
+    <%= f.text_field :goal %>
+  </p>
+
+  <p>
+    <%= f.label :active %><br>
+    <%= f.check_box :active %>
+  </p>
+
+  <p>
+    <%= f.label :start_date %><br>
+    <%= f.date_select :start_date %>
+  </p>
+
+  <p>
+    <%= f.label :end_date %><br>
+    <%= f.date_select :end_date %>
+  </p>
+
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
