@@ -24,9 +24,6 @@
 		Date of Birth: <%= @person.date_of_birth %>
 	</p>
 
-<!-- 	"btn btn-blue" -->
 
-
-	<%= button_to "Edit", :edit_person, :controller => :people, :method => :get %>
-
-	<%= button_to "Delete", {:controller => :people, action: 'destroy', :id => @person.id}, :method => :delete %>
+	<%= button_to "Edit", :edit_person, :class => "btn btn-blue", :controller => :people, :method => :get %>
+	<%= button_to 'Destroy', @person, :class => "btn btn-blue", :confirm => 'Are you sure?', :method => :delete %>
