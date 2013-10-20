@@ -28,5 +28,4 @@ UnusUniRails3::Application.routes.draw do
   # scope "(:locale)", locale: /en|nn/ do
   #   resources :books
   # end
-
 end
