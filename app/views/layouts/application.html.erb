@@ -2,7 +2,6 @@
 <html>
 <head>
   <title>UnusUniRails3</title>
-   <script type="text/javascript" src="https://mandrillapp.com/api/docs/js/mandrill.js"></script>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
@@ -11,70 +10,14 @@
 <body>
 
   <% if user_signed_in? %>
-      <%= render "layouts/navbar" %>
-      <%= render "layouts/sidebar" %>
-  <% end %>
-
- <div class="main-content">
-    <div class="container">
-      <div class="row">
-
-        <!-- top area -->
-
-        <div class="area-top clearfix">
-          <div class="pull-left header">
-            <h3 class="title">
-              title, icon here
-            </h3>
-            <h5>
-              subtitle
-            </h5>
-          </div>
-
-          <!-- the sparkline charts area. you can basically put anything here, i chose sparklines -->
-
-          <ul class="list-inline pull-right sparkline-box">
-            <li class="sparkline-row">
-              <h4 class="blue"><span>Orders</span> 847</h4>
-              <div class="sparkline big" data-color="blue"><!-- some,numbers,comma,separated,here --></div>
-            </li>
-            ...
-          </ul>
-
-        </div>
-
-      </div>
+    <%= render "layouts/navbar" %>
+    <%= render "layouts/sidebar" %>
+    <div class="main-content">
+      <%= yield %>
     </div>
-
-    <div class="container padded">
-      <div class="row">
-
-        <!-- Breadcrumb line. first item has a blue class attached to breadcrumb-button. there's a yellow class too, try it -->
-
-        <div id="breadcrumbs">
-          <div class="breadcrumb-button blue">
-            <span class="breadcrumb-label"><i class="icon-home"></i> Home</span>
-            <span class="breadcrumb-arrow"><span></span></span>
-          </div>
-
-          <div class="breadcrumb-button">
-              <span class="breadcrumb-label">
-                add icon, label here
-              </span>
-              <span class="breadcrumb-arrow"><span></span></span>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <div class="container">
+  <% else %>
     <%= yield %>
-      <!-- HERE goes the actual page content -->
-    </div>
-  </div>
-
-
+  <% end %>
 
 </body>
 </html>
