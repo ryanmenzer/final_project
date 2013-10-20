@@ -1,5 +1,7 @@
 UnusUniRails3::Application.routes.draw do
 
+  devise_for :users, :controllers => { :registrations => "milia/registrations" }
+
   scope "(:locale)", locale: /en|no|es|tl/ do
     get '/' => "homes#index"
     resources :emails
@@ -18,7 +20,6 @@ UnusUniRails3::Application.routes.draw do
 
   match 'locales/:locale', :to => 'locale#show'
 
-  devise_for :users, :controllers => { :registrations => "milia/registrations" }
 
 
   # map.locales 'locales/:locale', :controller => 'locales', :action => 'show'
