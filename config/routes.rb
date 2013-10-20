@@ -12,6 +12,7 @@ UnusUniRails3::Application.routes.draw do
     resources :settings
     resources :receivers
     resources :projects
+    resources :recipients
   end
 
   match 'locales/:locale', :to => 'locale#show'
