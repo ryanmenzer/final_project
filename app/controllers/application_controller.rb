@@ -32,6 +32,12 @@
     { :locale => I18n.locale }
   end
 
+  private
+
+  def current_tenant_by_subdomain
+    Tenant.find_by_subdomain! request.subdomain
+  end
+
   protected
 
   # ------------------------------------------------------------------------------
