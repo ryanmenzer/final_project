@@ -1,6 +1,7 @@
 class ImagesController < ApplicationController
 
 	def index
+		# @image = Image.last
 		@images = Image.all
 	end
 
@@ -9,14 +10,8 @@ class ImagesController < ApplicationController
 	end
 
 	def create
-		@image = Image.new(:title => "test", :url => "http://www.test.com")
-		@image.save
-		redirect_to "new"
-		# if @image.save
-		# 	render "index"
-		# else
-		# 	render 'new'
-		# end
+		@image = Image.create(params[:image])
+		render :index
 	end
 
 end
