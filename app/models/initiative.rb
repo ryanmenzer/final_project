@@ -3,10 +3,11 @@ class Initiative < ActiveRecord::Base
   acts_as_tenant
 
   attr_accessible :manager_id,
+                  :initiative_type_id,
                   :title,
                   :description,
                   :goal,
-                  :acrive,
+                  :active,
                   :start_date,
                   :end_date
 
