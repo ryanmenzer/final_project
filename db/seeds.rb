@@ -48,7 +48,7 @@ puts "Setting up 5 test admins"
                password_confirmation: "password",
                role_id: 1)
   # u.tenant_id = tenant.id
-  u.save(validate: false)
+  u.save
 
   person =  Person.create(full_name: Faker::Name.name,
                           user_id: u.id,
@@ -71,7 +71,7 @@ Tenant.all.each do |tenant|
                  password: "password",
                  password_confirmation: "password",
                  role_id: 1)
-    u.save(validate: false)
+    u.save
 
     person =  Person.new(full_name: Faker::Name.name,
                          user_id: u.id,
