@@ -10,7 +10,13 @@ class EmailsController < ApplicationController
 
   end 
 
+  
+
+
   def create
+    puts "hi"
+
+    p recipient_id = params[:email][:recipient_id]
     subject =  params[:email][:title]
       text = params[:email][:text]
 

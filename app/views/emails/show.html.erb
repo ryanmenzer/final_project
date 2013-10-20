@@ -23,9 +23,7 @@
 
        <div class="box-content">
 
-<%=p params[:query] %>
-
-<%= form_for :email, class: "fill-up" do |f| %>
+<%= form_for :email, url: {action: "create"}, class: "fill-up" do |f| %>
   <p>
     <%= f.label :"Story title" %><br>
     <%= f.text_field :title %>
@@ -38,7 +36,7 @@
 
   <p>
     <%= f.label :"Story content" %><br>
-    <%= f.hidden_field :recipient_id, :value => 3 %>
+    <%= f.hidden_field :recipient_id, :value => params[:id] %>
   </p>
  
   <p>
@@ -50,4 +48,3 @@
   </div>
 </div>
 </div>
-
