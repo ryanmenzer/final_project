@@ -6,7 +6,7 @@ class Initiative < ActiveRecord::Base
                   :title,
                   :description,
                   :goal,
-                  :acrive,
+                  :active,
                   :start_date,
                   :end_date
 
