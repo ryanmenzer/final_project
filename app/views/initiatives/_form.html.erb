@@ -1,7 +1,7 @@
 <%= form_for @initiative, { :action => "create"} do |f| %>
   <% if @initiative.errors.any? %>
   <div id="errorExplanation">
-    <h2><%= pluralize(@initiative.errors.count, "error") %> prohibited this post from being saved:</h2>
+    <h2><%= pluralize(@initiative.errors.count, "error") %> prohibited this initiative from being saved:</h2>
   <ul>
     <% @user.errors.full_messages.each do |msg| %>
       <li><%= msg %> </li>
