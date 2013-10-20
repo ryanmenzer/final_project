@@ -1,5 +1,29 @@
-<% @images.each do |image| %>
+<div class="box">
+  <div class="box-header">
+    <div class="title">All images</div>
+    <ul class="box-toolbar">
+      <li>
+        <form class="fill-up" style="width: 100px">
+          <label class="input-with-submit">
+            <input type="text" placeholder="Search...">
+            <button type="submit" class="submit-icon">
+              <i class="icon-search"></i>
+            </button>
+          </label>
+        </form>
+      </li>
+    </ul>
+  </div>
 
-<%= image_tag image.url.thumb.to_s %>
+  <div class="box-content">
+    <div id="thumbs">
+      <% @images.each do |image| %>
+        <a href="<%= image.url.medium %>" style="background-image:url(<%= image.url.square %>)" title="<%= image.title %>"></a>
+      <% end %>
+    </div>
+  </div>
+</div>
 
-<% end %>
+
+
+
