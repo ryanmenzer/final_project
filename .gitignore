@@ -15,3 +15,6 @@
 /tmp
 .env
 .DS_Store
+
+# Ignore images
+/public/uploads/tmp/
