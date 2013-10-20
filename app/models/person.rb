@@ -35,4 +35,16 @@ class Person < ActiveRecord::Base
     ActionController::Base.helpers.image_path("avatar-placeholder.jpg")
   end
 
+  def active_sponsors
+    result = []
+    self.receivers.each do |receiver|
+      receiver.sponsorships.each do |sponsorship|
+        sponsorship.sponsors.each do |sponsor|
+            result << sponsor.full_name 
+        end 
+      end 
+    end 
+    result 
+  end
+
 end

@@ -35,13 +35,15 @@
   </p>
 
   <p>
-    <%= f.label :"Story content" %><br>
     <%= f.hidden_field :recipient_id, :value => params[:id] %>
   </p>
  
   <p>
     <%= submit_tag "Save Story", :name => 'save_button', class: "btn btn-blue" %>
+
+    <% if @sponsor.count != 0 %>
     <%= submit_tag "Save and Send Story", :name => 'save_send_button', confirm: "Send email?",  class: "btn btn-blue" %>
+    <% end %>
   </p>
 <% end %>
 
