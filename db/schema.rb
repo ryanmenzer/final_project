@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131019162202) do
+ActiveRecord::Schema.define(:version => 20131020193401) do
 
   create_table "categories", :force => true do |t|
     t.integer  "tenant_id"
@@ -44,10 +44,8 @@ ActiveRecord::Schema.define(:version => 20131019162202) do
   add_index "groups", ["tenant_id"], :name => "index_groups_on_tenant_id"
 
   create_table "groups_people", :id => false, :force => true do |t|
-    t.integer  "person_id"
-    t.integer  "group_id",   :null => false
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer "person_id"
+    t.integer "group_id",  :null => false
   end
 
   add_index "groups_people", ["group_id"], :name => "index_groups_people_on_group_id"
@@ -139,10 +137,8 @@ ActiveRecord::Schema.define(:version => 20131019162202) do
   add_index "people", ["user_id"], :name => "index_people_on_user_id"
 
   create_table "people_sponsorships", :id => false, :force => true do |t|
-    t.integer  "sponsorship_id", :null => false
-    t.integer  "sponsor_id",     :null => false
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.integer "sponsorship_id", :null => false
+    t.integer "person_id",      :null => false
   end
 
   add_index "people_sponsorships", ["sponsor_id"], :name => "index_people_sponsorships_on_sponsor_id"
@@ -173,10 +169,8 @@ ActiveRecord::Schema.define(:version => 20131019162202) do
   add_index "receivers", ["tenant_id"], :name => "index_receivers_on_tenant_id"
 
   create_table "receivers_sponsorships", :id => false, :force => true do |t|
-    t.integer  "receiver_id",    :null => false
-    t.integer  "sponsorship_id", :null => false
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.integer "receiver_id",    :null => false
+    t.integer "sponsorship_id", :null => false
   end
 
   add_index "receivers_sponsorships", ["receiver_id"], :name => "index_receivers_sponsorships_on_receiver_id"
@@ -258,6 +252,7 @@ ActiveRecord::Schema.define(:version => 20131019162202) do
     t.string   "org_name",   :null => false
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "subdomain"
   end
 
   add_index "tenants", ["org_name"], :name => "index_tenants_on_org_name"
