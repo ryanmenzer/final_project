@@ -13,6 +13,7 @@ UnusUniRails3::Application.routes.draw do
     resources :receivers
     resources :projects
     resources :recipients
+    get '/users/:id' => 'users#show'
   end
 
   match 'locales/:locale', :to => 'locale#show'
