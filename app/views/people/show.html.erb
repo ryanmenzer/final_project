@@ -12,7 +12,7 @@
     Last Name: <%= @person.last_name %> -->
 <!-- 	</p> -->
 	<p>
-    Gender: <%= @person.id %>
+    Gender: <%= @person.gender %>
 	</p>
 	<p>
 		Nationality: <%= @person.nationality %>
@@ -24,5 +24,8 @@
 		Date of Birth: <%= @person.date_of_birth %>
 	</p>
 
-	<button type="submit" class="btn btn-blue">Edit</button>
-	<button type="submit" class="btn btn-blue">Delete</button>
+<!-- 	"btn btn-blue" -->
+
+	<%= button_to "Edit", {:controller => :people, :action => :edit }, {:method => :put } %>
+
+	<%= button_to "Delete", {:controller => :people, :action => :destroy}, {:method => :post } %>

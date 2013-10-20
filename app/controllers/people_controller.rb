@@ -15,11 +15,33 @@ class PeopleController < ApplicationController
 		render 'new_person'
 	end
 
+	def edit
+		@person = Person.find(params[:id])
+		@category = Category.all
+	end
+
+	def update
+	  @person = Person.find(params[:id])
+
+	  if @person.update_attributes(params[:person])
+	    redirect_to @person
+	  else
+	    render 'edit'
+	  end
+	end
+
 	def show
 		@person = Person.find(params[:id])
 		cid = @person.category_id
 		@category = Category.find(cid)
 	end
+
+  def destroy
+    @person = Person.find(params[:id])
+    @person.destroy
+
+    redirect_to :index
+  end
 
 end
              #      people GET    /people(.:format)              people#index
