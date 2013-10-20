@@ -31,4 +31,8 @@ class Person < ActiveRecord::Base
 
   # has_one    :primary_contact, class_name: "Tenant"
 
+  def avatar
+    ActionController::Base.helpers.image_path("avatar-placeholder.jpg")
+  end
+
 end
