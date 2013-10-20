@@ -1,0 +1,29 @@
+<h1>Name: <%= @person.full_name %></h1>
+<br>
+	<p>
+	  User Id: <%= @person.id %>
+	</p>
+	<p>
+	  Category: <%= @person.category.name %> 
+	</p>
+<!-- 	<p>
+		Full Name: <%= @person.full_name %> -->
+<!--     First Name: <%= @person.first_name %> 
+    Last Name: <%= @person.last_name %> -->
+<!-- 	</p> -->
+	<p>
+    Gender: <%= @person.gender %>
+	</p>
+	<p>
+		Nationality: <%= @person.nationality %>
+	</p>
+	<p>
+    Phone No.: <%= @person.phone_number %>
+	</p>
+	<p>
+		Date of Birth: <%= @person.date_of_birth %>
+	</p>
+
+
+	<%= button_to "Edit", :edit_person, :class => "btn btn-blue", :controller => :people, :method => :get %>
+	<%= button_to 'Destroy', @person, :class => "btn btn-blue", :confirm => 'Are you sure?', :method => :delete %>

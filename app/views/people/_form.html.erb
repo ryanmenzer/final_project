@@ -1,0 +1,56 @@
+	<%= form_for @person do |f| %>
+	  <% if @person.errors.any? %>
+	  <div id="errorExplanation">
+	    <h2><%= pluralize(@person.errors.count, "error") %> prohibited this post from being saved:</h2>
+	  <ul>
+	    <% @user.errors.full_messages.each do |msg| %>
+	      <li><%= msg %> </li>
+	    <% end %>
+	    </ul>
+	  </div>
+	  <% end %>
+
+    <p>
+	    <%= f.select :category_id, @category.map { |e| [e.name, e.id] } %>
+    </p>
+
+	  <p>
+	    <%= f.label :full_name %><br>
+	    <%= f.text_field :full_name %>
+	  </p>
+	 
+	  <p>
+	    <%= f.label :first_name %><br>
+	    <%= f.text_field :first_name %>
+	  </p>
+
+	  <p>
+	    <%= f.label :last_name %><br>
+	    <%= f.text_field :last_name %>
+	  </p>
+
+<!--     Should this be one letter? -->
+	  <p>
+	    <%= f.label :gender %><br>
+	    <%= f.text_field :gender %>
+	  </p>
+	 
+	  <p>
+	    <%= f.label :nationality %><br>
+	    <%= f.text_field :nationality %>
+	  </p>
+
+	  <p>
+	    <%= f.label :phone_number %><br>
+	    <%= f.text_field :phone_number %>
+	  </p>
+
+		<p>
+			<%= f.label :date_of_birth %><br>
+			<%= f.text_field :date_of_birth %>
+		</p>
+
+	  <p>
+	    <%= f.submit  %>
+	  </p>
+	<% end %>
