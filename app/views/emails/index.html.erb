@@ -1,9 +1,29 @@
-<h1><%=t :hi %></h1>
+<div class="col-md-12">
 
+  <div class="box">
+      <div class="box-header">
+        <span class="title">Create story</span>
+        <ul class="box-toolbar">
+          <li>
+            <i class="icon-refresh"></i>
+          </li>
+          <li>
+            <div class="ibutton-container" style="width: 69px;"><input type="checkbox" class="iButton-icons" checked="checked"><div class="ibutton-handle" style="width: 30px; left: 34px;"><div class="ibutton-handle-right"><div class="ibutton-handle-middle"></div></div></div><div class="ibutton-label-off" style="width: 64px;"><span style="margin-right: -34px;"><label><i class="icon-remove"></i></label></span></div><div class="ibutton-label-on" style="width: 38px;"><span style="margin-left: 0px;"><label><i class="icon-ok"></i></label></span></div><div class="ibutton-padding-left"></div><div class="ibutton-padding-right"></div></div>
+          </li>
+          <li class="toolbar-link">
+            <a href="#" class="dropdown" data-toggle="dropdown"><i class="icon-cog"></i></a>
+            <ul class="dropdown-menu">
+              <li><a href="#"><i class="icon-plus-sign"></i> Add</a></li>
+              <li><a href="#"><i class="icon-remove-sign"></i> Remove</a></li>
+              <li><a href="#"><i class="icon-pencil"></i> Edit</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
 
-<!-- <a id="email" href="#">Send Email</a> -->
+       <div class="box-content">
 
-<%= form_for :email do |f| %>
+<%= form_for :email, class: "fill-up" do |f| %>
   <p>
     <%= f.label :"Story title" %><br>
     <%= f.text_field :title %>
@@ -15,6 +35,12 @@
   </p>
  
   <p>
-    <%= f.submit %>
+    <%= submit_tag "Save Story", :name => 'save_button', class: "btn btn-blue" %>
+    <%= submit_tag "Save and Send Story", :name => 'save_send_button', confirm: "Send email?",  class: "btn btn-blue" %>
   </p>
 <% end %>
+
+  </div>
+</div>
+</div>
+
