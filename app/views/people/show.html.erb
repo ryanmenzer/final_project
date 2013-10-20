@@ -26,6 +26,9 @@
 
 <!-- 	"btn btn-blue" -->
 
-	<%= button_to "Edit", {:controller => :people, :action => :edit }, {:method => :put } %>
 
-	<%= button_to "Delete", {:controller => :people, :action => :destroy}, {:method => :post } %>
+	<%= button_to "Edit", :edit_person, :controller => :people, :method => :get %>
+
+
+	<%= button_to "Delete", @person, :confirm => 'Are you
+sure?', :method => :delete %>
