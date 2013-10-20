@@ -45,8 +45,15 @@ gem 'rails_12factor'
 
 gem 'mandrill-api', '~> 1.0.49'
 
+gem 'simplecov', :require => false, :group => :test
+
 group :development, :test do
   gem 'rspec-rails', '~> 2.0'
+  gem "better_errors"
+  gem 'capybara'
+  gem 'factory_girl_rails'
+  gem 'launchy'
+  gem 'selenium-webdriver'
 end
 
 # To use ActiveModel has_secure_password
