@@ -10,17 +10,14 @@
 <body>
 
   <% if user_signed_in? %>
-      <%= render "layouts/navbar" %>
-      <%= render "layouts/sidebar" %>
-  <% end %>
-
-
+    <%= render "layouts/navbar" %>
+    <%= render "layouts/sidebar" %>
+    <div class="main-content">
+      <%= yield %>
+    </div>
+  <% else %>
     <%= yield %>
-      <!-- HERE goes the actual page content -->
-
-  </div>
-
-
+  <% end %>
 
 </body>
 </html>
