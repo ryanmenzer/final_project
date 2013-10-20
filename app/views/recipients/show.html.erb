@@ -1,0 +1,21 @@
+<h3>Recipient Profile</h3>
+<div>
+<% if @recipient.full_name %>
+<%= @recipient.full_name %> 
+<% end %>
+</div>
+
+<div>
+<% if @recipient.stories%>
+<h3> Stories: </h3> 
+  <ul>
+    <% @recipient.stories.each do |story|  %>
+      <li><%= link_to story.title, story_path(story) %></li> 
+    <% end %>
+  </ul>
+<% end %>
+
+</div>
+  <%= link_to '<button type="button"> Create Story </button>'.html_safe,emails_path %>
+
+ 
