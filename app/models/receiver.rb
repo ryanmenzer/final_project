@@ -3,6 +3,7 @@ class Receiver < ActiveRecord::Base
   acts_as_tenant
 
   attr_accessible :initiative_id,
+                  :receiverable,
                   :receiverable_id,
                   :receiverable_type
 
