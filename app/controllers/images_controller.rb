@@ -11,7 +11,7 @@ class ImagesController < ApplicationController
 
 	def create
 		@image = Image.create(params[:image])
-		render :index
+		redirect_to action: "index"  # "show", :id => 5
 	end
 
 end
