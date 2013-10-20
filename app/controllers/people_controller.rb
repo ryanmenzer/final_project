@@ -42,17 +42,8 @@ class PeopleController < ApplicationController
     person = Person.find(params[:id])
     person.destroy
 
-    redirect_to 'people'
+    redirect_to people_path
   end
-
 end
-             #      people GET    /people(.:format)              people#index
-             #             POST   /people(.:format)              people#create
-             #  new_person GET    /people/new(.:format)          people#new
-             # edit_person GET    /people/:id/edit(.:format)     people#edit
-             #      person GET    /people/:id(.:format)          people#show
-             #             PUT    /people/:id(.:format)          people#update
-             #             DELETE /people/:id(.:format)          people#destroy
-
 
 
