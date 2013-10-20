@@ -224,7 +224,7 @@ Tenant.all.each do |tenant|
   Tenant.set_current_tenant tenant.id
     Initiative.all.each do |initiative|
 
-    receivers = Receiver.all.shuffle!
+    receivers = initiative.receivers.shuffle!
     sponsor_count = receivers.length / 2
 
     puts "Setting up #{sponsor_count} sponsorships for initiative #{initiative.title}"
@@ -239,26 +239,11 @@ Tenant.all.each do |tenant|
                                active: [true, true, true, true, true, false].sample,
                                start_date: DateTime.now())
         r.sponsorships << s
-        Person.where(category_id: 3).shuffle! << s
+        s.sponsors << Person.where(category_id: 3).shuffle!.pop
       end
     puts ""
   end
 end
-
-        s = Sponsorship.create(initiative_id: 1,
-                               frequency_id: 0,
-                               recurring_payment: [true, true, true, false].sample,
-                               amount: (rand(5..200)*10),
-                               active: [true, true, true, true, true, false].sample,
-                               start_date: DateTime.now())
-
-
-     s = Sponsorship.create!(initiative_id: 1,
-                             frequency_id: 0,
-                             recurring_payment: true,
-                             amount: 1000,
-                             active: true,
-                             start_date: DateTime.now())
 
 
 
