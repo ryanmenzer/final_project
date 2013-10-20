@@ -2,7 +2,7 @@ require 'mandrill'
 class EmailsController < ApplicationController
  
   def show
-    @recipient = Person.find(params[:id])
+
   end 
 
 
