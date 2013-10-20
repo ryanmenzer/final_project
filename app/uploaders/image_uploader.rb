@@ -15,7 +15,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   end
 
   version :square do
-    process :resize_to_fill => [120, 120, gravity = "Center" ]
+    process :resize_to_fill => [200, 200, gravity = "Center" ]
   end
 
   version :small do
