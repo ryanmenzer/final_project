@@ -37,10 +37,10 @@ class PeopleController < ApplicationController
 	end
 
   def destroy
-    @person = Person.find(params[:id])
-    @person.destroy
+    p person = Person.find(params[:id])
+    person.destroy
 
-    redirect_to :index
+    render 'index'
   end
 
 end
