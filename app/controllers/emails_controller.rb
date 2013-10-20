@@ -1,7 +1,10 @@
 require 'mandrill' 
 class EmailsController < ApplicationController
  
+  
   def show
+  @recipient = Person.find(params[:id])
+  @sponsor = @recipient.active_sponsors
 
   end 
 
@@ -10,13 +13,15 @@ class EmailsController < ApplicationController
 
   end 
 
-  
-
-
   def create
     puts "hi"
 
     p recipient_id = params[:email][:recipient_id]
+    # recipient = Person.find(recipient_id)
+    # sponsor_email = recipient.active_sponsors      #right now it is still full name, email is not in schema yet
+    sponsor_email = ["titipongpisit@hotmail.com", "titipongpisit2013@gmail.com"]
+
+
     subject =  params[:email][:title]
       text = params[:email][:text]
 
@@ -29,21 +34,26 @@ class EmailsController < ApplicationController
 
       # params[recipient].stories << story #this is the receiver being written about
 
+      sponsor_email.each do |sponsor_email|
+      
       m = Mandrill::API.new
       message = {    
       :subject=> params[:email][:title],  
-      :from_name=> "Your name",    
+      :from_name=> "Your name",    #Tenant name
       :text=> params[:email][:text],  
       :to=>[  
        {  
-       :email=> "titipongpisit@hotmail.com",  
-       :name=> "Sponsored"  
-       }  
+       :email=> sponsor_email,  
+       :name=> "Sponsored"         #Sponsor Name 
+       }
        ],  
        # :html=>"<html><h1>Hi <strong>message</strong>, how are you?</h1></html>",  
        :from_email=>"titipongpisit2013@gmail.com"  
        }  
        sending = m.messages.send message 
+
+      end 
+
      end 
   end
 
