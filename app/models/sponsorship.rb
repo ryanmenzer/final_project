@@ -13,7 +13,7 @@ class Sponsorship < ActiveRecord::Base
   belongs_to :frequency
   belongs_to :initiative
 
-  has_and_belongs_to_many :people
+  has_and_belongs_to_many :sponsors, class_name: "Person"
   has_and_belongs_to_many :receivers
 
   has_many :transactions
