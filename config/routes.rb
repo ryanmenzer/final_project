@@ -1,6 +1,13 @@
 UnusUniRails3::Application.routes.draw do
-
+ 
+  root to: "homes#index"
   devise_for :users, :controllers => { :registrations => "milia/registrations" }
+  resources :emails
+  # resources :emailresponses
+  post 'emailres' => 'emails#create'
+  
+  get 'newimage' => "images#new"
+  post 'newimage' => "images#create"
 
   match 'locales/:locale', :to => 'locale#show'
   # map.locales 'locales/:locale', :controller => 'locales', :action => 'show'
@@ -15,20 +22,9 @@ UnusUniRails3::Application.routes.draw do
   # scope "(:locale)", locale: /en|nn/ do
   #   resources :books
   # end
-
-  root to: "homes#index"
   
   # scope "(:locale)", locale: /en|no|es|tl/ do
   #   resources :emails
   # end
-
-
-  devise_for :users, :controllers => { :registrations => "milia/registrations" }
-  resources :emails
-
-  get 'newimage' => "images#new"
-  post 'newimage' => "images#create"
-
-  resources :emailresponses
 
 end

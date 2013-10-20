@@ -3,14 +3,14 @@
 
 <!-- <a id="email" href="#">Send Email</a> -->
 
-<%= form_for :email, :html => { :id => "email" } do |f| %>
+<%= form_for :email do |f| %>
   <p>
-    <%= f.label :title %><br>
+    <%= f.label :"Story title" %><br>
     <%= f.text_field :title %>
   </p>
  
   <p>
-    <%= f.label :text %><br>
+    <%= f.label :"Story content" %><br>
     <%= f.text_area :text %>
   </p>
  
