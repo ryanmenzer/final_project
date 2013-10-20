@@ -8,9 +8,9 @@ gem 'rails', '3.2.13'
 gem 'pg', :groups => [:development, :test]
 
 
-group :production do
-  gem "mysql2", "~> 0.3.13"
-end
+# group :production do
+#   gem "mysql2", "~> 0.3.13"
+# end
 
 # Gems used only for assets and not required
 # in production environments by default.
