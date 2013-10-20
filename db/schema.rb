@@ -141,7 +141,7 @@ ActiveRecord::Schema.define(:version => 20131020193401) do
     t.integer "person_id",      :null => false
   end
 
-  add_index "people_sponsorships", ["sponsor_id"], :name => "index_people_sponsorships_on_sponsor_id"
+  add_index "people_sponsorships", ["person_id"], :name => "index_people_sponsorships_on_person_id"
   add_index "people_sponsorships", ["sponsorship_id"], :name => "index_people_sponsorships_on_sponsorship_id"
 
   create_table "projects", :force => true do |t|
