@@ -19,11 +19,11 @@
         </tr>
       </thead>
       <tbody>
-        <% @people.each do |person| %>
+        <% @recipients.each do |recipient| %>
           <tr>
-            <td><a href="people/<%= person.id %>"><%= person.full_name %></a></td>
-            <td><a href="people/<%= person.id %>"><%= person.gender %></a></td>
-            <td><a href="people/<%= person.id %>"><%= person.category.name %></a></td>
+            <td><%= link_to recipient.full_name, recipient_path(recipient) %></td>
+            <td><%= recipient.gender %></td>
+            <td><%= recipient.category.name %></td>
           </tr>
         <% end %>
       </tbody>
@@ -34,4 +34,4 @@
 <div>
 
 </div>
-
+2

@@ -7,6 +7,7 @@ class CreateSettings < ActiveRecord::Migration
       t.string  :cat_1_name
       t.string  :cat_2_name
       t.string  :cat_3_name
+      t.string  :email
       t.integer :paypal_setting_id
       t.integer :mandrill_setting_id
       t.integer :primary_contact_id
