@@ -14,7 +14,3 @@
 /log/*.log
 /tmp
 .env
-/config/initializers/secret_token.rb
-/config/initializers/image_store.rb
-/config/recaptcha.rb
-
