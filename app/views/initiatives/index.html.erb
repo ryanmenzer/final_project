@@ -24,11 +24,11 @@
       <tbody>
         <% @initiatives.each do |i| %>
           <tr>
-            <td><a href="initiatives/<%= i.id %>"><%= i.title %></a></td>
-            <td><a href="initiatives/<%= i.id %>"><%=h truncate(i.description, :length => 50) %></a></td>
-            <td><a href="initiatives/<%= i.id %>"><%= i.goal %></a></td>
-            <td><a href="initiatives/<%= i.id %>"><%= i.start_date %></a></td>
-            <td><a href="initiatives/<%= i.id %>"><%= i.end_date %></a></td>
+            <td><%= link_to i.title, initiative_path(i) %></a></td>
+            <td><%=h truncate(i.description, :length => 50) %></a></td>
+            <td><%= i.goal %></a></td>
+            <td><%= i.start_date %></a></td>
+            <td><%= i.end_date %></a></td>
           </tr>
         <% end %>
       </tbody>
