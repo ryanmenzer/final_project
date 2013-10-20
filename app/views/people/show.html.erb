@@ -4,7 +4,7 @@
 	  User Id: <%= @person.id %>
 	</p>
 	<p>
-	  Category: <%= @category.name %> 
+	  Category: <%= @person.category.name %> 
 	</p>
 <!-- 	<p>
 		Full Name: <%= @person.full_name %> -->
@@ -29,6 +29,4 @@
 
 	<%= button_to "Edit", :edit_person, :controller => :people, :method => :get %>
 
-
-	<%= button_to "Delete", @person, :confirm => 'Are you
-sure?', :method => :delete %>
+	<%= button_to "Delete", {:controller => :people, action: 'destroy', :id => @person.id}, :method => :delete %>

@@ -1,11 +1,3 @@
-<% @people.each do |person| %>
-  <a href="people/<%= person.id %>"><%= person.id %> <%= person.full_name %></a>
-	<br>
-<% end %>
-
-
-
-=======
 <div class="box-header">
 
   <!-- notice the nav-tabs-left -->
@@ -29,9 +21,9 @@
       <tbody>
         <% @people.each do |person| %>
           <tr>
-            <td><%= person.full_name %></td>
-            <td><%= person.gender %></td>
-            <td><%= person.category.name %></td>
+            <td><a href="people/<%= person.id %>"><%= person.full_name %></a></td>
+            <td><a href="people/<%= person.id %>"><%= person.gender %></a></td>
+            <td><a href="people/<%= person.id %>"><%= person.category.name %></a></td>
           </tr>
         <% end %>
       </tbody>
