@@ -140,12 +140,12 @@ ActiveRecord::Schema.define(:version => 20131019162202) do
 
   create_table "people_sponsorships", :id => false, :force => true do |t|
     t.integer  "sponsorship_id", :null => false
-    t.integer  "sponsor_id",     :null => false
+    t.integer  "person_id",      :null => false
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
   end
 
-  add_index "people_sponsorships", ["sponsor_id"], :name => "index_people_sponsorships_on_sponsor_id"
+  add_index "people_sponsorships", ["person_id"], :name => "index_people_sponsorships_on_person_id"
   add_index "people_sponsorships", ["sponsorship_id"], :name => "index_people_sponsorships_on_sponsorship_id"
 
   create_table "projects", :force => true do |t|
