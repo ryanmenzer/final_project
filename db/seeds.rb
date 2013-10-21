@@ -54,7 +54,8 @@ puts "Setting up 5 test admins"
                           user_id: u.id,
                           category_id: 1,
                           gender: ["male", "female"].sample,
-                          nationality: ["American", "Norwegian","Phillipino"].sample)
+                          nationality: ["American", "Norwegian","Phillipino"].sample, 
+                          email: Faker::Internet.email)
 
 end
 
@@ -77,7 +78,8 @@ Tenant.all.each do |tenant|
                          user_id: u.id,
                          category_id: 1,
                          gender: ["male", "female"].sample,
-                         nationality: ["American", "Norwegian","Phillipino"].sample)
+                         nationality: ["American", "Norwegian","Phillipino"].sample,
+                         email: Faker::Internet.email)
     person.save
   end
   puts ""
@@ -96,7 +98,8 @@ Tenant.all.each do |tenant|
     p = Person.new(full_name: Faker::Name.name,
                    category_id: 3,
                    gender: ["male", "female"].sample,
-                   nationality: ["American", "Norwegian","Norwegian"].sample)
+                   nationality: ["American", "Norwegian","Norwegian"].sample,
+                   email: Faker::Internet.email)
     p.save
   end
   puts ""
@@ -115,7 +118,8 @@ Tenant.all.each do |tenant|
     u = Person.new(full_name: Faker::Name.name,
                    category_id: 2,
                    gender: ["male", "female"].sample,
-                   nationality: "Phillipino")
+                   nationality: "Phillipino", 
+                   email: Faker::Internet.email)
     u.save
   end
   puts ""

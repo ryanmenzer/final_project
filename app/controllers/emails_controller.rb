@@ -17,7 +17,7 @@ class EmailsController < ApplicationController
     puts "hi"
 
     p recipient_id = params[:email][:recipient_id]
-    # recipient = Person.find(recipient_id)
+    recipient = Person.find(recipient_id)
     # sponsor_email = recipient.active_sponsors      #right now it is still full name, email is not in schema yet
     sponsor_email = ["titipongpisit@hotmail.com", "titipongpisit2013@gmail.com"]
 
@@ -25,7 +25,7 @@ class EmailsController < ApplicationController
     subject =  params[:email][:title]
       text = params[:email][:text]
 
-      story = Story.new(title: subject, content: text, author_id: current_user.person.id)
+      story = Story.new(title: subject, content: text, author_id: current_user.person.id, storyable_id: recipient_id)
 
     if params[:save_button] 
       story.save
