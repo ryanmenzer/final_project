@@ -8,4 +8,8 @@ class SponsorshipsController < ApplicationController
     @sponsorship = Sponsorship.find(params[:id])
   end
 
+  def new 
+  
+  end 
+
 end
