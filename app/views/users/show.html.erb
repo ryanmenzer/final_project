@@ -32,9 +32,10 @@
               <%= simple_form_for @user.person do |f| %>
                 <%= f.input :full_name %>
                 <%= f.input :first_name %>
+                <%= f.input :email %>
                 <%= f.input :last_name %>
                 <%= f.input :phone_number %>
-                <%= f.input :gender %>
+                <%= f.input :gender, collection: ["male", "female"], as: :radio_buttons %>
                 <%= f.input :date_of_birth %>
                 <%= f.input :nationality %>
                 <%= f.button :submit %>
