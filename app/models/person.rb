@@ -11,7 +11,8 @@ class Person < ActiveRecord::Base
                   :gender,
                   :date_of_birth,
                   :phone_number,
-                  :nationality
+                  :nationality,
+                  :email
 
 
   belongs_to              :category
