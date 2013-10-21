@@ -1,0 +1,35 @@
+<div class="container">
+<div class="box-header">
+
+  <div class="title">
+
+    <table class="table table-hover">
+      <thead>
+        <tr class="info">
+          <td>Amount</td>
+          <td>Recurring Payment</td>
+          <td>Active</td>
+          <td>Start Date</td>
+          <td>End Date</td>
+          <td>Type</td>
+        </tr>
+      </thead>
+      <tbody>
+        <% @sponsorships.each do |s| %>
+          <tr>
+            <td><a href="sponsorships/<%= s.id %>"><%= s.amount %></a></td>
+            <td><a href="sponsorships/<%= s.id %>"><%= s.recurring_payment  %></a></td>
+            <td><a href="sponsorships/<%= s.id %>"><%= s.active  %></a></td>
+            <td><a href="sponsorships/<%= s.id %>"><%= s.start_date  %></a></td>
+            <td><a href="sponsorships/<%= s.id %>"><%= s.end_date  %></a></td></a></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <%= will_paginate @sponsorships %>
+</div>
+<div>
+
+</div>
+</div>
