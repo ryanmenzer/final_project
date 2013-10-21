@@ -15,9 +15,4 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
- def self.find_for_authentication(conditions={})
-     conditions[:account_id] = Account.find_by_subdomain(conditions.delete(:subdomain)).id
-     super(conditions)
-   end
-
 end
