@@ -42,6 +42,7 @@ gem 'devise'
 
 gem 'devise-i18n-views'
 gem 'rails_12factor'
+gem 'simple_form'
 
 gem 'mandrill-api', '~> 1.0.49'
 
