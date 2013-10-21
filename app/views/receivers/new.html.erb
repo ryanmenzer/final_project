@@ -1,0 +1,17 @@
+<% if @people %>
+<ul>
+	<% @people.each do |person| %>
+		<% if person.receivers.empty? %>
+		<li><%= link_to person.full_name, receivers_path({:initiative_id => params[:initiative_id], :object_id => person.id, :object_type => person.class.name}), :method => :post %></li>
+		<% end %>
+	<% end %>
+</ul>
+<% elsif @projects %>
+<ul>
+	<% @projects.each do |project| %>
+	<% if project.receivers.empty? %>
+		<li><%= link_to project.name, receivers_path({:initiative_id => params[:initiative_id], :object_id => project.id, :object_type => project.class.name}), :method => :post %></li>
+	<% end %>
+	<% end %>
+</ul>
+<% end %>
