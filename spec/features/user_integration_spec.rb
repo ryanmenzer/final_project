@@ -1,21 +1,35 @@
 require 'spec_helper'
-require 'factory_girl_rails'
-
+# require 'factory_girl_rails'
 describe "LoginToAccounts" do
   before do
-    other_account = FactoryGirl.create(:tenant)
-    @invalid_user = FactoryGirl.create(:user, tenant: other_account)
-    @account = FactoryGirl.create(:tenant, subdomain: "test-account")
-    @user = FactoryGirl.create(:user, tenant: @account)
+    @tenant = Tenant.create(org_name: "Hello Inc")
+    Tenant.set_current_tenant @tenant.id
+    c = Category.create(name: "Staff")
+    r = Role.create(name: "Administrator")
+    @user = User.create(email: "hello@example.com",
+               password: "password",
+               password_confirmation: "password",
+               role_id: r.id)
+    @tenant.users << @user
     Capybara.app_host = "http://test-account.example.com"
     visit '/'
   end
+
+# describe "LoginToAccounts" do
+#   before do
+#     other_account = FactoryGirl.create(:tenant)
+#     @invalid_user = FactoryGirl.create(:user, tenant: other_account)
+#     @account = FactoryGirl.create(:tenant, subdomain: "test-account")
+#     @user = FactoryGirl.create(:user, tenant: @account)
+#     Capybara.app_host = "http://test-account.example.com"
+#     visit '/'
+#   end
  
   describe "log in to a valid account" do
     before do
       fill_in 'Email', with: @user.email
       fill_in 'Password', with: @user.password
-      click_button 'Sign in'
+      click_button 'Login'
     end
  
     it "will notify me that I have logged in successfully" do
