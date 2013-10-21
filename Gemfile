@@ -49,7 +49,7 @@ gem 'simplecov', :require => false, :group => :test
 
 group :development, :test do
   gem 'rspec-rails', '~> 2.0'
-  # gem "better_errors"
+  gem "better_errors"
   gem 'capybara'
   gem 'factory_girl_rails'
   gem 'launchy'
