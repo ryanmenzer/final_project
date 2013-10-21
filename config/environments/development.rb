@@ -35,4 +35,8 @@ UnusUniRails3::Application.configure do
   # Expands the lines which load the assets
   config.assets.debug = true
 
+  # config.gem "factory_girl_rails", :lib => 'factory_girl', :source => 'http://gems.github.com'
+  # config.gem "rspec", :version => '1.2.2', :lib => 'spec'
+  # config.gem "rspec-rails", :version => '2.0', :lib => false
+
 end
