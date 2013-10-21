@@ -11,6 +11,7 @@ UnusUniRails3::Application.routes.draw do
     resources :groups
     resources :stories
     resources :transactions
+    resources :sponsorships
     resources :settings
     resources :receivers
     resources :projects
