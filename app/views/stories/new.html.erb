@@ -1,0 +1,33 @@
+<div class="col-md-12">
+
+  <div class="box">
+    <div class="box-header">
+      <span class="title">Create story</span>
+      <ul class="box-toolbar">
+        <li><i class="icon-refresh"></i></li>
+      </ul>
+    </div>
+
+    <div class="box-content">
+
+      <%= form_for @story, class: "fill-up" do |f| %>
+        <p>
+          <%= f.label :"Story title" %><br>
+          <%= f.text_field :title %>
+        </p>
+        <p>
+          <%= f.label :"Story content" %><br>
+          <%= f.text_area :content %>
+        </p>
+          <%= check_box_tag :send_email %>
+          <%= label_tag "Send this email to sponsors" %>
+        <p>
+          <%= f.hidden_field :author_id %>
+          <%= f.hidden_field :storyable_id %>
+          <%= f.hidden_field :storyable_type %>
+          <%= submit_tag "Save Story", :name => 'save_button', class: "btn btn-blue" %>
+        </p>
+      <% end %>
+  </div>
+</div>
+</div>
