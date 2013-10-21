@@ -1,9 +1,12 @@
+require 'spec_helper'
+require 'factory_girl_rails'
+
 describe "LoginToAccounts" do
   before do
-    other_account = Factory.create(:account)
-    @invalid_user = Factory.create(:user, account: other_account)
-    @account = Factory.create(:account, subdomain: "test-account")
-    @user = Factory.create(:user, account: @account)
+    other_account = FactoryGirl.create(:tenant)
+    @invalid_user = FactoryGirl.create(:user, tenant: other_account)
+    @account = FactoryGirl.create(:tenant, subdomain: "test-account")
+    @user = FactoryGirl.create(:user, tenant: @account)
     Capybara.app_host = "http://test-account.example.com"
     visit '/'
   end
