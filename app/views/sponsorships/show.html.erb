@@ -1,0 +1,7 @@
+<% @sponsorship.receivers.each do |s| %>
+  <% if s.receiverable_type == "Person" %>
+    <%= s.receiverable.full_name %>
+  <% elsif s.receiverable_type == "Project" %>
+    <%= s.receiverable.name %>
+  <% end %>
+<% end %>

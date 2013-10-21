@@ -61,13 +61,7 @@
             <li><a href="<%= "/users/" + current_user.id.to_s %>"><i class="icon-user"></i><span>Profile</span></a></li>
             <li><a href="#"><i class="icon-cog"></i><span>Settings</span></a></li>
             <li><a href="#"><i class="icon-envelope"></i> <span>Messages</span> <span class="label label-dark-red pull-right">5</span></a></li>
-<!--             <li><a href="#"><i class="icon-off"></i><span>Logout</span></a></li>   -->
-            
-            <li><i class="icon-off"></i>
-              <span>
-                <%= link_to 'Logout', destroy_user_session_path, :method => :delete %>
-              </span>
-            </li>
+            <li><%= link_to(destroy_user_session_path, options = {method: :delete}) do %><i class="icon-off"></i><span>Logout</span><% end %></li>
           </ul>
       </ul>
     </div>
