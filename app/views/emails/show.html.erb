@@ -23,9 +23,7 @@
 
        <div class="box-content">
 
-<%=p params[:query] %>
-
-<%= form_for :email, class: "fill-up" do |f| %>
+<%= form_for :email, url: {action: "create"}, class: "fill-up" do |f| %>
   <p>
     <%= f.label :"Story title" %><br>
     <%= f.text_field :title %>
@@ -37,17 +35,18 @@
   </p>
 
   <p>
-    <%= f.label :"Story content" %><br>
-    <%= f.hidden_field :recipient_id, :value => 3 %>
+    <%= f.hidden_field :recipient_id, :value => params[:id] %>
   </p>
  
   <p>
     <%= submit_tag "Save Story", :name => 'save_button', class: "btn btn-blue" %>
+
+    <% if @sponsor.count != 0 %>
     <%= submit_tag "Save and Send Story", :name => 'save_send_button', confirm: "Send email?",  class: "btn btn-blue" %>
+    <% end %>
   </p>
 <% end %>
 
   </div>
 </div>
 </div>
-
