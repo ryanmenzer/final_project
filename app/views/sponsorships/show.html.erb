@@ -1,3 +1,5 @@
+Receivers:
+<br>
 <% @sponsorship.receivers.each do |s| %>
   <% if s.receiverable_type == "Person" %>
     <%= s.receiverable.full_name %>
@@ -5,3 +7,23 @@
     <%= s.receiverable.name %>
   <% end %>
 <% end %>
+<br>
+<br> 
+Sponsors: <br>
+  <% @sponsorship.sponsors.each do |t| %>
+    <%= t.full_name %>
+    <%= t.id %>
+  <% end %>
+<br>
+<br> 
+Transactions: <br>
+<% @sponsorship.transactions.each do |t| %>
+  date: <%= t.date %> <br> 
+  sponsor: <%= t.payer.full_name  %> <br>
+  amount: <%= t.amount %> <br>
+  <br>
+<% end %>
+<br> 
+<%= link_to 'Create Transaction', new_transaction_path(sponsorship_id: @sponsorship.id, transaction_type_id: 0), :class => "btn btn-blue"%>
+
+
