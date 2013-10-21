@@ -4,11 +4,11 @@
 	  User Id: <%= @person.id %>
 	</p>
 	<p>
-	  Category: <%= @person.category.name %> 
+	  Category: <%= @person.category.name %>
 	</p>
 <!-- 	<p>
 		Full Name: <%= @person.full_name %> -->
-<!--     First Name: <%= @person.first_name %> 
+<!--     First Name: <%= @person.first_name %>
     Last Name: <%= @person.last_name %> -->
 <!-- 	</p> -->
 	<p>
@@ -27,3 +27,8 @@
 
 	<%= button_to "Edit", :edit_person, :class => "btn btn-blue", :controller => :people, :method => :get %>
 	<%= button_to 'Destroy', @person, :class => "btn btn-blue", :confirm => 'Are you sure?', :method => :delete %>
+
+
+	<% if @person.category_id == 1 || @person.category_id == 2 %>
+  <%= link_to 'Create Story', new_story_path(object_id: @person.id, object_type: @person.class.name ), :class => "btn btn-blue"%>
+	<% end %>

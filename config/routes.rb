@@ -14,7 +14,6 @@ UnusUniRails3::Application.routes.draw do
     resources :settings
     resources :receivers
     resources :projects
-    resources :recipients
     get '/users/:id' => 'users#show'
     put '/users/:id' => 'users#update'
   end
