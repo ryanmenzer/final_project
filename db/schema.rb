@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131021030454) do
+ActiveRecord::Schema.define(:version => 20131021153439) do
 
   create_table "categories", :force => true do |t|
     t.integer  "tenant_id"
@@ -210,6 +210,7 @@ ActiveRecord::Schema.define(:version => 20131021030454) do
     t.integer  "primary_contact_id"
     t.datetime "created_at",          :null => false
     t.datetime "updated_at",          :null => false
+    t.string   "default_email"
   end
 
   add_index "settings", ["tenant_id"], :name => "index_settings_on_tenant_id"
