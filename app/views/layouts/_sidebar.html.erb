@@ -4,8 +4,8 @@
 
 <div class="primary-sidebar">
   <ul class="nav navbar-collapse collapse navbar-collapse-primary">
-
-    <li class="active">
+  <% puts request.original_url %>
+    <li class="<%= 'active' if puts current_page?(url_for(:controller => 'homes', :action => 'index')) %>">
       <span class="glow"></span>
       <a href="/">
         <i class="icon-dashboard icon-2x"></i>
