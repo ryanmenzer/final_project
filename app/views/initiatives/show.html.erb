@@ -4,6 +4,34 @@
 	  Description: <%= @initiative.description %> 
 	</p>
 	<p>
+		Receivers: 
+		<table>
+			<thead>
+				<th>People</th>
+			</thead>
+			<tbody>
+			<% @receivers.each do |r| %>
+			<% if r.receiverable_type == "Person" %>
+				<tr><td><%= Person.find(r.receiverable_id).full_name %></td>
+				<% end %>
+			<% end %>
+		</tbody>
+		</table>
+		<br>
+		<table>
+			<thead>
+				<th>Projects</th>
+			</thead>
+			<tbody>
+			<% @receivers.each do |r| %>
+			<% if r.receiverable_type == "Project" %>
+				<tr><td><%= Project.find(r.receiverable_id).name %></td>
+				<% end %>
+			<% end %>
+		</tbody>
+		</table>
+	</p>
+	<p>
     Goal: <%= @initiative.goal %>
 	</p>
 	<p>
@@ -16,7 +44,9 @@
 		End Date: <%= @initiative.end_date %>
 	</p>
 
-
 	<%= button_to "Edit", :edit_initiative, :class => "btn btn-blue", :controller => :initiatives, :method => :get %>
 	<%= button_to 'Destroy', @initiative, :class => "btn btn-blue", :confirm => 'Are you sure?', :method => :delete %>
 	<%= button_to 'Back', initiatives_path, :class => "btn btn-blue", :method => :get %>
+
+	<%= link_to 'Add Person', new_receiver_path({:type => "person", :initiative_id => @initiative.id}), :class => "btn btn-blue" %>
+	<%= link_to 'Add Project', new_receiver_path({:type => "project", :initiative_id => @initiative.id}), :class => "btn btn-blue" %>
