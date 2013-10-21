@@ -1,10 +1,9 @@
-class PeopleController < ApplicationController
-
+class PeopleController < ApplicationController 
   def index
     if params[:cat]
-      @people = Person.where(category_id: params[:cat])
+      @people = Person.where(category_id: params[:cat]).paginate(page: params[:page])
     else
-      @people = Person.all
+      @people = Person.paginate(page: params[:page])
     end
   end
 
