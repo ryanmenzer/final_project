@@ -1,17 +1,33 @@
   class ApplicationController < ActionController::Base
+
   protect_from_forgery
 
   before_filter :authenticate_tenant!   # authenticate user and setup tenant
   before_filter :authenticate_user!
   before_filter :set_current_tenant
-
-  # before_filter :configure_permitted_parameters, if: :devise_controller?
-
   before_filter :set_locale
 
-  # def set_locale
-  #   I18n.locale = params[:locale] || I18n.default_locale
-  # end
+  def current_tenant
+    Tenant.current_tenant
+  end
+
+  def email_story(story)
+    require 'mandrill'
+    @story = story
+    email_array = [{:email=> "eigil@sagafos.no",:name=> "Eigil Sagafos"},
+                   {:email=> "titipongpisit2013@gmail.com",:name=> "Tee Thai"}]
+
+    mandrill_api = Mandrill::API.new
+    message = {subject: @story.title,
+               from_name: current_tenant.setting.display_name,
+               text: @story.content,
+               to: email_array,
+               #html: "<html><h1>Hi <strong>message</strong>, how are you?</h1></html>",
+               from_email: current_tenant.setting.default_email }
+     send = mandrill_api.messages.send message
+     puts send
+  end
+
 
   def set_locale
     I18n.locale=params[:locale]

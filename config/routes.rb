@@ -3,7 +3,7 @@ UnusUniRails3::Application.routes.draw do
   devise_for :users, :controllers => { :registrations => "milia/registrations" }
 
   scope "(:locale)", locale: /en|no|es|tl/ do
-    get '/' => "homes#index"
+    root to: "homes#index"
     resources :emails
     resources :people
     resources :initiatives
@@ -11,11 +11,12 @@ UnusUniRails3::Application.routes.draw do
     resources :groups
     resources :stories
     resources :transactions
+    resources :sponsorships
     resources :settings
     resources :receivers
     resources :projects
-    resources :recipients
     get '/users/:id' => 'users#show'
+    put '/users/:id' => 'users#update'
   end
 
   match 'locales/:locale', :to => 'locale#show'
