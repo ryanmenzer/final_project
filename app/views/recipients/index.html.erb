@@ -1,3 +1,4 @@
+<div class="container">
 <div class="box-header">
 
   <!-- notice the nav-tabs-left -->
@@ -21,9 +22,9 @@
       <tbody>
         <% @recipients.each do |recipient| %>
           <tr>
-            <td><%= link_to recipient.full_name, recipient_path(recipient) %></td>
-            <td><%= recipient.gender %></td>
-            <td><%= recipient.category.name %></td>
+            <td><a href="recipients/<%= recipient.id %>"><%= recipient.full_name %></a></td>
+            <td><a href="recipients/<%= recipient.id %>"><%= recipient.gender %></a></td>
+            <td><a href="recipients/<%= recipient.id %>"><%= recipient.category.name %></a></td>
           </tr>
         <% end %>
       </tbody>
@@ -34,4 +35,4 @@
 <div>
 
 </div>
-2
+</div>
