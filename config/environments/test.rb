@@ -34,4 +34,8 @@ UnusUniRails3::Application.configure do
 
   # Print deprecation notices to the stderr
   config.active_support.deprecation = :stderr
+
+  # config.gem "factory_girl_rails", :lib => 'factory_girl', :source => 'http://gems.github.com'
+  # config.gem "rspec", :version => '1.2.2', :lib => 'spec'
+  # config.gem "rspec-rails", :version => '2.0', :lib => false
 end
