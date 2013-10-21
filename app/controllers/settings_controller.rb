@@ -1,7 +1,7 @@
 class SettingsController < ApplicationController
 
-  def show
-
+  def index
+    @settings = current_tenant.setting
   end
 
 end
