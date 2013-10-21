@@ -1,48 +1,170 @@
-<h1>Name: <%= @initiative.title %></h1>
-<br>
-	<p>
-	  Description: <%= @initiative.description %> 
-	</p>
-	<p>
-		Receivers: 
-		<table>
-			<thead>
-				<th>People</th>
-			</thead>
-			<tbody>
-			<% @receivers.each do |r| %>
-			<% if r.receiverable_type == "Person" %>
-				<tr><td><%= Person.find(r.receiverable_id).full_name %></td>
-				<% end %>
-			<% end %>
-		</tbody>
-		</table>
-		<br>
-		<table>
-			<thead>
-				<th>Projects</th>
-			</thead>
-			<tbody>
-			<% @receivers.each do |r| %>
-			<% if r.receiverable_type == "Project" %>
-				<tr><td><%= Project.find(r.receiverable_id).name %></td>
-				<% end %>
-			<% end %>
-		</tbody>
-		</table>
-	</p>
-	<p>
-    Goal: <%= @initiative.goal %>
-	</p>
-	<p>
-		Active: <%= @initiative.active %>
-	</p>
-	<p>
-    Start Date: <%= @initiative.start_date %>
-	</p>
-	<p>
-		End Date: <%= @initiative.end_date %>
-	</p>
+<div class="container">
+
+    <div class="row">
+
+      <div class="area-top clearfix">
+        <div class="pull-left header">
+          <h3 class="title">
+            <i class="icon-bullhorn"></i>
+            <%= @initiative.title %>
+          </h3>
+          <h5>
+            <span>
+            	<% if @initiative.active == true %>
+              	<%= "ACTIVE" %>
+              <% else %>
+              	<%= "inactive" %>
+              <% end %>
+            </span>
+          </h5>
+        </div>
+      </div>
+    </div>
+
+  <div class="row">
+	  <div class="col-md-6">
+	    <div class="box">
+	      <div class="box-header">
+	        <span class="title"><i class="icon-comment-alt="></i> DESCRIPTION</span>
+	      </div>
+	      <div class="box-content padded">
+	        <%= @initiative.description %>
+	      </div>
+	    </div>
+	  </div>
+	  <div id="goal", class="col-md-3", style="height:160px; display:block; padding:0px">
+	  	<div id="goal" style="height:160px;">
+	  		<script>
+  				var g = new JustGage({
+				    id: "goal", 
+				    value: 650, 
+				    min: 0,
+				    max: <%= @initiative.goal %>,
+				    title: "Goal: <%= @initiative.goal %>",
+				    levelColors: [ "#ff0000", "#ffff00", "#008000" ]
+  					}); 
+				</script>
+			</div>
+	  </div>
+	  <h4 class="gray"><span>Start Date</span><br><%= @initiative.start_date %></h4><br>
+	  <h4 class="gray"><span>End Date</span><br><%= @initiative.end_date %></h4>
+	</div>
+		<div class="col-md-6" style="padding-left: 0px;">
+			<div class="box">
+	      <div class="box-header">
+	        <ul class="nav nav-tabs nav-tabs-left">
+	          <li class="active"><a href="#home" data-toggle="tab"><i class="icon-user"></i><span>People</span></a></li>
+	          <li class=""><a href="#messages" data-toggle="tab"><i class="icon-building"></i><span>Projects</span></a></li>
+	          <li class=""><a href="#settings" data-toggle="tab"><i class="icon-heart"></i><span>Sponsorships</span></a></li>
+	        </ul>
+	      </div>
+
+	      <div class="box-content padded">
+	        <div class="tab-content">
+	          <div class="tab-pane active" id="home">
+	          	<table>
+	          		<% @receivers.each do |r| %>
+									<% if r.receiverable_type == "Person" %>
+										<tr><td><%= Person.find(r.receiverable_id).full_name %></td>
+									<% end %>
+								<% end %>
+							</table>
+						</div>
+	          <div class="tab-pane" id="messages">
+	          	<table>
+	          		<% @receivers.each do |r| %>
+									<% if r.receiverable_type == "Project" %>
+										<tr><td><%= Project.find(r.receiverable_id).name %></td>
+									<% end %>
+								<% end %>
+	          	</table>
+	          </div>
+	          <div class="tab-pane" id="settings">Sponsorships</div>
+	        </div>
+	      </div>
+		  </div>
+		</div>
+
+		<div class="col-md-6">
+    <div class="box">
+      <div class="box-header">
+        <span class="title">STORIES</span>
+      </div>
+      <div class="box-content scrollable" style="height: 300px; overflow-y: auto">
+        <!-- find me in partials/news_with_icons -->
+
+				<div class="box-section news with-icons">
+				  <div class="avatar blue"><i class="icon-ok icon-2x"></i></div>
+				  <div class="news-time">
+				    <span>06</span> jan
+				  </div>
+				  <div class="news-content">
+				    <div class="news-title"><a href="#">Twitter Bootstrap v3.0 is coming!</a></div>
+				    <div class="news-text">
+				      With 2.2.2 out the door, our attention has shifted almost entirely to the next major update to the project ...
+				    </div>
+				  </div>
+				</div>
+
+				<div class="box-section news with-icons">
+				  <div class="avatar green"><i class="icon-lightbulb icon-2x"></i></div>
+				  <div class="news-time">
+				    <span>11</span> feb
+				  </div>
+				  <div class="news-content">
+				    <div class="news-title"><a href="#">Ruby on Rails 4.0</a></div>
+				    <div class="news-text">
+				      Rails 4.0 is still unfinished, but it is shaping up to become a great release ...
+				    </div>
+				  </div>
+				</div>
+
+				<div class="box-section news with-icons">
+				  <div class="avatar purple"><i class="icon-mobile-phone icon-2x"></i></div>
+				  <div class="news-time">
+				    <span>04</span> mar
+				  </div>
+				  <div class="news-content">
+				    <div class="news-title"><a href="#">All about SCSS</a></div>
+				    <div class="news-text">
+				      Sass makes CSS fun again. Sass is an extension of CSS3, adding nested rules ...
+				    </div>
+				  </div>
+				</div>
+
+
+			  <div class="box-section news with-icons">
+			    <div class="avatar cyan"><i class="icon-ok icon-2x"></i></div>
+			    <div class="news-time">
+			      <span>22</span> dec
+			    </div>
+			    <div class="news-content">
+			      <div class="news-title"><a href="#">Twitter Bootstrap v3.0 is coming!</a></div>
+			      <div class="news-text">
+			        With 2.2.2 out the door, our attention has shifted almost entirely to the next major update to the project ...
+			      </div>
+			    </div>
+			  </div>
+			        <!-- find me in partials/news_with_icons -->
+
+				<div class="box-section news with-icons">
+				  <div class="avatar blue"><i class="icon-ok icon-2x"></i></div>
+				  <div class="news-time">
+				    <span>06</span> jan
+				  </div>
+				  <div class="news-content">
+				    <div class="news-title"><a href="#">Twitter Bootstrap v3.0 is coming!</a></div>
+				    <div class="news-text">
+				      With 2.2.2 out the door, our attention has shifted almost entirely to the next major update to the project ...
+				    </div>
+				  </div>
+				</div>
+
+      </div>
+    </div>
+  </div>
+
+	</div>
 
 	<%= button_to "Edit", :edit_initiative, :class => "btn btn-blue", :controller => :initiatives, :method => :get %>
 	<%= button_to 'Destroy', @initiative, :class => "btn btn-blue", :confirm => 'Are you sure?', :method => :delete %>
@@ -50,3 +172,5 @@
 
 	<%= link_to 'Add Person', new_receiver_path({:type => "person", :initiative_id => @initiative.id}), :class => "btn btn-blue" %>
 	<%= link_to 'Add Project', new_receiver_path({:type => "project", :initiative_id => @initiative.id}), :class => "btn btn-blue" %>
+
+</div>
