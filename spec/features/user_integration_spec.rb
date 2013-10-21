@@ -27,27 +27,27 @@ describe "LoginToAccounts" do
  
   describe "log in to a valid account" do
     before do
-      fill_in 'Email', with: @user.email
-      fill_in 'Password', with: @user.password
+      fill_in 'email', with: @user.email
+      fill_in 'password', with: @user.password
       click_button 'Login'
     end
- 
-    # it "will notify me that I have logged in successfully" do
-    #   page.should have_content "Signed in successfully"
-    # end
+
+    it "will notify me that I have logged in successfully" do
+      page.should have_content "Dashboard"
+    end
  
   end
  
-  # describe "fail login for valid user wrong account" do
-  #   before do
-  #     fill_in 'Email', with: @invalid_user.email
-  #     fill_in 'Password', with: @invalid_user.password
-  #     click_button 'Sign in'
-  #   end
+  describe "fail login for nonuser" do
+    before do
+      fill_in 'email', with: 'jim@google.com'
+      fill_in 'password', with: 'password'
+      click_button 'Login'
+    end
  
-  #   it "will not notify me that I have logged in successfully" do
-  #     page.should_not have_content "Signed in successfully"
-  #   end
- 
-  # end
+    it "will not notify me that I have logged in successfully" do
+      page.should_not have_content "Dashboard"
+    end
+  end
+
 end
