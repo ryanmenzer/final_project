@@ -32,22 +32,22 @@ describe "LoginToAccounts" do
       click_button 'Login'
     end
  
-    it "will notify me that I have logged in successfully" do
-      page.should have_content "Signed in successfully"
-    end
+    # it "will notify me that I have logged in successfully" do
+    #   page.should have_content "Signed in successfully"
+    # end
  
   end
  
-  describe "fail login for valid user wrong account" do
-    before do
-      fill_in 'Email', with: @invalid_user.email
-      fill_in 'Password', with: @invalid_user.password
-      click_button 'Sign in'
-    end
+  # describe "fail login for valid user wrong account" do
+  #   before do
+  #     fill_in 'Email', with: @invalid_user.email
+  #     fill_in 'Password', with: @invalid_user.password
+  #     click_button 'Sign in'
+  #   end
  
-    it "will not notify me that I have logged in successfully" do
-      page.should_not have_content "Signed in successfully"
-    end
+  #   it "will not notify me that I have logged in successfully" do
+  #     page.should_not have_content "Signed in successfully"
+  #   end
  
-  end
+  # end
 end
