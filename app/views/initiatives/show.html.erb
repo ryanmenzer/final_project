@@ -46,9 +46,18 @@
 				</script>
 			</div>
 	  </div>
-	  <h4 class="gray"><span>Start Date</span><br><%= @initiative.start_date %></h4><br>
+	  <h4 class="gray"><span>Start Date</span><br><%= @initiative.start_date %></h4>
 	  <h4 class="gray"><span>End Date</span><br><%= @initiative.end_date %></h4>
+	  	<%= link_to "Edit", :edit_initiative, :class => "inline btn btn-lg btn-blue", :controller => :initiatives, :method => :get %>
+		<%= link_to 'Destroy', @initiative, :class => "inline btn btn-lg btn-red", :confirm => 'Are you sure?', :method => :delete %>
+		<%= link_to 'Back', initiatives_path, :class => "inline btn btn-lg btn-brown", :method => :get %>
 	</div>
+
+	<div>
+		<%= link_to 'Add Person', new_receiver_path({:type => "person", :initiative_id => @initiative.id}), :class => "btn btn-lg btn-green" %>
+		<%= link_to 'Add Project', new_receiver_path({:type => "project", :initiative_id => @initiative.id}), :class => "btn btn-lg btn-green" %>
+	</div>
+
 		<div class="col-md-6" style="padding-left: 0px;">
 			<div class="box">
 	      <div class="box-header">
@@ -62,22 +71,41 @@
 	      <div class="box-content padded">
 	        <div class="tab-content">
 	          <div class="tab-pane active" id="home">
-	          	<table>
-	          		<% @receivers.each do |r| %>
+	          	<table class="table table-normal">
+				      <thead>
+				      <tr>
+				        <td>Name</td>
+				        <td>Gender</td>
+				        <td>Nationality</td>
+				      </tr>
+				      </thead>
+				      <tbody>
+				      <% @receivers.each do |r| %>
 									<% if r.receiverable_type == "Person" %>
 										<tr><td><%= Person.find(r.receiverable_id).full_name %></td>
+											<td><%= Person.find(r.receiverable_id).gender %></td>
+											<td><%= Person.find(r.receiverable_id).nationality %></td>
 									<% end %>
 								<% end %>
-							</table>
+				      </tbody>
+				    </table>
 						</div>
 	          <div class="tab-pane" id="messages">
-	          	<table>
-	          		<% @receivers.each do |r| %>
+	          	
+	          	<table class="table table-normal">
+				      <thead>
+				      <tr>
+				        <td>Name</td>
+				      </tr>
+				      </thead>
+				      <tbody>
+				      <% @receivers.each do |r| %>
 									<% if r.receiverable_type == "Project" %>
 										<tr><td><%= Project.find(r.receiverable_id).name %></td>
 									<% end %>
 								<% end %>
-	          	</table>
+				      </tbody>
+				    </table>
 	          </div>
 	          <div class="tab-pane" id="settings">Sponsorships</div>
 	        </div>
@@ -85,6 +113,7 @@
 		  </div>
 		</div>
 
+		<!-- STORIES box, many hard-coded examples -->
 		<div class="col-md-6">
     <div class="box">
       <div class="box-header">
@@ -106,6 +135,7 @@
 				  </div>
 				</div>
 
+				<!-- sample stories -->
 				<div class="box-section news with-icons">
 				  <div class="avatar green"><i class="icon-lightbulb icon-2x"></i></div>
 				  <div class="news-time">
@@ -166,11 +196,6 @@
 
 	</div>
 
-	<%= button_to "Edit", :edit_initiative, :class => "btn btn-blue", :controller => :initiatives, :method => :get %>
-	<%= button_to 'Destroy', @initiative, :class => "btn btn-blue", :confirm => 'Are you sure?', :method => :delete %>
-	<%= button_to 'Back', initiatives_path, :class => "btn btn-blue", :method => :get %>
-
-	<%= link_to 'Add Person', new_receiver_path({:type => "person", :initiative_id => @initiative.id}), :class => "btn btn-blue" %>
-	<%= link_to 'Add Project', new_receiver_path({:type => "project", :initiative_id => @initiative.id}), :class => "btn btn-blue" %>
+		
 
 </div>
