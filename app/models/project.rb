@@ -12,4 +12,6 @@ class Project < ActiveRecord::Base
   has_many   :images,    as: :imageable
   has_many   :stories,   as: :storyable
 
+  has_many   :initiatives, through: :receivers
+
 end
