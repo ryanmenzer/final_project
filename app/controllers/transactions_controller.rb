@@ -36,8 +36,6 @@ class TransactionsController < ApplicationController
     end 
   end 
 
-
-
   def index
 
   end
