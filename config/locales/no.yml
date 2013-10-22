@@ -8,17 +8,17 @@
     dashboard: "Oversikt"
     our_people: "Våre folk"
     supporters: "Støttespillere"
-    staff: "Personal"
+    staff: "Personale"
   hi: Hullo verden!
   date:
     abbr_day_names:
-    - sun
-    - mån
-    - tys
+    - søn
+    - man
+    - tir
     - ons
     - tor
     - fre
-    - lau
+    - lør
     abbr_month_names:
     -
     - jan
@@ -34,9 +34,9 @@
     - nov
     - des
     day_names:
-    - sundag
-    - måndag
-    - tysdag
+    - søndag
+    - mandag
+    - tirsdag
     - onsdag
     - torsdag
     - fredag

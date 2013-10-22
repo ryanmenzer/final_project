@@ -43,6 +43,8 @@ gem 'milia', '~> 0.3.38'
 gem 'recaptcha', :require => 'recaptcha/rails'
 gem 'devise'
 
+gem 'paypal-recurring'
+
 gem 'devise-i18n-views'
 gem 'rails_12factor'
 gem 'simple_form'

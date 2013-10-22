@@ -8,23 +8,47 @@ Receivers:
   <% end %>
 <% end %>
 <br>
-<br> 
+<br>
 Sponsors: <br>
   <% @sponsorship.sponsors.each do |t| %>
     <%= t.full_name %>
   <% end %>
 <br>
-<br> 
-Transactions: <br>
-<% @sponsorship.transactions.each do |t| %>
-  date: <%= t.date %> <br> 
-  sponsor: <%= t.payer.full_name  %> <br>
-  amount: <%= t.amount %> <br>
-    <%= link_to 'Destroy', transaction_path(t), :class => "inline btn btn-lg btn-red", :confirm => 'Are you sure?', :method => :delete %> 
-    <%= link_to "Edit", edit_transaction_path(t, sponsorship_id: @sponsorship.id, transaction_type_id: 0), :class => "inline btn btn-lg btn-blue", :controller => :transactions, :method => :get %>
-  <br>
-<% end %>
-<br> 
-<%= link_to 'Create Transaction', new_transaction_path(sponsorship_id: @sponsorship.id, transaction_type_id: 0), :class => "btn btn-blue"%>
+<br>
 
+
+
+@paypal[:token]
+
+Transactions: <br>
+
+<table class="table table-normal">
+  <thead>
+    <tr>
+      <td>Date</td>
+      <td>Full name</td>
+      <td>Amount</td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @sponsorship.transactions.each do |t| %>
+      <tr>
+        <td>date: <%= t.date %> </td>
+        <td>sponsor: <%= t.payer.full_name  %> </td>
+        <td>amount: <%= t.amount %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+
+<%= link_to 'Add manual transaction', new_transaction_path(sponsorship_id: @sponsorship.id, transaction_type_id: 0), :class => "btn btn-blue"%>
+<%= link_to 'Pay with paypal', "#modal-paypal", :class => "btn btn-blue", :data => {toggle: "modal"}%>
+<%= link_to 'Pay finsih', "#modal-paypal-confirm", :class => "btn btn-blue", :data => {toggle: "modal"}%>
+
+<%= render "modals/paypal" %>
+<% if @sponsorship.paypal_payments.last %>
+  <%= render "modals/paypal_confirm" %>
+<% end %>
 
