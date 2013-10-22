@@ -49,11 +49,21 @@
           <div class="box-header">
             <span class="title">Image</span>
           </div>
-          <div class="box-content_padded">
-            <%= iamge_tag %>
+          <div class="box-content-padded">
+            <div class="text-center">
+              <div class=""></div>
+              <div class="avatar">
+                <img src="<%= current_user.person.avatar %>">
+              </div>
+                <div>
+                  <%= link_to 'change picture', "#modal-image", :class => "inline btn btn-sm btn-default", :data => {toggle: "modal"} %>
+                </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+<% @image_type = {type: "user-profile", id: @user.id} %>
+<%= render 'modals/add_image' %>
