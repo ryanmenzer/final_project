@@ -10,17 +10,25 @@
       <span class="title">Settings</span>
       </div>
       <div class="padded">
-        <%= simple_form_for @settings do |f| %>
-        <%= f.input :display_name %>
-        <%= f.input :logo_id %>
-        <%= f.input :cat_1_name %>
-        <%= f.input :cat_2_name %>
-        <%= f.input :cat_3_name %>
-        <%= f.input :default_email %>
-        <%= f.button :submit %>
-        <% end %>
+        <div class="row">
+          <div class="col-md-8">
+          <%= simple_form_for @settings do |f| %>
+          <%= f.input :display_name %>
+          <%= f.input :logo_id %>
+          <%= f.input :cat_1_name %>
+          <%= f.input :cat_2_name %>
+          <%= f.input :cat_3_name %>
+          <%= f.input :default_email %>
+          <%= f.button :submit %>
+          <% end %>
+          </div>
+          <div class="col-md-4">
+            <%= link_to 'Add logo', "#modal-image", :class => "inline btn btn-lg btn-brown", :data => {toggle: "modal"} %>
+          </div>
+        </div>
       </div>
     </div>
+
   </div>
 
   <div class="col-md-6">
@@ -54,7 +62,5 @@
         </div>
       </div>
     </div>
-
   </div>
-
 </div>

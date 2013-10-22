@@ -1,4 +1,4 @@
-class PeopleController < ApplicationController 
+class PeopleController < ApplicationController
   def index
     if params[:cat]
       @people = Person.where(category_id: params[:cat]).paginate(page: params[:page])
