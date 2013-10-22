@@ -46,6 +46,6 @@ test:
 production:
   adapter: postgresql
   encoding: unicode
-  database: unus-uni-rails3_production
   pool: 5
-  
+
+
