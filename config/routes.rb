@@ -22,8 +22,10 @@ UnusUniRails3::Application.routes.draw do
   end
 
   match 'locales/:locale', :to => 'locale#show'
-
-
+  # get '/people/addgroup/:id', :to => 'people#addgroup'
+  put '/group/addperson', :to => 'groups#addperson'
+  get '/people/addgroup/:id', :to => 'groups#addgroup'
+  post '/people/remove/:personid/group/:groupid', :to => 'groups#removeperson'
 
   # map.locales 'locales/:locale', :controller => 'locales', :action => 'show'
   # We can now include links in views for switching languages as below:
