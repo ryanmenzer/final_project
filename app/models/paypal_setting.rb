@@ -1,4 +1,4 @@
-class TenantPaypalSetting < ActiveRecord::Base
+class PaypalSetting < ActiveRecord::Base
 
   acts_as_tenant
 
