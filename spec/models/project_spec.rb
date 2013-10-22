@@ -61,11 +61,5 @@ describe Project do
 		    project.macro.should == :has_many
 		  end
 
-
-
-
-
-
-
 	  end
 end
