@@ -3,7 +3,8 @@ class HomesController < ApplicationController
   skip_before_filter :authenticate_user!, :only => [ :index ]
 
   def index
-    @people = Person.all
+    @initiative = Initiative.first
+    @stories = Story.limit(10)
   end
 
 end
