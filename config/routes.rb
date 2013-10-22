@@ -10,6 +10,11 @@ UnusUniRails3::Application.routes.draw do
     resources :images
     resources :groups
     resources :stories
+    get 'paypal_checkout', to: 'transactions#paypal_checkout'
+    post '/transactions/paypal', to: 'transactions#paypal_create'
+    # post '/paypal/confirm/:id', to: 'paypal_payment#confirm_payment'
+    # resources :paypal_payments
+    post '/paypal_payments/:id/confirm' => 'paypal_payments#confirm_payment'
     resources :transactions
     resources :sponsorships
     resources :settings
@@ -19,7 +24,6 @@ UnusUniRails3::Application.routes.draw do
     resources :mandrill_settings
     get '/users/:id' => 'users#show'
     put '/users/:id' => 'users#update'
-    get 'paypal_checkout', to: 'transactions#paypal_checkout'
   end
 
   match 'locales/:locale', :to => 'locale#show'
