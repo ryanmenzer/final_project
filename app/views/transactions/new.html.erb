@@ -10,6 +10,8 @@
 
     <div class="box-content">
 
+p @transaction.id
+
       <%= form_for @transaction, class: "fill-up" do |f| %>
         <p>
           <%= f.label :"Date" %><br>
@@ -31,7 +33,14 @@
           <%= submit_tag "Save Transaction", :name => 'save_button', class: "btn btn-blue" %>
         </p>
       <% end %>
+  
+
+  <div id='paypal_checkout'>
+    <%= link_to image_tag("https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif"), paypal_checkout_path(:transaction_id => @transaction.id)%>
+
+<!-- <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1"> -->
   </div>
+</div>
 </div>
 </div>
 

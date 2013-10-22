@@ -17,6 +17,7 @@ UnusUniRails3::Application.routes.draw do
     resources :projects
     get '/users/:id' => 'users#show'
     put '/users/:id' => 'users#update'
+    get 'paypal_checkout', to: 'transactions#paypal_checkout'
   end
 
   match 'locales/:locale', :to => 'locale#show'
