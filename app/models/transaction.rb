@@ -1,6 +1,11 @@
 class Transaction < ActiveRecord::Base
 
   acts_as_tenant
+  validates :amount, presence: true
+  validates_numericality_of :amount, :greater_than => 1 
+  validates :sponsorship_id, presence: true
+  validates :payer_id, presence: true
+
 
   attr_accessible :transaction_type_id,
                   :sponsorship_id,
@@ -12,7 +17,6 @@ class Transaction < ActiveRecord::Base
   belongs_to :sponsorship
   belongs_to :transaction_type
   belongs_to :payer, class_name: "Person"
-
   
 
 def paypal_url(return_url)
@@ -33,7 +37,6 @@ def paypal_url(return_url)
   end
   "https://www.sandbox.paypal.com/cgi-bin/webscr?" + values.to_query
 end
-
 
 
 end
