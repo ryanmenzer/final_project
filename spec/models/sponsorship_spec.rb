@@ -2,16 +2,16 @@ require 'spec_helper'
 
 describe Sponsorship do
 	before do
-    @tenant = Tenant.create(org_name: "Hello Inc")
-    Tenant.set_current_tenant @tenant.id
+    tenant = Tenant.create(org_name: "Hello Inc")
+    Tenant.set_current_tenant tenant.id
     c = Category.create(name: "Staff")
     r = Role.create(name: "Administrator")
-    @user = User.create(email: "hello@hello.com",
+    user = User.create(email: "hello@hello.com",
                password: "password",
                password_confirmation: "password",
                role_id: r.id)
 		manager =  Person.create(full_name: "Jim John Joe",
-                          user_id: @user.id,
+                          user_id: user.id,
                           category_id: 1,
                           gender: "male",
                           nationality: "American",
@@ -23,20 +23,24 @@ describe Sponsorship do
 		                  goal: 1000000,
 		                  active: true,
 		                  start_date: DateTime.now())
+		project = Project.create(manager_id: manager.id,
+		               name: "Supercool Project")
 		r = Receiver.create(initiative_id: initiative.id,
-		                   receiverable: @project)
+		                   receiverable: project)
 		@sponsorship = Sponsorship.new(initiative_id: initiative.id,
 		                  frequency_id: 0,
 		                  recurring_payment: true,
 		                  amount: 200000,
 		                  active: true,
 		                  start_date: DateTime.now())
+		s              = @sponsorship.save
 		@sponsorship_no_id = Sponsorship.new(
 		                  frequency_id: 0,
 		                  recurring_payment: true,
 		                  amount: 200000,
 		                  active: true,
 		                  start_date: DateTime.now())
+		
   end
 
 	  context "Validations and Associations" do
