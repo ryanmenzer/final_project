@@ -14,4 +14,8 @@ class Project < ActiveRecord::Base
 
   has_many   :initiatives, through: :receivers
 
+  def in_initiative?(initiative)
+    self.initiatives.include?(initiative)
+  end
+
 end
