@@ -1,41 +1,30 @@
 require 'spec_helper'
 
-describe Person do
-  before do
-  	@tenant = Tenant.create(org_name: "Hello Inc")
-    Tenant.set_current_tenant @tenant.id
-    c = Category.create(name: "Staff")
-    r = Role.create(name: "Administrator")
-    @user = User.create(email: "hello@hello.com",
-               password: "password",
-               password_confirmation: "password",
-               role_id: r.id)
-    @tenant.users << @user
-    @person =  Person.new(full_name: "Jim John Joe",
-                          user_id: @user.id,
-                          category_id: c.id,
-                          gender: "male",
-                          nationality: "American", 
-                          email: "jim@hello.com")
-    @person_no_cid =  Person.new(full_name: "Jane Jane",
-                          user_id: @user.id,
-                          # No category_id: ,
-                          gender: "female",
-                          nationality: "American", 
-                          email: "jane@hello.com")
-
-  end
-    
+describe Person do    
 	context "Validations and Associations" do
+    context "saving" do
+      before do
+        @tenant = Tenant.create!(org_name: "Hello Inc")
+        Tenant.set_current_tenant @tenant.id
+        c = Category.create!(name: "Staff")
+        r = Role.create!(name: "Administrator")
 
-    it "should save a person with a category id" do
-      expect(@person.save).to eq(true)
-    end  
+        @user = FactoryGirl.create(:user, role_id: r.id)
+        @tenant.users << @user
 
-   # With {}: proc doesn't execute the code / lets rspec catch the exception
-	  it "should not save a person without a category id" do
-	    expect{@person_no_cid.save}.to raise_error(ActiveRecord::StatementInvalid)
-	  end
+        @person =  FactoryGirl.build(:person, user: @user, category: c)
+        @person_no_cid = FactoryGirl.build(:person_no_cid, user: @user)
+      end
+
+      it "should save a person with a category id" do
+        expect(@person.save).to eq(true)
+      end  
+
+     # With {}: proc doesn't execute the code / lets rspec catch the exception
+  	  it "should not save a person without a category id" do
+  	    expect{@person_no_cid.save}.to raise_error(ActiveRecord::StatementInvalid)
+  	  end
+    end
 
     it "should belong to category" do
       person = Person.reflect_on_association(:category)
@@ -50,6 +39,7 @@ describe Person do
     # THIS SHOULD BE FIXED AND TEST REMOVED
     # Has both has_and_belongs_to_many AND has_many
     it "should have many groups" do
+      pending "something to merge from master??"
       person = Person.reflect_on_association(:groups)
       person.macro.should == :has_many
     end
