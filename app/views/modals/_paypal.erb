@@ -1,0 +1,56 @@
+<div id="modal-paypal" class="modal fade" style="display: none;" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 class="modal-title">Pay with paypal</h4>
+      </div>
+      <div class="modal-body">
+        <%= form_tag("/transactions/paypal", method: "post", html: {class: "fill-up"}) do %>
+          <%= label_tag(:a, "Payemnt type") %>
+          <div>
+          <%= radio_button_tag(:recurring, true) %>
+          <%= label_tag(:recurring, "Recurring") %>
+          </div>
+          <div>
+          <%= radio_button_tag(:recurring, false) %>
+          <%= label_tag(:recurring, "One time") %>
+          </div>
+          <br>
+
+          <%= label_tag(:period, "Frequency") %>
+          <div>
+            <%= radio_button_tag(:period, :weekly) %>
+            <%= label_tag(:period, "Weekly") %>
+          </div>
+          <div>
+          <%= radio_button_tag(:period, :semimonthly) %>
+          <%= label_tag(:period, "Twice a month") %>
+          </div>
+          <div>
+          <%= radio_button_tag(:period, :monthly) %>
+          <%= label_tag(:period, "Monthly") %>
+          </div>
+          <div>
+          <%= radio_button_tag(:period, :yearly) %>
+          <%= label_tag(:period, "Yearly") %>
+          </div>
+          <%= label_tag(:period, "Frequency") %>
+
+          <%= label_tag(:amount, "Amount") %>
+          <%= text_field_tag(:amount) %>
+
+          <%= hidden_field_tag(:sponsorship_id, @sponsorship.id) %>
+
+          <%= submit_tag "Continue to paypal" %>
+
+
+        <% end %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-blue">Save changes</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div>
+</div>
