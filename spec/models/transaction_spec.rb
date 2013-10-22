@@ -33,6 +33,21 @@ describe Transaction do
                                       payer_id: @user_new.id, 
                                       date: "2013-10-21", 
                                       amount: 1000)
+    @transaction_ns = Transaction.new(transaction_type_id: 0, 
+                                      sponsorship_id: nil, 
+                                      payer_id: @user_new.id, 
+                                      date: "2013-10-21", 
+                                      amount: 1000)
+    @transaction_np = Transaction.new(transaction_type_id: 0, 
+                                      sponsorship_id: @sponsorship.id, 
+                                      payer_id: nil, 
+                                      date: "2013-10-21", 
+                                      amount: 1000)
+    @transaction_zero = Transaction.new(transaction_type_id: 0, 
+                                      sponsorship_id: @sponsorship.id, 
+                                      payer_id: @user_new.id, 
+                                      date: "2013-10-21",
+                                      amount: 0)
 
   end 
     
@@ -41,6 +56,22 @@ describe Transaction do
       it "should save a transaction with a sponsor_id" do
         expect(@transaction.save).to eq(true)
       end
+
+      it "should not save a transaction without a sponsor_id" do
+        expect(@transaction_ns.save).to eq(false)
+      end
+
+      it "should not be able to to put amount of 0" do 
+        expect(@transaction_zero.save).to eq(false)
+      end
+
+      it "should save a transaction with a payer_id" do
+        expect(@transaction.save).to eq(true)
+      end 
+
+      it "should not save a transaction without a payer_id" do 
+        expect(@transaction_np.save).to eq(false)
+      end 
 
       it "should belong to sponsorship" do 
         transaction = Transaction.reflect_on_association(:sponsorship)
@@ -53,5 +84,4 @@ describe Transaction do
       end
       
     end   
-  
 end
