@@ -12,11 +12,13 @@ class Person < ActiveRecord::Base
                   :date_of_birth,
                   :phone_number,
                   :nationality,
-                  :email
+                  :email,
+                  :profile_picture_id
 
 
   belongs_to              :category
   belongs_to              :user
+  belongs_to              :profile_picture, class_name: "Image"
 
   has_many                :groups  #, foreign_key: :manager_id
   has_many                :stories
@@ -36,7 +38,11 @@ class Person < ActiveRecord::Base
   # has_one    :primary_contact, class_name: "Tenant"
 
   def avatar
-    ActionController::Base.helpers.image_path("avatar-placeholder.jpg")
+    if self.profile_picture_id
+      self.profile_picture.url.avatar
+    else
+      ActionController::Base.helpers.image_path("avatar-placeholder.jpg")
+    end
   end
 
   def active_sponsors
