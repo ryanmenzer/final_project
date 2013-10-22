@@ -5,6 +5,7 @@ class ReceiversController < ApplicationController
 	def new
 		puts "======new method params=========="
 		puts params
+		@initiative = Initiative.find(params[:initiative_id])
 		@receiver = Receiver.new
 		if params[:type] == "person"
 			@people = Person.where(:category_id => [1, 2])

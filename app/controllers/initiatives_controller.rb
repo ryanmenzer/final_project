@@ -19,7 +19,9 @@ class InitiativesController < ApplicationController
 		@initiative = Initiative.find(params[:id])
 		puts "====== @initiative.recievers ========="
 		puts @receivers = @initiative.receivers
-		# @receivers = Person.find()
+		@sponsorships = @initiative.sponsorships
+		@people = @initiative.people
+		@projects = @initiative.projects
 	end
 
 	def edit
