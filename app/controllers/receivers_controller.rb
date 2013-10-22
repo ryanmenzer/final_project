@@ -8,9 +8,9 @@ class ReceiversController < ApplicationController
 		@initiative = Initiative.find(params[:initiative_id])
 		@receiver = Receiver.new
 		if params[:type] == "person"
-			@people = Person.where(:category_id => [1, 2])
+			@people = Person.where(:category_id => [1, 2]).order("full_name ASC")
 		elsif params[:type] == "project"
-			@projects = Project.all
+			@projects = Project.all.sort_by { |p| p.name }
 		end
 	end
 
