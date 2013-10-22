@@ -18,7 +18,7 @@
     <div class="navbar-right">
       <ul class="nav navbar-nav navbar-left">
         <li class="dropdown cdrop">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Select language <b class="caret"></b></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= t "top_nav.select_language" %><b class="caret"></b></a>
           <ul class="dropdown-menu">
             <li><a href="#"><div><%= image_tag "flags/united_states_of_america_round_icon_64.png", :size => "22x20" %><%= link_to "English", :locale=>'en'%></div></a></li>
             <li><a href="#"><div><%= image_tag "flags/norway_round_icon_64.png", :size => "24x20" %><%= link_to "Norwegian", :locale=>'no'%></div></a></li>
@@ -29,7 +29,7 @@
 
       <form class="navbar-form navbar-left" role="search">
         <div class="form-group">
-          <input type="text" class="search-query animated" placeholder="Search">
+          <input type="text" class="search-query animated" placeholder="<%= t "top_nav.search" %>">
           <i class="icon-search"></i>
         </div>
       </form>
@@ -39,7 +39,6 @@
           <a href="#" class="dropdown-toggle dropdown-avatar" data-toggle="dropdown">
           <span>
             <img class="menu-avatar" src="<%= current_user.person.avatar %>"> <span><%= current_user.person.full_name %><i class="icon-caret-down"></i></span>
-            <span class="badge badge-dark-red">5</span>
           </span>
           </a>
           <ul class="dropdown-menu padded">
@@ -55,10 +54,18 @@
 
             <li class="divider"></li>
 
-            <li class="text-left"><a href="<%= "/users/" + current_user.id.to_s %>"><i class="icon-user"></i><span>Profile</span></a></li>
-            <li><a href="#"><i class="icon-cog"></i><span>Settings</span></a></li>
-            <li><a href="#"><i class="icon-envelope"></i> <span>Messages</span> <span class="label label-dark-red pull-right">5</span></a></li>
-            <li><%= link_to(destroy_user_session_path, options = {method: :delete}) do %><i class="icon-off"></i><span>Logout</span><% end %></li>
+            <li class="text-left">
+              <a href="<%= "/users/" + current_user.id.to_s %>">
+                <i class="icon-user"></i>
+                <span><%= t "top_nav.profile" %></span>
+              </a>
+            </li>
+            <li>
+              <%= link_to(destroy_user_session_path, options = {method: :delete}) do %>
+                <i class="icon-off"></i>
+                <span><%= t "top_nav.logout" %></span>
+              <% end %>
+            </li>
           </ul>
       </ul>
     </div>
