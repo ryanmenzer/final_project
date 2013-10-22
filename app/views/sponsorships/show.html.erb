@@ -20,6 +20,8 @@ Transactions: <br>
   date: <%= t.date %> <br> 
   sponsor: <%= t.payer.full_name  %> <br>
   amount: <%= t.amount %> <br>
+    <%= link_to 'Destroy', transaction_path(t), :class => "inline btn btn-lg btn-red", :confirm => 'Are you sure?', :method => :delete %> 
+    <%= link_to "Edit", edit_transaction_path(t, sponsorship_id: @sponsorship.id, transaction_type_id: 0), :class => "inline btn btn-lg btn-blue", :controller => :transactions, :method => :get %>
   <br>
 <% end %>
 <br> 
