@@ -43,6 +43,12 @@ class PeopleController < ApplicationController
 
     redirect_to people_path
   end
+
+  # def addgroup 
+  #   @person = Person.find(params[:id])
+  #   @group = Group.find(1)
+  # end 
+
 end
 
 
