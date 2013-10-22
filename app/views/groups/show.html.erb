@@ -3,7 +3,9 @@ Name:
 <%= @group.name %> <br> 
 <br> 
 Manager: 
+<% unless @group.manager == nil %> 
 <%= @group.manager.full_name %><br> 
+<% end %> 
 <br>
 Members: 
 <% @group.members.each do |m| %><br>
