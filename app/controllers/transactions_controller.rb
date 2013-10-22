@@ -9,7 +9,7 @@ class TransactionsController < ApplicationController
   end 
 
   def show
-
+    @transaction = Transaction.find(params[:transaction_id])
   end
 
   def create
