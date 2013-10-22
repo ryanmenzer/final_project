@@ -251,27 +251,59 @@ require 'faker'
 
 ## Create groups
 
+# Tenant.all.each do |tenant|
+
+#   Tenant.set_current_tenant tenant.id
+#   num = rand(5..15)
+#   manager = Person.where("category_id = 1").shuffle!.pop
+#   puts "Greating #{num} groups for tenant #{tenant.id} (#{tenant.org_name}"
+
+#   num.times do
+#     num_members = rand(5..30)
+
+#     members = Person.all.shuffle!
+#     g = Group.create(name: Faker::Lorem.sentence(word_count = 1, supplemental = false, random_words_to_add = 2),
+#                  manager_id: manager.id)
+#     puts "Greating group #{g.name} with #{num_members} members}"
+#     num_members.times do
+#       print "."
+#       g.members << members.pop
+#     end
+#     puts ""
+#   end
+
+
+# end
+
+## Add transactions
+
+TransactionType.create(name: "Bank")
+TransactionType.create(name: "PayPal")
+
 Tenant.all.each do |tenant|
 
   Tenant.set_current_tenant tenant.id
-  num = rand(5..15)
-  manager = Person.where("category_id = 1").shuffle!.pop
-  puts "Greating #{num} groups for tenant #{tenant.id} (#{tenant.org_name}"
 
-  num.times do
-    num_members = rand(5..30)
+  sponsorships = Sponsorship.all.shuffle!
 
-    members = Person.all.shuffle!
-    g = Group.create(name: Faker::Lorem.sentence(word_count = 1, supplemental = false, random_words_to_add = 2),
-                 manager_id: manager.id)
-    puts "Greating group #{g.name} with #{num_members} members}"
-    num_members.times do
+  puts "Greating transactions for #{sponsorships.length} sponsorship for #{tenant.id} (#{tenant.org_name}"
+
+  sponsorships.each do |s|
+    type = [1,2].sample
+    sponsors = s.sponsors
+    rand(1..12).times do
       print "."
-      g.members << members.pop
+      sponsors.shuffle!
+      date = "#{rand(2008..2013)}-#{rand(1..12)}-#{rand(1..28)}"
+      Transaction.create(transaction_type_id: type,
+                         sponsorship_id: s.id,
+                         payer_id: sponsors.first.id,
+                         date: date,
+                         amount: rand(1..100)*10)
     end
-    puts ""
   end
 
+  puts ""
 
 end
 
