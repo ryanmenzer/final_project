@@ -1,4 +1,9 @@
 "no":
+  top_nav:
+    select_language: "Velg språk"
+    search: "Søk"
+    profile: "Profil"
+    logout: "Logg ut"
   menu:
     dashboard: "Oversikt"
     our_people: "Våre folk"
