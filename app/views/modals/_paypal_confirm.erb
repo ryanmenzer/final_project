@@ -1,0 +1,26 @@
+<div id="modal-paypal-confirm" class="modal fade" style="display: none;" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 class="modal-title">Pay with paypal</h4>
+      </div>
+      <div class="modal-body">
+          <div>
+            <div class="header">Confirm paypal</div>
+            <% test = @sponsorship.paypal_payments.last %>
+            <% if test %>
+            <%= test.paypal_payer_id %>
+            <%= test.paypal_token %>
+            <%= test.paypal_recurring_token %>
+            <% end  %>
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <%= button_to('Confirm', "/paypal_payments/#{test.id}/confirm",
+          :method => "POST", :disable_with => 'processing...', class: "btn btn-blue") %>
+      </div>
+    </div><!-- /.modal-content -->
+  </div>
+</div>
