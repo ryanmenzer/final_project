@@ -20,9 +20,9 @@
         <li class="dropdown cdrop">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Select language <b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li><a href="#"><%= image_tag "flags/united_states_of_america_round_icon_64.png", :size => "24x20" %><span> English</span></a></li>
-            <li><a href="#"><%= image_tag "flags/norway_round_icon_64.png", :size => "24x20" %><span> Norwegian</span></a></li>
-            <li><a href="#"><%= image_tag "flags/philippines_round_icon_64.png", :size => "24x20" %><span> Tagalog</span></a></li>
+            <li><a href="#"><div><%= image_tag "flags/united_states_of_america_round_icon_64.png", :size => "22x20" %><%= link_to "English", :locale=>'en'%></div></a></li>
+            <li><a href="#"><div><%= image_tag "flags/norway_round_icon_64.png", :size => "24x20" %><%= link_to "Norwegian", :locale=>'no'%></div></a></li>
+            <li><a href="#"><div><%= image_tag "flags/philippines_round_icon_64.png", :size => "24x20" %><%= link_to "Tagalog", :locale=>'tl'%></div></a></li>
           </ul>
         </li>
       </ul>
