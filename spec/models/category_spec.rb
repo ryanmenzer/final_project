@@ -9,12 +9,11 @@ describe Category do
   end
 
   	context "Validations and Associations" do
-
       it "should save a category with a name" do
         expect(@category.save).to eq(true)
       end  
 
-     	 it "should not save a category without a name" do
+     	it "should not save a category without a name" do
   	    expect{@category_no_name.save}.to raise_error(ActiveRecord::StatementInvalid)
   	  end
 

@@ -59,7 +59,7 @@ group :development, :test do
   # gem 'selenium-webdriver'
 end
 
-gem 'coveralls', require: false
+# gem 'coveralls', require: false
 
 group :test do
   gem 'shoulda-matchers'
