@@ -57,6 +57,7 @@ GEM
       sass (~> 3.1)
     compass-rails (2.0.alpha.0)
       compass (>= 0.12.2, < 0.14)
+    country_select (1.2.0)
     daemons (1.1.9)
     devise (2.1.2)
       bcrypt-ruby (~> 3.0)
@@ -218,6 +219,7 @@ DEPENDENCIES
   carrierwave
   coffee-rails (~> 3.2.1)
   compass-rails (~> 2.0.alpha.0)
+  country_select
   devise
   devise-i18n-views
   dotenv-rails
