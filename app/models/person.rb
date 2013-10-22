@@ -6,11 +6,13 @@ class Person < ActiveRecord::Base
                   :user_id,
                   :full_name,
                   :first_name,
+                  :email,
                   :last_name,
                   :gender,
                   :date_of_birth,
                   :phone_number,
-                  :nationality
+                  :nationality,
+                  :email
 
 
   belongs_to              :category

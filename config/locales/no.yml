@@ -1,4 +1,9 @@
 "no":
+  menu:
+    dashboard: "Oversikt"
+    our_people: "Våre folk"
+    supporters: "Støttespillere"
+    staff: "Personal"
   hi: Hullo verden!
   date:
     abbr_day_names:
