@@ -1,0 +1,31 @@
+<div class="container">
+<div class="box-header">
+
+  <div class="title">
+
+    <table class="table table-hover">
+      <thead>
+        <tr class="info">
+          <td>Name</td>
+          <td>Manager</td>
+        </tr>
+      </thead>
+      <tbody>
+        <% @groups.each do |s| %>
+          <tr>
+            <td><a href="groups/<%= s.id %>"><%= s.name  %></a></td>
+            <% unless s.manager == nil %> 
+            <td><a href="groups/<%= s.id %>"><%= s.manager.full_name %></a></td>
+            <% end %> 
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <%= will_paginate @sponsorships %>
+</div>
+<div>
+
+</div>
+</div>
+<%= link_to 'Create Group', new_group_path, :class => "btn btn-blue"%>

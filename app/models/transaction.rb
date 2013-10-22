@@ -2,7 +2,7 @@ class Transaction < ActiveRecord::Base
 
   acts_as_tenant
   validates :amount, presence: true
-  validates_numericality_of :amount, :greater_than => 1 
+  validates_numericality_of :amount, :greater_than => 1
   validates :sponsorship_id, presence: true
   validates :payer_id, presence: true
 
@@ -17,7 +17,8 @@ class Transaction < ActiveRecord::Base
   belongs_to :sponsorship
   belongs_to :transaction_type
   belongs_to :payer, class_name: "Person"
-  
+  belongs_to :paypal_payment
+
 
 def paypal_url(return_url)
   values = {
