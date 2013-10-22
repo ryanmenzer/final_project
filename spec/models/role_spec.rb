@@ -1,5 +1,14 @@
 require 'spec_helper'
 
 describe Role do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+	context "Validations and Associations" do
+	
+		it "should have many users" do
+		  role = Role.reflect_on_association(:users)
+		  role.macro.should == :has_many
+		end
+  end
+
 end
+
