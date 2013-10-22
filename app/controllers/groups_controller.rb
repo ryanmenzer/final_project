@@ -3,8 +3,9 @@ class GroupsController < ApplicationController
     @groups = Group.paginate(page: params[:page])
   end 
 
-  def new 
+  def new
     @group = Group.new
+    # @group.manager_id = current_user.id
   end 
 
   def show 
@@ -15,8 +16,13 @@ class GroupsController < ApplicationController
     @group = Group.find(params[:id]) 
   end 
 
-  def create 
-    @group = Group.create(params[:group])
+  def create
+    p params[:group] 
+    @group = Group.new(params[:group])
+    @group.manager_id = current_user.id
+    @group.save
+    puts "hi"
+    p @group 
     redirect_to action: "index"
   end 
 

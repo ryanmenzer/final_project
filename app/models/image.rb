@@ -8,6 +8,9 @@ class Image < ActiveRecord::Base
                   :imageable_id,
                   :imageable_type
 
+  attr_accessor   :image_for_type, :image_for_id
+
+  has_one :person
   belongs_to :imageable, polymorphic: true
 
   mount_uploader :url, ImageUploader

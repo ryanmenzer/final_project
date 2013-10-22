@@ -6,15 +6,17 @@
     <table class="table table-hover">
       <thead>
         <tr class="info">
-          <td>Manager</td>
           <td>Name</td>
+          <td>Manager</td>
         </tr>
       </thead>
       <tbody>
         <% @groups.each do |s| %>
           <tr>
             <td><a href="groups/<%= s.id %>"><%= s.name  %></a></td>
+            <% unless s.manager == nil %> 
             <td><a href="groups/<%= s.id %>"><%= s.manager.full_name %></a></td>
+            <% end %> 
           </tr>
         <% end %>
       </tbody>
