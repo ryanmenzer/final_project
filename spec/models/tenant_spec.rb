@@ -1,6 +1,5 @@
 require 'spec_helper'
 
-
 describe Tenant do
   before do
   	@tenant = Tenant.create(org_name: "Hello Inc")
