@@ -15,6 +15,8 @@ UnusUniRails3::Application.routes.draw do
     resources :settings
     resources :receivers
     resources :projects
+    resources :paypal_settings
+    resources :mandrill_settings
     get '/users/:id' => 'users#show'
     put '/users/:id' => 'users#update'
     get 'paypal_checkout', to: 'transactions#paypal_checkout'

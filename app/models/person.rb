@@ -6,6 +6,7 @@ class Person < ActiveRecord::Base
                   :user_id,
                   :full_name,
                   :first_name,
+                  :email,
                   :last_name,
                   :gender,
                   :date_of_birth,

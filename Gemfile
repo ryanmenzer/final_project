@@ -54,10 +54,17 @@ gem 'simplecov', :require => false, :group => :test
 group :development, :test do
   gem 'rspec-rails', '~> 2.0'
   # gem "better_errors"
+  # gem 'rspec'
   gem 'capybara'
   gem 'factory_girl_rails'
-  gem 'launchy'
-  gem 'selenium-webdriver'
+  # gem 'launchy'
+  # gem 'selenium-webdriver'
+end
+
+# gem 'coveralls', require: false
+
+group :test do
+  gem 'shoulda-matchers'
 end
 
 # To use ActiveModel has_secure_password
