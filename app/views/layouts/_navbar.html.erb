@@ -17,15 +17,12 @@
   <div class="collapse navbar-collapse navbar-collapse-top">
     <div class="navbar-right">
       <ul class="nav navbar-nav navbar-left">
-        <li class="cdrop active"><a href="#">Link</a></li>
-        <li class="cdrop"><a href="#">Link</a></li>
         <li class="dropdown cdrop">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Select language <b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li class="divider"></li>
-            <li><a href="#">Separated link</a></li>
+            <li><a href="#"><%= image_tag "flags/united_states_of_america_round_icon_64.png", :size => "24x20" %><span> English</span></a></li>
+            <li><a href="#"><%= image_tag "flags/norway_round_icon_64.png", :size => "24x20" %><span> Norwegian</span></a></li>
+            <li><a href="#"><%= image_tag "flags/philippines_round_icon_64.png", :size => "24x20" %><span> Tagalog</span></a></li>
           </ul>
         </li>
       </ul>
@@ -45,7 +42,7 @@
             <span class="badge badge-dark-red">5</span>
           </span>
           </a>
-          <ul class="dropdown-menu">
+          <ul class="dropdown-menu padded">
 
             <!-- the first element is the one with the big avatar, add a with-image class to it -->
 
@@ -58,7 +55,7 @@
 
             <li class="divider"></li>
 
-            <li><a href="<%= "/users/" + current_user.id.to_s %>"><i class="icon-user"></i><span>Profile</span></a></li>
+            <li class="text-left"><a href="<%= "/users/" + current_user.id.to_s %>"><i class="icon-user"></i><span>Profile</span></a></li>
             <li><a href="#"><i class="icon-cog"></i><span>Settings</span></a></li>
             <li><a href="#"><i class="icon-envelope"></i> <span>Messages</span> <span class="label label-dark-red pull-right">5</span></a></li>
             <li><%= link_to(destroy_user_session_path, options = {method: :delete}) do %><i class="icon-off"></i><span>Logout</span><% end %></li>
