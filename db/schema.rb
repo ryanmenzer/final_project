@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131021153439) do
+ActiveRecord::Schema.define(:version => 20131022183745) do
 
   create_table "categories", :force => true do |t|
     t.integer  "tenant_id"
@@ -99,6 +99,20 @@ ActiveRecord::Schema.define(:version => 20131021153439) do
   end
 
   add_index "mandrill_settings", ["tenant_id"], :name => "index_mandrill_settings_on_tenant_id"
+
+  create_table "paypal_payments", :force => true do |t|
+    t.integer  "payer_id"
+    t.integer  "sponsorship_id"
+    t.string   "paypal_payer_id"
+    t.string   "paypal_token"
+    t.string   "paypal_recurring_token"
+    t.boolean  "active"
+    t.datetime "created_at",             :null => false
+    t.datetime "updated_at",             :null => false
+    t.integer  "tenant_id"
+  end
+
+  add_index "paypal_payments", ["tenant_id"], :name => "index_paypal_payments_on_tenant_id"
 
   create_table "paypal_settings", :force => true do |t|
     t.integer  "tenant_id"
@@ -287,6 +301,7 @@ ActiveRecord::Schema.define(:version => 20131021153439) do
     t.string   "status"
     t.datetime "created_at",          :null => false
     t.datetime "updated_at",          :null => false
+    t.integer  "paypal_payment_id"
   end
 
   add_index "transactions", ["amount"], :name => "index_transactions_on_amount"
