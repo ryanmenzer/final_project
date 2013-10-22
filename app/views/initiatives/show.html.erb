@@ -68,7 +68,7 @@
 	        </ul>
 	      </div>
 
-	      <div class="box-content padded">
+	      <div class="box-content">
 	        <div class="tab-content">
 	          <div class="tab-pane active" id="home">
 	          	<table class="table table-normal">
@@ -80,13 +80,12 @@
 				      </tr>
 				      </thead>
 				      <tbody>
-				      <% @receivers.each do |r| %>
-									<% if r.receiverable_type == "Person" %>
-										<tr><td><%= Person.find(r.receiverable_id).full_name %></td>
-											<td><%= Person.find(r.receiverable_id).gender %></td>
-											<td><%= Person.find(r.receiverable_id).nationality %></td>
-									<% end %>
-								<% end %>
+				      <% @people.each do |p| %>
+								<tr><td><%= p.full_name %></td>
+									<td><%= p.gender %></td>
+									<td><%= p.nationality %></td>
+								</tr>
+							<% end %>
 				      </tbody>
 				    </table>
 						</div>
@@ -99,15 +98,64 @@
 				      </tr>
 				      </thead>
 				      <tbody>
-				      <% @receivers.each do |r| %>
-									<% if r.receiverable_type == "Project" %>
-										<tr><td><%= Project.find(r.receiverable_id).name %></td>
-									<% end %>
-								<% end %>
+				      <% @projects.each do |p| %>
+								<tr>
+									<td><%= p.name %></td>
+								</tr>
+							<% end %>
 				      </tbody>
 				    </table>
 	          </div>
-	          <div class="tab-pane" id="settings">Sponsorships</div>
+
+	          <div class="tab-pane" id="settings">
+	          	<div class="box-conent">
+	          	<table class="table table-normal">
+	          	<thead>
+				      <tr>
+				        <td>Receivers</td>
+				        <td>Sponsors(s)</td>
+				        <td>Recurring</td>
+				        <td>Amount</td>
+				        <td>Active</td>
+				      </tr>
+				      </thead>
+				      <tbody>
+				      <% @sponsorships.each do |s| %>
+										<tr>
+											<td>
+												<% s.receivers.each do |r| %>
+													<% if r.receiverable_type == "Project" %>
+														<%= r.receiverable.name %>
+													<% else %>
+														<%= r.receiverable.full_name %>
+													<% end %>
+												<% end %>
+											</td>
+											<td>
+												<% s.sponsors.each do |s| %>
+													<%= s.full_name %><br>
+												<% end %>
+											</td>
+											<td>
+												<% if s.recurring_payment %>
+													<i class="icon-refresh"></i>
+												<% end %>
+											</td>
+											<td>
+												<%= s.amount.to_i %>
+											</td>
+											<td class="status-success">
+												<% if s.active %>
+													<i class="icon-ok"></i>
+												<% end %>
+											</td>
+										</tr>
+
+								<% end %>
+				      </tbody>
+				    </table>
+				  </div>
+	          </div>
 	        </div>
 	      </div>
 		  </div>
@@ -195,7 +243,5 @@
   </div>
 
 	</div>
-
-		
 
 </div>
