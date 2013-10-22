@@ -1,7 +1,6 @@
 class ImagesController < ApplicationController
 
 	def index
-		# @image = Image.last
 		@images = Image.all
 	end
 
@@ -11,7 +10,15 @@ class ImagesController < ApplicationController
 
 	def create
 		@image = Image.create(params[:image])
-		redirect_to action: "index"  # "show", :id => 5
+
+		case params[:image_for][:type]
+		when "user-profile"
+			p = User.find(params[:image_for][:id]).person
+			p.profile_picture_id = @image.id
+			p.save!
+			redirect_to :back and return
+		end
+		redirect_to action: "index"
 	end
 
 end
