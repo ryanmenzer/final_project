@@ -46,7 +46,7 @@ puts "Setting up 5 test admins"
   u = User.new(email: Faker::Internet.email,
                password: "password",
                password_confirmation: "password",
-               role_id: 1)
+               role_id: 1)  
   # u.tenant_id = tenant.id
   u.save
 
