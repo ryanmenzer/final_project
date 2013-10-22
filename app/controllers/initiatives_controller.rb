@@ -17,8 +17,7 @@ class InitiativesController < ApplicationController
 
 	def show
 		@initiative = Initiative.find(params[:id])
-		puts "====== @initiative.recievers ========="
-		puts @receivers = @initiative.receivers
+		@stories = Story.limit(10) # edit for specificity
 		@sponsorships = @initiative.sponsorships
 		@people = @initiative.people.sort_by { |p| p.full_name }
 		@projects = @initiative.projects.sort_by { |p| p.name }
