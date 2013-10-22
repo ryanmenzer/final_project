@@ -20,8 +20,8 @@ class InitiativesController < ApplicationController
 		puts "====== @initiative.recievers ========="
 		puts @receivers = @initiative.receivers
 		@sponsorships = @initiative.sponsorships
-		@people = @initiative.people
-		@projects = @initiative.projects
+		@people = @initiative.people.sort_by { |p| p.full_name }
+		@projects = @initiative.projects.sort_by { |p| p.name }
 	end
 
 	def edit
