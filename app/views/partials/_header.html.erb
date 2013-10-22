@@ -1,0 +1,20 @@
+<% if @header %>
+  <div class="row">
+    <div class="area-top clearfix">
+      <div class="pull-left header">
+        <h3 class="title">
+            <i class="<%= @header[:icon] %>"></i>
+            <%= @header[:title] %>
+        </h3>
+        <h5>
+            <%= @header[:subtitle]%>
+        </h5>
+      </div>
+      <ul class="list-inline pull-right sparkline-box">
+        <li class="sparkline-row">
+          <h4 class="blue"><span><%= @header[:title] %></span><%= @header[:count] %></h4>
+        </li>
+      </ul>
+    </div>
+  </div>
+<% end %>
