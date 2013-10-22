@@ -51,4 +51,8 @@ class Person < ActiveRecord::Base
     result
   end
 
+  def in_initiative?(initiative)
+    self.initiatives.include?(initiative)
+  end
+
 end
