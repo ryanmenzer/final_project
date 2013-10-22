@@ -59,6 +59,11 @@ group :development, :test do
   # gem 'selenium-webdriver'
 end
 
+gem 'coveralls', require: false
+
+group :test do
+  gem 'shoulda-matchers'
+end
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
