@@ -9,7 +9,7 @@ class TransactionsController < ApplicationController
   end 
 
   def show
-
+    @transaction = Transaction.find(params[:transaction_id])
   end
 
   def create
@@ -21,4 +21,24 @@ class TransactionsController < ApplicationController
   def index
 
   end
+
+  def paypal_checkout
+    transaction = Transaction.find(params[:transaction_id])
+    ppr = PayPal::Recurring.new(
+      return_url: new_transaction_url(:transaction_id => transaction.id),
+      cancel_url: root_url,
+      description: transaction.id,
+      amount: transaction.amount,
+      currency: "USD"
+      )
+
+    response = ppr.checkout
+    if response.valid?
+      redirect_to response.checkout_url
+    else
+      raise response.errors.inspect
+    end
+
+  end
+
 end 
