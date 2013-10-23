@@ -1,6 +1,6 @@
 class Person < ActiveRecord::Base
 
-  include Searchable
+  # include Searchable
 
   acts_as_tenant
 
@@ -39,9 +39,9 @@ class Person < ActiveRecord::Base
 
   # has_one    :primary_contact, class_name: "Tenant"
 
-  after_save do
-    make_searchable :full_name, :email
-  end
+  # after_save do
+  #   make_searchable :full_name, :email
+  # end
 
   def avatar
     if self.profile_picture_id

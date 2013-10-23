@@ -1,10 +1,10 @@
 class Initiative < ActiveRecord::Base
 
-  include Searchable
+  # include Searchable
 
-  after_save do
-    make_searchable :title
-  end
+  # after_save do
+  #   make_searchable :title
+  # end
 
   acts_as_tenant
 
