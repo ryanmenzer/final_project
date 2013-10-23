@@ -23,7 +23,10 @@
           <% end %>
           </div>
           <div class="col-md-4">
-            <%= link_to 'Add logo', "#modal-image", :class => "inline btn btn-lg btn-brown", :data => {toggle: "modal"} %>
+          <div class="avatar">
+                <img src="<%= @settings.avatar %>">
+              </div>
+            <%= link_to 'Change logo', "#modal-image", :class => "inline btn btn-lg btn-brown", :data => {toggle: "modal"} %>
           </div>
         </div>
       </div>
@@ -64,4 +67,6 @@
     </div>
   </div>
 </div>
+<% @image_type = {type: "settings", id: @settings.id} %>
 <%= render 'modals/add_image' %>
+

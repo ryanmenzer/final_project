@@ -1,5 +1,11 @@
 class Initiative < ActiveRecord::Base
 
+  # include Searchable
+
+  # after_save do
+  #   make_searchable :title
+  # end
+
   acts_as_tenant
 
   attr_accessible :manager_id,

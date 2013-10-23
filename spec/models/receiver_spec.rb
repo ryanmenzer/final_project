@@ -34,9 +34,9 @@ describe Receiver do
 
 	    it "should save a receiver with initiative id and a receiverable" do
 	      expect(@receiver.save).to eq(true)
-	    end  
+	    end
 
-	   	it "should not save a sponsorship without an initiative id" do
+	   	it "should not save a receiver without an initiative id" do
 		    expect{@receiver_no_receiverable}.to raise_error(ActiveRecord::StatementInvalid)
 		  end
 
