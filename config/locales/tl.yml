@@ -8,6 +8,16 @@
 
 "tl":
   hi: Kumusta mundo!
+  top_nav:
+    select_language: "Select Language"
+    search: "Search"
+    profile: "Profile"
+    logout: "Logout"
+  menu:
+    dashboard: "Dashboard"
+    our_people: "Our People"
+    supporters: "Supporters"
+    staff: "Staff"
   date:
     formats:
       default: "%d/%m/%Y"
