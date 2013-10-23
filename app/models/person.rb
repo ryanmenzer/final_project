@@ -1,5 +1,7 @@
 class Person < ActiveRecord::Base
 
+  include Searchable
+
   acts_as_tenant
 
   attr_accessible :category_id,
@@ -12,11 +14,13 @@ class Person < ActiveRecord::Base
                   :date_of_birth,
                   :phone_number,
                   :nationality,
-                  :email
+                  :email,
+                  :profile_picture_id
 
 
   belongs_to              :category
   belongs_to              :user
+  belongs_to              :profile_picture, class_name: "Image"
 
   has_many                :groups  #, foreign_key: :manager_id
   has_many                :stories
@@ -35,8 +39,16 @@ class Person < ActiveRecord::Base
 
   # has_one    :primary_contact, class_name: "Tenant"
 
+  after_save do
+    make_searchable :full_name, :email
+  end
+
   def avatar
-    ActionController::Base.helpers.image_path("avatar-placeholder.jpg")
+    if self.profile_picture_id
+      self.profile_picture.url.avatar
+    else
+      ActionController::Base.helpers.image_path("avatar-placeholder.jpg")
+    end
   end
 
   def active_sponsors

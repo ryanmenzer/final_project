@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131022211544) do
+ActiveRecord::Schema.define(:version => 20131022215418) do
 
   create_table "categories", :force => true do |t|
     t.integer  "tenant_id"
@@ -129,7 +129,7 @@ ActiveRecord::Schema.define(:version => 20131022211544) do
   create_table "people", :force => true do |t|
     t.integer  "tenant_id"
     t.integer  "user_id"
-    t.integer  "category_id",   :null => false
+    t.integer  "category_id",        :null => false
     t.string   "full_name"
     t.string   "first_name"
     t.string   "last_name"
@@ -137,10 +137,11 @@ ActiveRecord::Schema.define(:version => 20131022211544) do
     t.string   "nationality"
     t.string   "phone_number"
     t.date     "date_of_birth"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
     t.string   "email"
     t.string   "country"
+    t.integer  "profile_picture_id"
   end
 
   add_index "people", ["category_id"], :name => "index_people_on_category_id"
