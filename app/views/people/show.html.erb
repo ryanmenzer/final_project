@@ -1,4 +1,8 @@
 <h1>Name: <%= @person.full_name %></h1>
+
+<%= flash[:notice] %>
+<%= Tenant.current_tenant.id %>
+
 <br>
 	<p>
 	  User Id: <%= @person.id %>
