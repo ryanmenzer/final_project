@@ -8,6 +8,7 @@ class Setting < ActiveRecord::Base
                   :cat_1_name,
                   :cat_2_name,
                   :cat_3_name,
+                  :default_email,
                   :email,
                   :paypal_setting_id,
                   :mandrill_setting_id,
