@@ -9,7 +9,7 @@
     </div>
     <div class="box-content">
 
-      <%= form_for @groupall, :url => url_for(:controller => 'groups', :action => 'addperson', :id => params[:id]),class: "fill-up" do |f| %>
+      <%= form_for @groupall, :url => url_for(:controller => 'groups', :action => 'addperson', :id => params[:id]), class: "fill-up" do |f| %>
         <p> 
           Choose a group <br> 
           <% @groupall.each do |t| %>
@@ -17,9 +17,7 @@
           <%= f.label :id, t.name, :value => t.id %> <br>
           <% end %> 
         </p>
-        <p>
-
-        </p>
+      
         <%= submit_tag "Save Group", :name => 'save_button', class: "btn btn-blue" %>
       <% end %>
     </div>
