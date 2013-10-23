@@ -1,0 +1,30 @@
+<div class="col-md-12">
+
+  <div class="box">
+    <div class="box-header">
+      <span class="title">Choose a Role</span>
+      <ul class="box-toolbar">
+        <li><i class="icon-refresh"></i></li>
+      </ul>
+    </div>
+
+     <div class="box-content">
+
+      <%= form_for @person, :url => url_for(:controller => 'people', :action => 'editrole', :id => params[:id]), class: "fill-up" do |f| %>
+            <p> 
+               <br> 
+              <% @roleall.each do |t| %>
+              <%= f.radio_button :id, t.id %> 
+              <%= f.label :id, t.name, :value => t.id %> <br>
+              <% end %> 
+            </p>
+          <%= submit_tag "Save Role", :name => 'save_button', class: "btn btn-blue" %>
+        </p>
+      <% end %>
+  </div>
+
+
+  </div>
+</div>
+
+
