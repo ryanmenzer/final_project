@@ -17,9 +17,6 @@ Sponsors: <br>
 <br>
 
 
-
-@paypal[:token]
-
 Transactions: <br>
 
 <table class="table table-normal">
@@ -44,8 +41,10 @@ Transactions: <br>
 
 
 <%= link_to 'Add manual transaction', new_transaction_path(sponsorship_id: @sponsorship.id, transaction_type_id: 0), :class => "btn btn-blue"%>
+
 <%= link_to 'Pay with paypal', "#modal-paypal", :class => "btn btn-blue", :data => {toggle: "modal"}%>
-<%= link_to 'Pay finsih', "#modal-paypal-confirm", :class => "btn btn-blue", :data => {toggle: "modal"}%>
+
+<%= link_to 'Pay finish', "#modal-paypal-confirm", :class => "btn btn-blue", :data => {toggle: "modal"}%>
 
 <%= render "modals/paypal" %>
 <% if @sponsorship.paypal_payments.last %>

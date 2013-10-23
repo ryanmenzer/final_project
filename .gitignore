@@ -16,5 +16,6 @@
 .env
 .DS_Store
 
+/config/initializer/algoliasearch.rb
 # Ignore images
 /public/uploads/tmp/
