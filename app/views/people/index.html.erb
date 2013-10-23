@@ -3,13 +3,16 @@
     <div class="area-top clearfix">
       <div class="pull-left header">
         <h3 class="title">
-          <i class="icon-user"></i>
           
-          <% if current_page?('/people?cat=2') %>
-             <%= 'All People' %>
-          <% elsif current_page?('/people?cat=3')%>
-            <%= 'Supporters' %>
+          
+          <% if current_page?('/people?cat=3') %>
+             <i class="icon-trophy"></i>
+             <%= 'Supporters' %>
+          <% elsif current_page?('/people?cat=2')%>
+            <i class="icon-user"></i>
+            <%= 'All People' %>
           <% elsif current_page?('/people?cat=1')%>
+            <i class="icon-key"></i>
             <%= 'Staff' %> 
           <% end %>        
 
