@@ -1,4 +1,5 @@
 class GroupsController < ApplicationController
+  filter_access_to :all
   def index 
     @groups = Group.paginate(page: params[:page])
   end 

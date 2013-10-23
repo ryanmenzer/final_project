@@ -6,6 +6,7 @@
   before_filter :authenticate_user!
   before_filter :set_current_tenant
   before_filter :set_locale
+  before_filter { |c| Authorization.current_user = c.current_user }
 
   def current_tenant
     Tenant.current_tenant

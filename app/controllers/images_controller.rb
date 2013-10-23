@@ -1,5 +1,5 @@
 class ImagesController < ApplicationController
-
+  filter_access_to :all
 	def index
 		@images = Image.all
 	end
