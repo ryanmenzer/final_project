@@ -67,7 +67,7 @@
   <div class="col-md-6">
     <div class="box">
       <div class="box-header">
-        <span class="title">INITIATIVE FUNDING STATS</span>
+        <span class="title">LAST UPDATED INITIATIVE FUNDING STATS</span>
       </div>
       <div style="height: 158px;" id="myChart">
       <script>
@@ -80,11 +80,11 @@
             "data": [
               {
                 "x": "<%= @initiatives[0].title %>",
-                "y": 4000
+                "y": <%= @sums[0] %>
               },
               {
                 "x": "<%= @initiatives[1].title %>",
-                "y": 8000
+                "y": <%= @sums[1] %>
               }
             ]
           }
