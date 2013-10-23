@@ -11,6 +11,7 @@ class Image < ActiveRecord::Base
   attr_accessor   :image_for_type, :image_for_id
 
   has_one :person
+  has_one :setting
   belongs_to :imageable, polymorphic: true
 
   mount_uploader :url, ImageUploader
