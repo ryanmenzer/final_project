@@ -71,6 +71,7 @@
       <div class="box-header">
         <span class="title">LAST UPDATED INITIATIVE FUNDING STATS</span>
       </div>
+      <% unless @initiatives == [] %>
       <div style="height: 158px;" id="myChart">
       <script>
       var data = {
@@ -95,6 +96,7 @@
         var myChart = new xChart('bar', data, '#myChart');
         </script>
       </div>
+      <% end %>
     </div>
   </div>
 
