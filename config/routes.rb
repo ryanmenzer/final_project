@@ -28,13 +28,13 @@ UnusUniRails3::Application.routes.draw do
   end
 
   match 'locales/:locale', :to => 'locale#show'
-  # get '/people/addgroup/:id', :to => 'people#addgroup'
   put '/group/addperson', :to => 'groups#addperson'
   get '/people/addgroup/:id', :to => 'groups#addgroup'
   post '/people/remove/:personid/group/:groupid', :to => 'groups#removeperson'
 
   get '/people/editroleform/:id', :to => 'people#editroleform'
   put '/people/editrole/:id', :to => 'people#editrole'
+
 
 
   # map.locales 'locales/:locale', :controller => 'locales', :action => 'show'
