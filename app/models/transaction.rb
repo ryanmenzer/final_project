@@ -18,6 +18,7 @@ class Transaction < ActiveRecord::Base
   belongs_to :transaction_type
   belongs_to :payer, class_name: "Person"
   belongs_to :paypal_payment
+  has_one    :initiative, through: :sponsorship
 
 
 def paypal_url(return_url)
