@@ -1,5 +1,5 @@
 class InitiativesController < ApplicationController
-
+	filter_access_to :all
 	def index
 		@initiatives = Initiative.all
 	end
