@@ -69,5 +69,9 @@ class GroupsController < ApplicationController
     redirect_to(group_path(group))
   end 
 
+  def removemembersform
+
+  end 
+
 
 end 
