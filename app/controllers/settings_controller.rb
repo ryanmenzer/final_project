@@ -1,5 +1,5 @@
 class SettingsController < ApplicationController
-
+  filter_access_to :all
   def index
     @settings = Setting.find_or_create_by_tenant_id(current_tenant.id)
     @paypal = PaypalSetting.find_or_create_by_tenant_id(current_tenant.id)

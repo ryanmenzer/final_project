@@ -62,6 +62,7 @@ GEM
     country_select (1.2.0)
     curb (0.8.5)
     daemons (1.1.9)
+    declarative_authorization (0.5.7)
     devise (2.1.2)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.1)
@@ -224,6 +225,7 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   compass-rails (~> 2.0.alpha.0)
   country_select
+  declarative_authorization (~> 0.5.7)
   devise
   devise-i18n-views
   dotenv-rails
