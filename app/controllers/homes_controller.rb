@@ -7,6 +7,7 @@ class HomesController < ApplicationController
     @initiative = Initiative.order("updated_at DESC").limit(1).first
     @stories = Story.limit(10)
     @images = Image.limit(10)
+    @people = Person.all
   end
 
 end
