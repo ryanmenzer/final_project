@@ -42,8 +42,10 @@
       <div class="box-header">
         <span class="title"><i class="icon-comment-alt="></i> MOST RECENT INITIATIVE</span>
       </div>
-      <div class="box-content padded"><%= link_to @initiative.title, @initiative, :method => :get %>
-      </div>
+      <% if @initiative %>
+        <div class="box-content padded"><%= link_to @initiative.title, @initiative, :method => :get %>
+        </div>
+      <% end %>
     </div>
   </div>
 
