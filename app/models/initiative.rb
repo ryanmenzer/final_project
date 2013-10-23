@@ -23,6 +23,7 @@ class Initiative < ActiveRecord::Base
   has_many   :stories
   has_many   :images, as: :imageable
   has_many   :stories, as: :storyable
+  has_many   :transactions, through: :sponsorships
 
   def people
     rec = self.receivers.where(:receiverable_type => "Person")
