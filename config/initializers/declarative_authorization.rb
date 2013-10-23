@@ -1,0 +1,1 @@
+# config.gem "declarative_authorization", :source => "http://gemcutter.org"

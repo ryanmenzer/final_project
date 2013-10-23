@@ -1,5 +1,5 @@
 class TransactionsController < ApplicationController
-
+  filter_access_to :all
   def new
     @transaction = Transaction.new
     @transaction.sponsorship_id = params[:sponsorship_id]
