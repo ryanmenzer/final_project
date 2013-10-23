@@ -21,7 +21,7 @@
 
         <% @stories.each do |s| %>
         <div class="box-section news with-icons">
-          <div class="avatar blue"><i class="icon-comment-alt icon-2x"></i></div>
+          <div class="avatar blue"><i class="icon-comment icon-2x"></i></div>
           <div class="news-time">
             <span><%= s.updated_at.strftime("%d") %></span> <%= s.updated_at.strftime("%B") %>
           </div>
@@ -40,7 +40,7 @@
   <div class="col-md-6">
     <div class="box">
       <div class="box-header">
-        <span class="title"><i class="icon-comment-alt="></i> MOST RECENT INITIATIVE</span>
+        <span class="title">MOST RECENT INITIATIVE</span>
       </div>
       <div class="box-content padded"><%= link_to @initiative.title, @initiative, :method => :get %>
       </div>
@@ -60,32 +60,33 @@
       </div>
     </div>
   </div>
-  <div>
-  <div class="box", style="display:inline;">
-    <div class="box-header">
-      <div class="title">All images</div>
-      <ul class="box-toolbar">
-        <li>
-          <form class="fill-up" style="width: 100px">
-            <label class="input-with-submit">
-              <input type="text" placeholder="Search...">
-              <button type="submit" class="submit-icon">
-                <i class="icon-search"></i>
-              </button>
-            </label>
-          </form>
-        </li>
-      </ul>
-    </div>
-  </div>
 
-  <div class="box-content">
-    <div id="thumbs">
-      <% @images.each do |image| %>
-        <a href="<%= image.url.medium %>" style="background-image:url(<%= image.url.square %>)" title="<%= image.title %>"></a>
-      <% end %>
+  <div style="clear:both;"></div>
+
+  <div class="col-md-12">
+    <div class="box">
+      <div class="box-header">
+        <div class="title">All images</div>
+        <ul class="box-toolbar">
+          <li>
+            <form class="fill-up" style="width: 100px">
+              <label class="input-with-submit">
+                <input type="text" placeholder="Search...">
+                <button type="submit" class="submit-icon">
+                  <i class="icon-search"></i>
+                </button>
+              </label>
+            </form>
+          </li>
+        </ul>
+      </div>
+
+      <div id="thumbs">
+        <% @images.each do |image| %>
+          <a href="<%= image.url.medium %>" style="background-image:url(<%= image.url.square %>)" title="<%= image.title %>"></a>
+        <% end %>
+      </div>
     </div>
   </div>
-</div>
 
 </div>
