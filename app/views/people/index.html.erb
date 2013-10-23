@@ -1,5 +1,22 @@
 <div class="container">
-<div class="box-header">
+  <div class="row">
+    <div class="area-top clearfix">
+      <div class="pull-left header">
+        <h3 class="title">
+          <i class="icon-user"></i>
+          
+          <% if current_page?('/people?cat=2') %>
+             <%= 'All People' %>
+          <% elsif current_page?('/people?cat=3')%>
+            <%= 'Supporters' %>
+          <% elsif current_page?('/people?cat=1')%>
+            <%= 'Staff' %> 
+          <% end %>        
+
+        </h3>
+      </div>
+    </div>
+  </div>
 
   <!-- notice the nav-tabs-left -->
 
@@ -11,12 +28,12 @@
 
   <div class="title">
 
-    <table class="table table-hover">
+    <table class="table table-normal">
       <thead>
-        <tr class="info">
-          <th>Name</th>
-          <th>Gender</th>
-          <th>Category</th>
+        <tr class="">
+          <td>Name</td>
+          <td>Gender</td>
+          <td>Category</td>
         </tr>
       </thead>
       <tbody>
