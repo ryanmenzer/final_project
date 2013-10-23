@@ -1,12 +1,12 @@
 class Tenant < ActiveRecord::Base
-  
-  include SearchableTenant
-  
+
+  # include SearchableTenant
+
   acts_as_universal_and_determines_tenant
 
   has_one :setting
 
-  
+
 
 
 
