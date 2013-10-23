@@ -1,49 +1,83 @@
 # Use this setup block to configure all options available in SimpleForm.
 SimpleForm.setup do |config|
-  # Wrappers are used by the form builder to generate a
-  # complete input. You can remove any component from the
-  # wrapper, change the order or even add your own to the
-  # stack. The options given below are used to wrap the
-  # whole input.
-  config.wrappers :default, :class => :input,
-    :hint_class => :field_with_hint, :error_class => :field_with_errors do |b|
-    ## Extensions enabled by default
-    # Any of these extensions can be disabled for a
-    # given input by passing: `f.input EXTENSION_NAME => false`.
-    # You can make any of these extensions optional by
-    # renaming `b.use` to `b.optional`.
+  #  config.wrappers :bootstrap, :tag => 'div', :class => 'control-group', :error_class => 'error' do |b|
+  #   b.use :html5
+  #   b.use :placeholder
+  #   b.use :label
+  #   b.wrapper :tag => 'div', :class => 'controls' do |ba|
+  #     ba.use :input
+  #     ba.use :error, :wrap_with => { :tag => 'span', :class => 'help-inline' }
+  #     ba.use :hint,  :wrap_with => { :tag => 'p', :class => 'help-block' }
+  #   end
+  # end
 
-    # Determines whether to use HTML5 (:email, :url, ...)
-    # and required attributes
+  # config.wrappers :prepend, :tag => 'div', :class => "control-group", :error_class => 'error' do |b|
+  #   b.use :html5
+  #   b.use :placeholder
+  #   b.use :label
+  #   b.wrapper :tag => 'div', :class => 'controls' do |input|
+  #     input.wrapper :tag => 'div', :class => 'input-prepend' do |prepend|
+  #       prepend.use :input
+  #     end
+  #     input.use :hint,  :wrap_with => { :tag => 'span', :class => 'help-block' }
+  #     input.use :error, :wrap_with => { :tag => 'span', :class => 'help-inline' }
+  #   end
+  # end
+
+  # config.wrappers :append, :tag => 'div', :class => "control-group", :error_class => 'error' do |b|
+  #   b.use :html5
+  #   b.use :placeholder
+  #   b.use :label
+  #   b.wrapper :tag => 'div', :class => 'controls' do |input|
+  #     input.wrapper :tag => 'div', :class => 'input-append' do |append|
+  #       append.use :input
+  #     end
+  #     input.use :hint,  :wrap_with => { :tag => 'span', :class => 'help-block' }
+  #     input.use :error, :wrap_with => { :tag => 'span', :class => 'help-inline' }
+  #   end
+  # end
+  config.wrappers :placeholder, :tag => 'div', :class => "control-group", :error_class => 'error' do |b|
+
+    config.boolean_style = :inline
+
     b.use :html5
-
-    # Calculates placeholders automatically from I18n
-    # You can also pass a string as f.input :placeholder => "Placeholder"
     b.use :placeholder
+    b.wrapper :tag => 'div', :class => 'form-group ' do |input|
+      input.wrapper :tag => 'div', :class => 'col-lg-12' do |append|
+        append.use :input
+      end
+      input.use :hint,  :wrap_with => { :tag => 'span', :class => 'help-block' }
+      input.use :error, :wrap_with => { :tag => 'span', :class => 'help-inline' }
+    end
 
-    ## Optional extensions
-    # They are disabled unless you pass `f.input EXTENSION_NAME => :lookup`
-    # to the input. If so, they will retrieve the values from the model
-    # if any exists. If you want to enable the lookup for any of those
-    # extensions by default, you can change `b.optional` to `b.use`.
+    b.wrapper :button do |component|
+      component.optional :button,  wrap_with: { :tag => 'div', :class =>"btn btn-blue" }
+    end
 
-    # Calculates maxlength from length validations for string inputs
-    b.optional :maxlength
-
-    # Calculates pattern from format validations for string inputs
-    b.optional :pattern
-
-    # Calculates min and max from length validations for numeric inputs
-    b.optional :min_max
-
-    # Calculates readonly automatically from readonly attributes
-    b.optional :readonly
-
-    ## Inputs
-    b.use :label_input
-    b.use :hint,  :wrap_with => { :tag => :span, :class => :hint }
-    b.use :error, :wrap_with => { :tag => :span, :class => :error }
   end
+
+  config.wrappers :default, :tag => 'div', :class => "control-group", :error_class => 'error' do |b|
+
+    config.boolean_style = :inline
+
+    b.use :html5
+    b.use :placeholder
+    b.wrapper :tag => 'div', :class => 'form-group ' do |input|
+      input.use :label, :class => 'control-label col-lg-3'
+      input.wrapper :tag => 'div', :class => 'col-lg-9' do |append|
+        append.use :input
+      end
+      input.use :hint,  :wrap_with => { :tag => 'span', :class => 'help-block' }
+      input.use :error, :wrap_with => { :tag => 'span', :class => 'help-inline' }
+    end
+
+    b.wrapper :button do |component|
+      component.optional :button,  wrap_with: { :tag => 'div', :class =>"btn btn-blue" }
+    end
+
+  end
+
+
 
   # The default wrapper to be used by the FormBuilder.
   config.default_wrapper = :default
@@ -52,10 +86,10 @@ SimpleForm.setup do |config|
   # Defaults to :nested for bootstrap config.
   #   :inline => input + label
   #   :nested => label > input
-  config.boolean_style = :nested
+  config.boolean_style = :inline
 
   # Default class for buttons
-  config.button_class = 'btn'
+  config.button_class = 'btn btn-blue'
 
   # Method used to tidy up errors. Specify any Rails Array method.
   # :first lists the first message for each field.
@@ -98,7 +132,7 @@ SimpleForm.setup do |config|
   config.label_class = 'control-label'
 
   # You can define the class to use on all forms. Default is simple_form.
-  # config.form_class = :simple_form
+  config.form_class = 'form-horizontal fill-up validateable'
 
   # You can define which elements should obtain additional classes
   # config.generate_additional_classes_for = [:wrapper, :label, :input]

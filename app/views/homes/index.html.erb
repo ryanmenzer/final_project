@@ -42,8 +42,10 @@
       <div class="box-header">
         <span class="title">LAST UPDATED INITIATIVE</span>
       </div>
+      <% if @initiative %>
       <div class="box-content padded news-title"><%= link_to @initiative.title, @initiative, :method => :get %>
       </div>
+      <% end %>
     </div>
   </div>
 
