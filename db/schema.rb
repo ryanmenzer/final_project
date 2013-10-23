@@ -110,6 +110,7 @@ ActiveRecord::Schema.define(:version => 20131022215418) do
     t.datetime "created_at",             :null => false
     t.datetime "updated_at",             :null => false
     t.integer  "tenant_id"
+    t.string   "amount"
   end
 
   add_index "paypal_payments", ["tenant_id"], :name => "index_paypal_payments_on_tenant_id"
