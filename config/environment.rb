@@ -5,3 +5,4 @@ require File.expand_path('../application', __FILE__)
 UnusUniRails3::Application.initialize!
 
 # config.gem "carrierwave"
+require 'searchable'
