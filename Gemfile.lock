@@ -28,6 +28,8 @@ GEM
     activesupport (3.2.13)
       i18n (= 0.6.1)
       multi_json (~> 1.0)
+    algoliasearch (1.1.5)
+      curb
     arel (3.0.2)
     bcrypt-ruby (3.1.2)
     builder (3.0.4)
@@ -55,6 +57,7 @@ GEM
       sass (~> 3.1)
     compass-rails (2.0.alpha.0)
       compass (>= 0.12.2, < 0.14)
+    curb (0.8.5)
     daemons (1.1.9)
     devise (2.1.2)
       bcrypt-ruby (~> 3.0)
@@ -208,6 +211,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  algoliasearch
   capybara
   carrierwave
   coffee-rails (~> 3.2.1)

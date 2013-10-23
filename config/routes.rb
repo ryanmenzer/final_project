@@ -17,6 +17,7 @@ UnusUniRails3::Application.routes.draw do
     resources :projects
     get '/users/:id' => 'users#show'
     put '/users/:id' => 'users#update'
+    post '/search' => 'search#search'
   end
 
   match 'locales/:locale', :to => 'locale#show'
