@@ -1,5 +1,5 @@
 class SponsorshipsController < ApplicationController
-
+  filter_access_to :all
   def index
     @sponsorships = Sponsorship.paginate(page: params[:page])
   end
