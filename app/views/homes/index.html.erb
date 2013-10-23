@@ -37,12 +37,29 @@
     </div>
   </div>
 
-  <div class="col-md-6">
+  <div class="col-md-3">
     <div class="box">
       <div class="box-header">
-        <span class="title">MOST RECENT INITIATIVE</span>
+        <span class="title">LAST UPDATED INITIATIVE</span>
       </div>
-      <div class="box-content padded"><%= link_to @initiative.title, @initiative, :method => :get %>
+      <div class="box-content padded news-title"><%= link_to @initiative.title, @initiative, :method => :get %>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-3">
+    <div class="box">
+      <div class="box-header">
+        <span class="title"><i class="icon-comment-alt="></i> CURRENT PEOPLE STATS</span>
+      </div>
+      <div class="box-content title", style="padding: 7px;">People:
+        <%= @people.select{ |p| p.category_id == 2 }.count %>
+      </div>
+      <div class="box-content title", style="padding: 7px;">Workers:
+        <%= @people.select{ |p| p.category_id == 1 }.count %>
+      </div>
+      <div class="box-content title", style="padding: 7px;">Sponsors:
+        <%= @people.select{ |p| p.category_id == 3 }.count %>
       </div>
     </div>
   </div>
@@ -50,13 +67,32 @@
   <div class="col-md-6">
     <div class="box">
       <div class="box-header">
-        <span class="title"><i class="icon-comment-alt="></i> CURRENT STATS</span>
+        <span class="title">INITIATIVE FUNDING STATS</span>
       </div>
-      <div class="box-content padded">People:
-      </div>
-      <div class="box-content padded">Workers:
-      </div>
-      <div class="box-content padded">Sponsors:
+      <div style="height: 158px;" id="myChart">
+      <script>
+      var data = {
+        "xScale": "ordinal",
+        "yScale": "linear",
+        "main": [
+          {
+            "className": ".init-funds",
+            "data": [
+
+              {
+                "x": "Pepperoni",
+                "y": 4
+              },
+              {
+                "x": "Cheese",
+                "y": 8
+              }
+            ]
+          }
+        ]
+        };
+        var myChart = new xChart('bar', data, '#myChart');
+        </script>
       </div>
     </div>
   </div>
