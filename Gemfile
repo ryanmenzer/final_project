@@ -6,6 +6,7 @@ gem 'rails', '3.2.13'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'pg'
+gem "algoliasearch"
 
 # group :production do
 #   gem "mysql2", "~> 0.3.13"
@@ -48,6 +49,7 @@ gem 'paypal-recurring'
 gem 'devise-i18n-views'
 gem 'rails_12factor'
 gem 'simple_form'
+gem 'country_select'
 gem 'simple-navigation'
 
 gem 'mandrill-api', '~> 1.0.49'
