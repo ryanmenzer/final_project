@@ -7,9 +7,9 @@ SimpleNavigation::Configuration.run do |navigation|
       sub_nav.item :add_one,  t("menu.add_new"),       new_person_path, :opts => {:icon => 'icon-plus'}
     end
     primary.item :supporters, t("menu.supporters"), :opts => {:icon => 'icon-trophy'} do |sub_nav|
-      sub_nav.item :list_all, t("menu.list_all"),        "/people?cat=1", :opts => {:icon => 'icon-list'}
+      sub_nav.item :list_all, t("menu.list_all"),        "/people?cat=3", :opts => {:icon => 'icon-list'}
     end
-    primary.item :staff,      t("menu.staff"),       "/people?cat=3", :opts => {:icon => 'icon-key'}
+    primary.item :staff,      t("menu.staff"),       "/people?cat=1", :opts => {:icon => 'icon-key'}
     primary.item :initiatives,t("menu.initiatives"), initiatives_path, :opts => {:icon => 'icon-bullhorn'}
     primary.item :groups,     t("menu.groups"),      groups_path, :opts => {:icon => 'icon-group'}
     primary.item :other,      t("menu.Settings"),    settings_path, :opts => {:icon => 'icon-cog'}
