@@ -1,4 +1,8 @@
 <h1>Name: <%= @person.full_name %></h1>
+
+<%= flash[:notice] %>
+<%= Tenant.current_tenant.id %>
+
 <br>
 	<p>
 	  User Id: <%= @person.id %>
@@ -28,6 +32,11 @@
 	<%= button_to "Edit", :edit_person, :class => "btn btn-blue", :controller => :people, :method => :get %>
 	<%= button_to 'Destroy', @person, :class => "btn btn-blue", :confirm => 'Are you sure?', :method => :delete %>
   <%= link_to 'Add to group', "/people/addgroup/#{@person.id}", :class => "btn btn-blue"%> <br> 
+
+	<% unless @person.user == nil %>
+		<%= link_to 'Edit Role', "/people/editroleform/#{@person.id}", :class => "btn btn-blue"%> <br> 
+		
+	<% end %>
 
 
 	<% if @person.category_id == 1 || @person.category_id == 2 %>

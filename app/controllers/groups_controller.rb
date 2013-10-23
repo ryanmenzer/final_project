@@ -51,9 +51,15 @@ class GroupsController < ApplicationController
     redirect_to(people_path)
   end 
 
-  def addgroup 
+  def addgroup
     @person = Person.find(params[:id])
     @groupall = Group.all
+    puts '++++++++++++++++++++++++++++++++++++++++'
+    p @groupall
+    if @groupall == []
+      flash[:notice] = "Sorry. No groups."
+      redirect_to :back and return
+    end
   end 
 
   def removeperson
