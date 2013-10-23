@@ -59,8 +59,11 @@ GEM
       sass (~> 3.1)
     compass-rails (2.0.alpha.0)
       compass (>= 0.12.2, < 0.14)
+<<<<<<< HEAD
     curb (0.8.5)
+=======
     country_select (1.2.0)
+>>>>>>> f49d1293edb5ae97f99268b2d4d8ca0a0ca8c898
     daemons (1.1.9)
     devise (2.1.2)
       bcrypt-ruby (~> 3.0)
@@ -217,8 +220,11 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+<<<<<<< HEAD
   algoliasearch
+=======
   bootstrap-will_paginate
+>>>>>>> f49d1293edb5ae97f99268b2d4d8ca0a0ca8c898
   capybara
   carrierwave
   coffee-rails (~> 3.2.1)
