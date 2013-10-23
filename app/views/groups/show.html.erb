@@ -9,11 +9,11 @@ Manager:
 <br>
 Members: 
 <% @group.members.each do |m| %><br>
-<%= m.full_name %>  <%= button_to 'Remove', "/people/remove/#{m.id}/group/#{@group.id}", :class => "btn btn-blue", :confirm => 'Are you sure?', :method => :post %>
+<%= m.full_name %>  <%= button_to 'Remove', "/people/remove/#{m.id}/group/#{@group.id}", :class => "btn btn-red", :confirm => 'Are you sure?', :method => :post %>
 <% end %> 
 <br> 
 <br> 
 
 <%= link_to "Edit", :edit_group, :class => "inline btn btn-lg btn-blue", :controller => :initiatives, :method => :get %>
 <%= link_to 'Destroy', @group, :class => "inline btn btn-lg btn-red", :confirm => 'Are you sure?', :method => :delete %>
-<%= link_to 'Back', groups_path, :class => "inline btn btn-lg btn-brown", :method => :get %>
+<%= link_to 'All Groups', groups_path, :class => "inline btn btn-lg btn-brown", :method => :get %>
