@@ -17,5 +17,6 @@ class Sponsorship < ActiveRecord::Base
   has_and_belongs_to_many :receivers
 
   has_many :transactions
+  has_many :paypal_payments
 
 end

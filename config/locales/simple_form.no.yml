@@ -1,0 +1,11 @@
+"no":
+  simple_form:
+    labels:
+      user:
+        username: 'brukernavn'
+        password: 'passord'
+        update: 'oppdater'
+      setting:
+        display_name: 'visningsnavn'
+        default_email: 'standard epost'
+

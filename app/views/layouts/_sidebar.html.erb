@@ -10,7 +10,7 @@
       <a href="/">
         <i class="icon-dashboard icon-2x"></i>
         <span>
-          Dashboard
+          <%= t "menu.dashboard"  %>
         </span>
       </a>
     </li>
@@ -21,7 +21,7 @@
       <a class="accordion-toggle collapsed " data-toggle="collapse" href="#side-menu-recipiants">
         <i class="icon-user icon-2x"></i>
         <span>
-          Our people
+          <%= t "menu.our_people"  %>
           <i class="icon-caret-down"></i>
         </span>
       </a>
@@ -34,16 +34,11 @@
         </li>
 
         <li class="">
-          <a href="../ui_lab/general.html">
-              <i class="icon-beaker"></i> General elements
+          <a href="/people/new">
+              <i class="icon-plus"></i> Add Person
           </a>
         </li>
 
-        <li class="">
-          <a href="../ui_lab/icons.html">
-              <i class="icon-info-sign"></i> Icons
-          </a>
-        </li>
       </ul>
     </li>
 
@@ -52,7 +47,7 @@
       <a class="accordion-toggle collapsed " data-toggle="collapse" href="#side-menu-supporters">
         <i class="icon-user icon-2x"></i>
         <span>
-          Supporters
+          <%= t "menu.supporters"  %>
           <i class="icon-caret-down"></i>
         </span>
       </a>
@@ -65,16 +60,11 @@
         </li>
 
         <li class="">
-          <a href="">
-              <i class="icon-beaker"></i> General elements
+          <a href="/transactions">
+              <i class="icon-money"></i> Transactions
           </a>
         </li>
 
-        <li class="">
-          <a href="">
-              <i class="icon-info-sign"></i> Icons
-          </a>
-        </li>
       </ul>
     </li>
 
@@ -83,7 +73,7 @@
       <a class="accordion-toggle collapsed " data-toggle="collapse" href="#side-menu-staff">
         <i class="icon-user icon-2x"></i>
         <span>
-          Staff
+          <%= t "menu.staff"  %>
           <i class="icon-caret-down"></i>
         </span>
       </a>
@@ -99,7 +89,7 @@
     <li class="dark-nav">
       <span class="glow"></span>
       <a class="accordion-toggle collapsed " data-toggle="collapse" href="#side-menu-initiatives">
-        <i class="icon-heart icon-2x"></i>
+        <i class="icon-bullhorn icon-2x"></i>
         <span>
           Initiatives
           <i class="icon-caret-down"></i>
@@ -107,14 +97,8 @@
       </a>
       <ul id="side-menu-initiatives" class="collapse ">
         <li class="">
-          <a href="">
-              <i class="icon-reorder"></i> Show all
-          </a>
-        </li>
-
-        <li class="">
-          <a href="">
-              <i class="icon-money"></i> Transactions
+          <a href="/initiatives">
+              <i class="icon-reorder"></i> List all
           </a>
         </li>
 
@@ -137,7 +121,7 @@
       <a class="accordion-toggle collapsed " data-toggle="collapse" href="#side-menu-stats">
         <i class="icon-bar-chart icon-2x"></i>
         <span>
-          Stats
+          Reports
           <i class="icon-caret-down"></i>
         </span>
       </a>
@@ -163,10 +147,14 @@
       </a>
 
       <ul id="side-menu-other" class="collapse ">
-
         <li class="">
           <a href="/images">
               <i class="icon-picture"></i> Images
+          </a>
+        </li>
+        <li class="active">
+          <a href="/settings">
+              <i class="icon-cogs"></i> System Settings
           </a>
         </li>
       </ul>

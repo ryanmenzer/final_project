@@ -1,0 +1,25 @@
+<div id="modal-image" class="modal fade" style="display: none;" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 class="modal-title">Edit Profile Picture</h4>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+          <%= simple_form_for(Image.new, :html => {class: 'form-horizontal', multipart: true }) do |f| %>
+            <%= f.input :title %>
+            <%= f.input :url, as: :file %>
+            <%= f.input :image_for_type, as: :hidden, input_html: { value: @image_type[:type], name: "image_for[type]" } %>
+            <%= f.input :image_for_id, as: :hidden, input_html: { value: @image_type[:id], name: "image_for[id]" } %>
+            <%= f.submit %>
+          <% end %>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-blue">Upload image</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div>
+</div>

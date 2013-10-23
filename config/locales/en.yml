@@ -20,8 +20,17 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hi: Hello world!
- 
+  top_nav:
+    select_language: "Select Language"
+    search: "Search"
+    profile: "Profile"
+    logout: "Logout"
+  menu:
+    dashboard: "Dashboard"
+    our_people: "Our People"
+    supporters: "Supporters"
+    staff: "Staff"
+
 
   date:
     abbr_day_names:

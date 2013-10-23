@@ -24,4 +24,18 @@ class Initiative < ActiveRecord::Base
   has_many   :images, as: :imageable
   has_many   :stories, as: :storyable
 
+  def people
+    rec = self.receivers.where(:receiverable_type => "Person")
+    rec.map do |r|
+      r.receiverable
+    end
+  end
+
+  def projects
+    rec = self.receivers.where(:receiverable_type => "Project")
+    rec.map do |r|
+      r.receiverable
+    end
+  end
+
 end

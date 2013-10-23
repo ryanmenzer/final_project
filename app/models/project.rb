@@ -12,4 +12,10 @@ class Project < ActiveRecord::Base
   has_many   :images,    as: :imageable
   has_many   :stories,   as: :storyable
 
+  has_many   :initiatives, through: :receivers
+
+  def in_initiative?(initiative)
+    self.initiatives.include?(initiative)
+  end
+
 end

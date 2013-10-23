@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131021153439) do
+ActiveRecord::Schema.define(:version => 20131022215418) do
 
   create_table "categories", :force => true do |t|
     t.integer  "tenant_id"
@@ -100,6 +100,20 @@ ActiveRecord::Schema.define(:version => 20131021153439) do
 
   add_index "mandrill_settings", ["tenant_id"], :name => "index_mandrill_settings_on_tenant_id"
 
+  create_table "paypal_payments", :force => true do |t|
+    t.integer  "payer_id"
+    t.integer  "sponsorship_id"
+    t.string   "paypal_payer_id"
+    t.string   "paypal_token"
+    t.string   "paypal_recurring_token"
+    t.boolean  "active"
+    t.datetime "created_at",             :null => false
+    t.datetime "updated_at",             :null => false
+    t.integer  "tenant_id"
+  end
+
+  add_index "paypal_payments", ["tenant_id"], :name => "index_paypal_payments_on_tenant_id"
+
   create_table "paypal_settings", :force => true do |t|
     t.integer  "tenant_id"
     t.string   "api_username"
@@ -114,7 +128,7 @@ ActiveRecord::Schema.define(:version => 20131021153439) do
   create_table "people", :force => true do |t|
     t.integer  "tenant_id"
     t.integer  "user_id"
-    t.integer  "category_id",   :null => false
+    t.integer  "category_id",        :null => false
     t.string   "full_name"
     t.string   "first_name"
     t.string   "last_name"
@@ -122,10 +136,11 @@ ActiveRecord::Schema.define(:version => 20131021153439) do
     t.string   "nationality"
     t.string   "phone_number"
     t.date     "date_of_birth"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
     t.string   "email"
     t.string   "country"
+    t.integer  "profile_picture_id"
   end
 
   add_index "people", ["category_id"], :name => "index_people_on_category_id"
@@ -287,6 +302,7 @@ ActiveRecord::Schema.define(:version => 20131021153439) do
     t.string   "status"
     t.datetime "created_at",          :null => false
     t.datetime "updated_at",          :null => false
+    t.integer  "paypal_payment_id"
   end
 
   add_index "transactions", ["amount"], :name => "index_transactions_on_amount"

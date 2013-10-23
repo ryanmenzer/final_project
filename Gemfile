@@ -14,6 +14,9 @@ gem "algoliasearch"
 
 gem 'compass-rails', '~> 2.0.alpha.0'
 gem 'will_paginate', '> 3.0'
+gem 'bootstrap-will_paginate'
+
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -41,9 +44,12 @@ gem 'milia', '~> 0.3.38'
 gem 'recaptcha', :require => 'recaptcha/rails'
 gem 'devise'
 
+gem 'paypal-recurring'
+
 gem 'devise-i18n-views'
 gem 'rails_12factor'
 gem 'simple_form'
+gem 'country_select'
 gem 'simple-navigation'
 
 gem 'mandrill-api', '~> 1.0.49'
@@ -60,6 +66,11 @@ group :development, :test do
   # gem 'selenium-webdriver'
 end
 
+# gem 'coveralls', require: false
+
+group :test do
+  gem 'shoulda-matchers'
+end
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
