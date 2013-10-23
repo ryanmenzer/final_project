@@ -5,6 +5,7 @@ class HomesController < ApplicationController
   def index
     # @initiative = Initiative.first
     @initiative = Initiative.order("updated_at DESC").limit(1).first
+    @initiatives = Initiative.order("updated_at DESC").limit(2)
     @stories = Story.limit(10)
     @images = Image.limit(10)
     @people = Person.all
