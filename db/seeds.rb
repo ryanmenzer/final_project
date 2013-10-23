@@ -308,6 +308,81 @@ Tenant.all.each do |tenant|
 end
 
 
+# RelationshipType.create(person: "Son",
+#                         person_sex: 'm',
+#                         relative: "Father",
+#                         relative_sex: 'm',
+#                         reverse_type_id: 2)
+
+# RelationshipType.create(person: "Father",
+#                         person_sex: 'm',
+#                         relative: "Son",
+#                         relative_sex: 'm',
+#                         reverse_type_id: 1)
+
+# RelationshipType.create(person: "Son",
+#                         person_sex: 'm',
+#                         relative: "Mother",
+#                         relative_sex: 'f'
+#                         reverse_type_id: 4)
+
+# RelationshipType.create(person: "Mother",
+#                         person_sex: 'f',
+#                         relative: "Son",
+#                         relative_sex: 'm'
+#                         reverse_type_id: 3)
+
+# RelationshipType.create(person: "Daughter",
+#                         person_sex: 'f',
+#                         relative: "Father",
+#                         relative_sex: 'm',
+#                         reverse_type_id: 6)
+
+# RelationshipType.create(person: "Father",
+#                         person_sex: 'm',
+#                         relative: "Daughter",
+#                         relative_sex: 'm',
+#                         reverse_type_id: 5)
+
+# RelationshipType.create(person: "Daughter",
+#                         person_sex: 'f',
+#                         relative: "Mother",
+#                         relative_sex: 'f'
+#                         reverse_type_id: 8)
+
+# RelationshipType.create(person: "Mother",
+#                         person_sex: 'f',
+#                         relative: "Daughter",
+#                         relative_sex: 'f'
+#                         reverse_type_id: 7)
+
+# RelationshipType.create(person: "Brother",
+#                         person_sex: 'm',
+#                         relative: "Sister",
+#                         relative_sex: 'f'
+#                         reverse_type_id: 10)
+
+# RelationshipType.create(person: "Sister",
+#                         person_sex: 'f',
+#                         relative: "Brother",
+#                         relative_sex: 'm'
+#                         reverse_type_id: 9)
+
+# RelationshipType.create(person: "Brother",
+#                         person_sex: 'm',
+#                         relative: "Brother",
+#                         relative_sex: 'm'
+#                         reverse_type_id: nil)
+
+# RelationshipType.create(person: "Sister",
+#                         person_sex: 'f',
+#                         relative: "Sister",
+#                         relative_sex: 'f'
+#                         reverse_type_id: nil)
+
+
+
+
 
 
 
