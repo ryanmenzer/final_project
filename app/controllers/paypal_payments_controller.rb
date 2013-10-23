@@ -1,4 +1,5 @@
 class PaypalPaymentsController < ApplicationController
+  filter_access_to :all
   def confirm_payment
     pp = PaypalPayment.find(params[:id])
     ppr = PayPal::Recurring.new({
