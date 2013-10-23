@@ -1,16 +1,20 @@
 # Read about factories at https://github.com/thoughtbot/factory_girl
 
-# FactoryGirl.define do
-#   factory :person do
-#   	f.category_id  3
-#   	f.full_name   "Beep Anders"
-#   	f.gender      "Male"
-#   	f.string      "Beepish"
-#   	f.string     "212-222-2212"
-#   	f.date       "05-05-2000"
-#   end
-# end
+FactoryGirl.define do
+  factory :person do |f|
+    f.full_name   "Beep Anders"
+    f.gender      "Male"
+    f.nationality      "Beepish"
+    f.phone_number     "212-222-2212"
+    f.date_of_birth       "05-05-2000"
+    user
+    category
 
+    factory :person_no_cid do
+      category nil
+    end
+  end
+end
 
       # t.integer :tenant_id
       # t.integer :user_id

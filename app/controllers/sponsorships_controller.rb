@@ -6,10 +6,11 @@ class SponsorshipsController < ApplicationController
 
   def show
     @sponsorship = Sponsorship.find(params[:id])
+    @paypal_signup = {}
   end
 
-  def new 
-  
-  end 
+  def new
+
+  end
 
 end

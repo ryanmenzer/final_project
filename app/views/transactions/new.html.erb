@@ -8,31 +8,8 @@
       </ul>
     </div>
 
-    <div class="box-content">
-
-      <%= form_for @transaction, class: "fill-up" do |f| %>
-        <p>
-          <%= f.label :"Date" %><br>
-          <%= f.date_select :date %>
-        </p>
-        <p>
-          <%= f.label :"Amount" %><br>
-          <%= f.text_field :amount %>
-        </p>
-        <p> 
-          Payer: <br> 
-          <% @sponsor.each do |t| %>
-          <%= f.radio_button :payer_id, t.id %> 
-          <%= f.label :payer_id, t.full_name, :value => t.id %> <br>
-          <% end %> 
-        <p>
-          <%= f.hidden_field :sponsorship_id %>
-          <%= f.hidden_field :transaction_type_id %> 
-          <%= submit_tag "Save Transaction", :name => 'save_button', class: "btn btn-blue" %>
-        </p>
-      <% end %>
+   <%= render "form" %>
   </div>
-</div>
 </div>
 
 

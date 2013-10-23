@@ -1,4 +1,4 @@
-class PeopleController < ApplicationController 
+class PeopleController < ApplicationController
   def index
     if params[:cat]
       @people = Person.where(category_id: params[:cat]).paginate(page: params[:page])
@@ -43,6 +43,12 @@ class PeopleController < ApplicationController
 
     redirect_to people_path
   end
+
+  # def addgroup 
+  #   @person = Person.find(params[:id])
+  #   @group = Group.find(1)
+  # end 
+
 end
 
 

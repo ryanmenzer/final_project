@@ -10,19 +10,28 @@ UnusUniRails3::Application.routes.draw do
     resources :images
     resources :groups
     resources :stories
+    get 'paypal_checkout', to: 'transactions#paypal_checkout'
+    post '/transactions/paypal', to: 'transactions#paypal_create'
+    # post '/paypal/confirm/:id', to: 'paypal_payment#confirm_payment'
+    # resources :paypal_payments
+    post '/paypal_payments/:id/confirm' => 'paypal_payments#confirm_payment'
     resources :transactions
     resources :sponsorships
     resources :settings
     resources :receivers
     resources :projects
+    resources :paypal_settings
+    resources :mandrill_settings
     get '/users/:id' => 'users#show'
     put '/users/:id' => 'users#update'
     post '/search' => 'search#search'
   end
 
   match 'locales/:locale', :to => 'locale#show'
-
-
+  # get '/people/addgroup/:id', :to => 'people#addgroup'
+  put '/group/addperson', :to => 'groups#addperson'
+  get '/people/addgroup/:id', :to => 'groups#addgroup'
+  post '/people/remove/:personid/group/:groupid', :to => 'groups#removeperson'
 
   # map.locales 'locales/:locale', :controller => 'locales', :action => 'show'
   # We can now include links in views for switching languages as below:
