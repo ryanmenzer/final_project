@@ -9,6 +9,11 @@
     our_people: "Våre folk"
     supporters: "Støttespillere"
     staff: "Personale"
+    initiatives:
+    sponsorships:
+    groups:
+    other:
+
   hi: Hullo verden!
   date:
     abbr_day_names:

@@ -18,6 +18,11 @@
     our_people: "Our People"
     supporters: "Supporters"
     staff: "Staff"
+    initiatives: "Initiatives"
+    sponsorships: "Sponsorships"
+    groups: "Groups"
+    other: "Other"
+
   date:
     formats:
       default: "%d/%m/%Y"
