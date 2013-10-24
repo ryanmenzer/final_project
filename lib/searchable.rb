@@ -2,8 +2,8 @@ module SearchableTenant
 
   ##################################################################  Params can be changed : https://github.com/algolia/algoliasearch-rails#search-settings
 
-  def search(query)
-    Algolia.client.get(Algolia::Protocol.search_uri(self.id, query, { "attributesToHighlight" => "full_name, email,title",  "hitsPerPage" => 5}))['hits']
+  def search(query, params)
+    Algolia.client.get(Algolia::Protocol.search_uri(self.id, query, params))['hits']
   end
 
   # build_index people: [:full_name, :email], groups: [:name], initiative: [:title]  <- have to be arrays
