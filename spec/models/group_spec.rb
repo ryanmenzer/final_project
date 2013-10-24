@@ -2,9 +2,9 @@ require 'spec_helper'
 
 describe Group do
 
-  context "Validations and Associations" do
+  context "validations and associations" do
 
-    context "Saving" do
+    context "saving" do
 
       before do
         tenant = Tenant.create(org_name: "Hello Inc")
@@ -39,7 +39,7 @@ describe Group do
     end
   end
 
-  context "Model associations" do
+  context "model associations" do
     it "should belong to manager" do
       group = Group.reflect_on_association(:manager)
       group.macro.should == :belongs_to
@@ -49,7 +49,6 @@ describe Group do
       group = Group.reflect_on_association(:members)
       group.macro.should == :has_and_belongs_to_many
     end
-   end
   end
-
+  end
 end

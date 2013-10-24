@@ -30,7 +30,10 @@ en:
     our_people: "Our People"
     supporters: "Supporters"
     staff: "Staff"
-
+    initiatives: "Initiatives"
+    sponsorships: "Sponsorships"
+    groups: "Groups"
+    other: "Other"
 
   date:
     abbr_day_names:
