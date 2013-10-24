@@ -30,7 +30,6 @@ describe "Homepage" do
     page.should have_link "Dashboard"
     page.should have_link "Our People"
       page.should have_link "List All"
-      page.should have_link "Add New"
     page.should have_link "Supporters"
     page.should have_link "Staff"
     page.should have_link "Initiatives"
@@ -45,11 +44,6 @@ describe "Homepage" do
   it "clicks on the People: List All link" do
     click_link('List All', match: :first)
     body.should have_content "All People"
-  end
-
-  it "clicks on the People: Add New link" do
-    find(".primary-sidebar").click_link("Add New")
-    page.should have_content "Add Person"
   end
 
   # it "clicks on the Supporters: List All link" do
@@ -69,7 +63,7 @@ describe "Homepage" do
 
   it "clicks on Groups" do
     find(".primary-sidebar").click_link("Groups")
-    page.should have_content "Groups" && "Name" && "Manager"
+    page.should have_content "Groups" && "Group name" && "Leader"
   end
 
   # it "clicks on Settings" do
