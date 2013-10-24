@@ -7,6 +7,7 @@ class Person < ActiveRecord::Base
   # end
 
   acts_as_tenant
+  before_save :set_full_name
 
   attr_accessible :category_id,
                   :user_id,
@@ -72,6 +73,10 @@ class Person < ActiveRecord::Base
 
   def in_initiative?(initiative)
     self.initiatives.include?(initiative)
+  end
+
+  def set_full_name
+    self.full_name = "#{first_name} #{last_name}"
   end
 
 end
