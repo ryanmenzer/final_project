@@ -3,14 +3,14 @@ module SearchableTenant
   ##################################################################  Params can be changed : https://github.com/algolia/algoliasearch-rails#search-settings
 
   def search(query, params)
-    Algolia.client.get(Algolia::Protocol.search_uri(self.id, query, params))['hits']
+    Algolia.client.get(Algolia::Protocol.search_uri(self.subdomain, query, params))['hits']
   end
 
   # build_index people: [:full_name, :email], groups: [:name], initiative: [:title]  <- have to be arrays
 
   def build_index(params)
-    index = Algolia::Index.new(self.id)
-    
+    index = Algolia::Index.new(self.subdomain)
+
     params.each do |tablename, getters|
       klass = Object.const_get(tablename.to_s.classify)
 
@@ -37,8 +37,8 @@ module Searchable
   #
 
   def make_searchable(*attrs)
-    index = Algolia::Index.new(self.tenant.id)
-    object_params = {"id" => self.id, 
+    index = Algolia::Index.new(self.tenant.subdomain)
+    object_params = {"id" => self.id,
                      "tablename" => self.class.table_name,
                       "url" => "/#{self.class.table_name}/#{self.id}"}
 
@@ -49,6 +49,6 @@ module Searchable
     index.add_object(object_params)
 
   end
- 
+
 end
 
