@@ -1,5 +1,5 @@
 class StoriesController < ApplicationController
-
+  filter_access_to :all
   def new
     @story = Story.new
     @story.author_id = current_user.id

@@ -1,1 +1,129 @@
+<div class="container">
 
+  <div class="row">
+
+    <div class="area-top clearfix">
+      <div class="pull-left header">
+        <h3 class="title">
+          <i class="icon-dashboard"></i>Dashboard
+        </h3>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <div class="box">
+      <div class="box-header">
+        <span class="title">MOST RECENT STORIES</span>
+      </div>
+      <div class="box-content scrollable" style="height: 300px; overflow-y: auto">
+        <!-- find me in partials/news_with_icons -->
+
+        <% @stories.each do |s| %>
+        <div class="box-section news with-icons">
+          <div class="avatar blue"><i class="icon-comment icon-2x"></i></div>
+          <div class="news-time">
+            <span><%= s.updated_at.strftime("%d") %></span> <%= s.updated_at.strftime("%B") %>
+          </div>
+          <div class="news-content">
+            <div class="news-title"><a href="#"><%= s.title %></a></div>
+            <div class="news-text">
+              <%= s.content %>
+            </div>
+          </div>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-3">
+    <div class="box">
+      <div class="box-header">
+        <span class="title">LAST UPDATED INITIATIVE</span>
+      </div>
+      <% if @initiative %>
+      <div class="box-content padded news-title"><%= link_to @initiative.title, @initiative, :method => :get %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="col-md-3">
+    <div class="box">
+      <div class="box-header">
+        <span class="title"><i class="icon-comment-alt="></i> CURRENT PEOPLE STATS</span>
+      </div>
+      <div class="box-content title", style="padding: 7px;">People:
+        <%= @people.select{ |p| p.category_id == 2 }.count %>
+      </div>
+      <div class="box-content title", style="padding: 7px;">Workers:
+        <%= @people.select{ |p| p.category_id == 1 }.count %>
+      </div>
+      <div class="box-content title", style="padding: 7px;">Sponsors:
+        <%= @people.select{ |p| p.category_id == 3 }.count %>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <div class="box">
+      <div class="box-header">
+        <span class="title">LAST UPDATED INITIATIVE FUNDING STATS</span>
+      </div>
+      <div style="height: 158px;" id="myChart">
+      <script>
+      var data = {
+        "xScale": "ordinal",
+        "yScale": "linear",
+        "main": [
+          {
+            "className": ".init-funds",
+            "data": [
+              {
+                "x": "<%= @initiatives[0].title %>",
+                "y": <%= @sums[0] %>
+              },
+              {
+                "x": "<%= @initiatives[1].title %>",
+                "y": <%= @sums[1] %>
+              }
+            ]
+          }
+        ]
+        };
+        var myChart = new xChart('bar', data, '#myChart');
+        </script>
+      </div>
+    </div>
+  </div>
+
+  <div style="clear:both;"></div>
+
+  <div class="col-md-12">
+    <div class="box">
+      <div class="box-header">
+        <div class="title">All images</div>
+        <ul class="box-toolbar">
+          <li>
+            <form class="fill-up" style="width: 100px">
+              <label class="input-with-submit">
+                <input type="text" placeholder="Search...">
+                <button type="submit" class="submit-icon">
+                  <i class="icon-search"></i>
+                </button>
+              </label>
+            </form>
+          </li>
+        </ul>
+      </div>
+
+      <div id="thumbs">
+        <% @images.each do |image| %>
+          <a href="<%= image.url.medium %>" style="background-image:url(<%= image.url.square %>)" title="<%= image.title %>"></a>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+</div>

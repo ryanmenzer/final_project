@@ -73,6 +73,10 @@ group :test do
   gem 'shoulda-matchers'
 end
 
+gem "declarative_authorization", "~> 0.5.7"
+# gem "gemcutter"
+# gem "tumble"
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

@@ -1,31 +1,84 @@
 <div class="container">
-<div class="box-header">
-
-  <div class="title">
-
-    <table class="table table-hover">
-      <thead>
-        <tr class="info">
-          <td>Name</td>
-          <td>Manager</td>
-        </tr>
-      </thead>
-      <tbody>
-        <% @groups.each do |s| %>
-          <tr>
-            <td><a href="groups/<%= s.id %>"><%= s.name  %></a></td>
-            <% unless s.manager == nil %> 
-            <td><a href="groups/<%= s.id %>"><%= s.manager.full_name %></a></td>
-            <% end %> 
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
+  <div class="row">
+    <div class="area-top clearfix">
+      <div class="pull-left header">
+        <h3 class="title">
+          <i class="icon-group"></i>
+            Groups
+        </h3>
+      </div>
+    </div>
   </div>
-  <%= will_paginate @sponsorships %>
-</div>
-<div>
 
+  <div class="row">
+    <div class="col-md-8">
+    <div class="box">
+      <div class="box-header">
+        <span class="title">Groups</span>
+        <ul class="box-toolbar">
+          <li><span class="label label-green"><%= @groups.count %> groups</span></li>
+        </ul>
+      </div>
+      <div class="box-content">
+        <table class="table table-normal">
+          <thead>
+          <tr>
+            <td>Group name</td>
+            <td>Leader</td>
+            <td>Members</td>
+            <td style="width: 40px"></td>
+          </tr>
+          </thead>
+
+          <tbody>
+            <% @groups.each do |group| %>
+            <tr class="status-pending">
+              <td><a href="#"><%= group.name %></a></td>
+              <td><b><%= group.manager.full_name %></b></td>
+              <td><p class="text-center"><span class="label label-<%= group.members.count == 0 ? "red" : "gray" %>"><%= group.members.count %> members</span></p></td>
+              <td>
+                <div class="btn-group">
+                  <button class="btn btn-xs btn-default dropdown-toggle" data-toggle="dropdown"><i class="icon-cog"></i></button>
+                  <ul class="dropdown-menu">
+                    <li><a href="#create-email" data-toggle="modal">Email group</a></li>
+                    <li><a href="#">Email leader</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">Add people</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">Delete group</a></li>
+                  </ul>
+                </div>
+              </td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+        <%= will_paginate @groups %>
+      </div>
+    </div>
+
+
+    </div>
+      <div class="col-md-4">
+        <div class="box">
+          <div class="box-header">
+            <span class="title">Actions</span>
+          </div>
+          <div class="padded">
+            <div class="action-nav-normal action-nav-line">
+              <div class="row action-nav-row ">
+                <div class="col-sm-6 action-nav-button">
+                  <a href="<%= url_for(new_group_path)%>" title="New Project">
+                    <i class="icon-group"></i>
+                    <span>Create Group</span>
+                  </a>
+                  <span class="triangle-button green"><i class="icon-plus"></i></span>
+                </div>
+              </div>
+            </div>
+            </div>
+        </div>
+      </div>
+    </div>
 </div>
-</div>
-<%= link_to 'Create Group', new_group_path, :class => "btn btn-blue"%>
+<%= render 'modals/create_email' %>

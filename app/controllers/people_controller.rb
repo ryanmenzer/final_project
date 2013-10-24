@@ -1,4 +1,5 @@
 class PeopleController < ApplicationController
+  filter_access_to :all
   def index
     if params[:cat]
       @people = Person.where(category_id: params[:cat]).paginate(page: params[:page])
@@ -44,10 +45,19 @@ class PeopleController < ApplicationController
     redirect_to people_path
   end
 
-  # def addgroup 
-  #   @person = Person.find(params[:id])
-  #   @group = Group.find(1)
-  # end 
+  def editroleform 
+    @person = Person.find(params[:id])
+    @roleall = Role.all
+  end 
+
+  def editrole
+    p role_id = params[:person][:id]
+    p user_id = params[:id]
+    user = User.find(user_id)
+    user.role_id = role_id
+    user.save
+    redirect_to(person_path(user))
+  end 
 
 end
 
