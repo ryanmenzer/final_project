@@ -1,8 +1,8 @@
 require 'spec_helper'
 
 describe Image do
-    context "Validations and Associations" do
-      context "Saving" do
+    context "validations and associations" do
+      context "saving" do
         before do
           @tenant = Tenant.create!(org_name: "Hello Inc")
           Tenant.set_current_tenant @tenant.id
