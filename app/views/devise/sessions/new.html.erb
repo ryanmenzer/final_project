@@ -1,10 +1,17 @@
 <div class="container">
 
+
+  <div class="row-fluid well" style="margin-top: 70px; margin-left: 0px;">
+       <div class="span5 offset2">
+          <center><%= image_tag('oliwi-logo-wide.png', :size => "360x70") %></center>
+       </div>
+  </div>
+
+
+
 <div class="col-md-4 col-md-offset-4">
-
-
   <div class="padded">
-    <div class="login box" style="margin-top: 80px;">
+    <div class="login box" style="margin-top: 40px;">
 
       <div class="box-header">
         <span class="title">Login</span>
@@ -52,15 +59,15 @@
   <% end -%>
 
 
-  <div><%= f.submit "Login", class: "btn btn-blue btn-block" %><i class='icon-signin'></i></div>
+  <div><%= f.submit "Login", class: "btn btn-default btn-block" %><!-- <i class='icon-signin'></i> --></div>
 <% end %>
 
 <%= render "devise/shared/links" %>
 
         <div>
-          <a href="sign_up.html">
+         <!--  <a href="sign_up.html">
               Don't have an account? <strong>Sign Up</strong>
-          </a>
+          </a> -->
         </div>
       </div>
     </div>
