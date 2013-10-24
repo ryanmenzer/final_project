@@ -15,8 +15,12 @@ class PeopleController < ApplicationController
 
 	def create
 		@person = Person.new(params[:person])
-		@person.save
-		render 'new_person'
+		if @person.save
+      flash[:success] = "#{@person.full_name} has been added successfully."
+    else
+      flash[:error] = "Soory. Somethign went wrong."
+    end
+		redirect_to :back
 	end
 
 	def edit
@@ -45,10 +49,10 @@ class PeopleController < ApplicationController
     redirect_to people_path
   end
 
-  def editroleform 
+  def editroleform
     @person = Person.find(params[:id])
     @roleall = Role.all
-  end 
+  end
 
   def editrole
     p role_id = params[:person][:id]
@@ -57,7 +61,7 @@ class PeopleController < ApplicationController
     user.role_id = role_id
     user.save
     redirect_to(person_path(user))
-  end 
+  end
 
 end
 
