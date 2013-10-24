@@ -9,10 +9,10 @@
     our_people: "Våre folk"
     supporters: "Støttespillere"
     staff: "Personale"
-    initiatives:
-    sponsorships:
-    groups:
-    other:
+    initiatives: "Sponsorprogrammer"
+    sponsorships: "Sponsoravtaler"
+    groups: "Grupper"
+    settings: "Innstillinger"
 
   hi: Hullo verden!
   date:
