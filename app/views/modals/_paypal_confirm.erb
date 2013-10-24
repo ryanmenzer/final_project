@@ -8,17 +8,14 @@
       <div class="modal-body">
           <div>
             <div class="header">Confirm paypal</div>
-            <% test = @sponsorship.paypal_payments.last %>
-            <% if test %>
-            <%= test.paypal_payer_id %>
-            <%= test.paypal_token %>
-            <%= test.paypal_recurring_token %>
-            <% end  %>
+                Payment of <%= @paypal_payment.amount %> dollars <br>
+                To: <%= @paypal_payment.tenant.org_name %> <br>
+                for <%= @paypal_payment.sponsorship.initiative.title %>
           </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <%= button_to('Confirm', "/paypal_payments/#{test.id}/confirm",
+        <%= button_to('Confirm', "/paypal_payments/#{@paypal_payment.id}/confirm",
           :method => "POST", :disable_with => 'processing...', class: "btn btn-blue") %>
       </div>
     </div><!-- /.modal-content -->

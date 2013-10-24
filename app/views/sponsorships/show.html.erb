@@ -70,7 +70,10 @@
 <%= link_to 'Pay finish', "#modal-paypal-confirm", :class => "btn btn-blue", :data => {toggle: "modal"}%>
 </div>
 <%= render "modals/paypal" %>
-<% if @sponsorship.paypal_payments.last %>
+
+
+<% if @paypal_payment %>
   <%= render "modals/paypal_confirm" %>
+  <div id="paypal-confirmation"></div>
 <% end %>
 
