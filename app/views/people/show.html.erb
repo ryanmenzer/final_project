@@ -8,6 +8,7 @@
         <h3>
       </div> 
     </div>
+
   </div> 
 
   <div class="row">
@@ -86,17 +87,23 @@
   <% @story_type = {type: "Person", id: @person.id} %>
   <%= render 'modals/new_story' %>
 
-  <%= link_to "Edit", :edit_person, :class => "inline btn btn-blue", :controller => :people, :method => :get %>
-          <%= link_to 'Add to group', "/people/addgroup/#{@person.id}", :class => "inline btn btn-blue"%>
+ 
 
-          <% unless @person.user == nil %>
-            <%= link_to 'Edit Role', "/people/editroleform/#{@person.id}", :class => "btn btn-blue"%>
-          <% end %>
+ 
 
-          <% if @person.category_id == 1 || @person.category_id == 2 %>
-          <%= link_to 'Create Story', new_story_path(object_id: @person.id, object_type: @person.class.name ), :class => "btn btn-blue"%>
-          <% end %>
 
-          <%= link_to 'Destroy', @person, :class => "inline btn btn-red", :confirm => 'Are you sure?', :method => :delete %>
-          <div class="control-group clear">
+<%= link_to "Edit", :edit_person, :class => "inline btn btn-blue", :controller => :people, :method => :get %>
+<%= link_to 'Add to group', "/people/addgroup/#{@person.id}", :class => "inline btn btn-blue"%>
+
+<% unless @person.user == nil %>
+	<%= link_to 'Edit Role', "/people/editroleform/#{@person.id}", :class => "btn btn-blue"%>
+<% end %>
+
+<% if @person.category_id == 1 || @person.category_id == 2 %>
+<%= link_to 'Create Story', new_story_path(object_id: @person.id, object_type: @person.class.name ), :class => "btn btn-blue"%>
+<% end %>
+
+<%= link_to 'Destroy', @person, :class => "inline btn btn-red", :confirm => 'Are you sure?', :method => :delete %>
+
+          
 

@@ -1,8 +1,8 @@
 UnusUniRails3::Application.routes.draw do
 
-  devise_for :users, :controllers => { :registrations => "milia/registrations" }
 
   scope "(:locale)", locale: /en|no|es|tl/ do
+  devise_for :users, :controllers => { :registrations => "milia/registrations" }
     root to: "homes#index"
     resources :emails
     resources :people

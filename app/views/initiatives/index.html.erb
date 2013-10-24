@@ -10,28 +10,68 @@
     </div>
   </div>
 
-  <table class="table table-normal">
-    <thead>
-      <tr>
-        <td>Title</td>
-        <td>Description</td>
-        <td>Goal</td>
-        <td>Start Date</td>
-        <td>End Date</td>
-      </tr>
-    </thead>
-    <tbody>
-      <% @initiatives.each do |i| %>
-        <tr>
-          <td><%= link_to i.title, initiative_path(i) %></a></td>
-          <td><%=h truncate(i.description, :length => 50) %></a></td>
-          <td><%= i.goal %></a></td>
-          <td><%= i.start_date %></a></td>
-          <td><%= i.end_date %></a></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-<%= will_paginate @initiatives %>
+  <div class="row">
+    <div class="col-md-8">
+      <div class="box">
+        <div class="box-header">
+          <span class="title">Initiatives</span>
+          <ul class="box-toolbar">
+            <li><span class="label label-green"><%= @initiatives.count %> initiatives</span></li>
+          </ul>
+        </div>
+      <div class="box-content">
+        <table class="table table-normal">
+          <thead>
+            <tr>
+              <td>Title</td>
+              <td>Description</td>
+              <td>Goal</td>
+              <td>Start Date</td>
+              <td>End Date</td>
+            </tr>
+          </thead>
+          <tbody>
+            <% @initiatives.each do |i| %>
+              <tr>
+                <td><%= link_to i.title, initiative_path(i) %></a></td>
+                <td><%=h truncate(i.description, :length => 50) %></a></td>
+                <td><%= i.goal %></a></td>
+                <td><%= i.start_date %></a></td>
+                <td><%= i.end_date %></a></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+        <%= will_paginate @initiatives %>
+      </div>
+    </div>
+
+  </div>
+    <div class="col-md-4">
+      <div class="box">
+      <div class="box-header">
+        <span class="title">Actions</span>
+      </div>
+      <div class="padded">
+        <div class="action-nav-normal action-nav-line">
+          <div class="row action-nav-row ">
+            <div class="col-sm-6 action-nav-button">
+              <a href="<%= url_for(new_initiative_path)%>" title="New Initiative">
+                <i class="icon-group"></i>
+                <span>Create Initiative</span>
+              </a>
+              <span class="triangle-button green"><i class="icon-plus"></i></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  </div>
+
+
+
+
 
 </div>
