@@ -42,8 +42,10 @@
       <div class="box-header">
         <span class="title">LAST UPDATED INITIATIVE</span>
       </div>
+      <% if @initiative %>
       <div class="box-content padded news-title"><%= link_to @initiative.title, @initiative, :method => :get %>
       </div>
+      <% end %>
     </div>
   </div>
 
@@ -69,6 +71,7 @@
       <div class="box-header">
         <span class="title">LAST UPDATED INITIATIVE FUNDING STATS</span>
       </div>
+      <% unless @initiatives == [] %>
       <div style="height: 158px;" id="myChart">
       <script>
       var data = {
@@ -93,6 +96,7 @@
         var myChart = new xChart('bar', data, '#myChart');
         </script>
       </div>
+      <% end %>
     </div>
   </div>
 

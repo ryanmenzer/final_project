@@ -1,42 +1,65 @@
-Receivers:
-<br>
-<% @sponsorship.receivers.each do |s| %>
-  <% if s.receiverable_type == "Person" %>
-    <%= s.receiverable.full_name %>
-  <% elsif s.receiverable_type == "Project" %>
-    <%= s.receiverable.name %>
-  <% end %>
-<% end %>
-<br>
-<br>
-Sponsors: <br>
-  <% @sponsorship.sponsors.each do |t| %>
-    <%= t.full_name %>
-  <% end %>
-<br>
-<br>
+<div class="container">
 
+    <div class="row">
 
-Transactions: <br>
+      <div class="area-top clearfix">
+        <div class="pull-left header">
+          <h3 class="title">
+            <i class="icon-heart"></i>
+            Sponsorship #<%= @sponsorship.id %>
+          </h3>
+        </div>
+      </div>
+    </div>
+    <div class="box">
+      <div class="box-content padded">
+        <div class="row">
+          <div class="col-md-4">
+            <h4>Sponsors: </h4>
+            <% @sponsorship.receivers.each do |s| %>
+              <% if s.receiverable_type == "Person" %>
+                <h5><%= s.receiverable.full_name %></h5>
+              <% elsif s.receiverable_type == "Project" %>
+                <h5><%= s.receiverable.name %></h5>
+              <% end %>
+            <% end %>
+          </div>
+          <div class="col-md-4" style="width: 100px;">
+            <i class="icon-angle-right icon-4x"></i>
+          </div>
+          <div class="col-md-4">
+            <h4>Receivers: </h4>
+            <% @sponsorship.sponsors.each do |t| %>
+              <h5><%= t.full_name %></h5>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
 
-<table class="table table-normal">
-  <thead>
-    <tr>
-      <td>Date</td>
-      <td>Full name</td>
-      <td>Amount</td>
-    </tr>
-  </thead>
-  <tbody>
-    <% @sponsorship.transactions.each do |t| %>
-      <tr>
-        <td>date: <%= t.date %> </td>
-        <td>sponsor: <%= t.payer.full_name  %> </td>
-        <td>amount: <%= t.amount %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  <div class="box">
+    <div class="box-header">
+      <h4 style="margin: 10px;">Transactions</h4>
+      <table class="table table-normal">
+        <thead>
+          <tr>
+            <td>Date</td>
+            <td>Full name</td>
+            <td>Amount</td>
+          </tr>
+        </thead>
+        <tbody>
+          <% @sponsorship.transactions.each do |t| %>
+            <tr>
+              <td>date: <%= t.date %> </td>
+              <td>sponsor: <%= t.payer.full_name  %> </td>
+              <td>amount: <%= t.amount %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
 
 
 
@@ -45,7 +68,7 @@ Transactions: <br>
 <%= link_to 'Pay with paypal', "#modal-paypal", :class => "btn btn-blue", :data => {toggle: "modal"}%>
 
 <%= link_to 'Pay finish', "#modal-paypal-confirm", :class => "btn btn-blue", :data => {toggle: "modal"}%>
-
+</div>
 <%= render "modals/paypal" %>
 
 

@@ -2,65 +2,69 @@
 
   <%= render 'partials/header' %>
 
-<div class="row">
+  <div class="row">
 
-  <div class="col-md-6">
-    <div class="box">
-      <div class="box-header">
-      <span class="title">Settings</span>
-      </div>
-      <div class="padded">
-        <div class="row">
-          <div class="col-md-8">
-          <%= simple_form_for @settings do |f| %>
-          <%= f.input :display_name %>
-          <%= f.input :logo_id %>
-          <%= f.input :cat_1_name %>
-          <%= f.input :cat_2_name %>
-          <%= f.input :cat_3_name %>
-          <%= f.input :default_email %>
-          <%= f.button :submit %>
-          <% end %>
-          </div>
-          <div class="col-md-4">
-          <div class="avatar">
-                <img src="<%= @settings.avatar %>">
-              </div>
-            <%= link_to 'Change logo', "#modal-image", :class => "inline btn btn-lg btn-brown", :data => {toggle: "modal"} %>
+    <div class="col-md-6">
+      <div class="box">
+        <div class="box-header">
+          <span class="title">Settings</span>
+        </div>
+        <div class="padded">
+          <div class="row">
+            <div class="col-md-9">
+            <%= simple_form_for @settings do |f| %>
+            <%= f.input :display_name %>
+            <%= f.input :cat_1_name %>
+            <%= f.input :cat_2_name %>
+            <%= f.input :cat_3_name %>
+            <%= f.input :default_email %>
+            <%= f.button :submit, button: true %>
+            <% end %>
+            </div>
           </div>
         </div>
       </div>
     </div>
-
-  </div>
-
-  <div class="col-md-6">
-    <div class="box">
-      <div class="box-header">
-        <ul class="nav nav-tabs nav-tabs-left">
-          <li class="active"><a href="#email" data-toggle="tab"><i class="icon-envelope"></i><span> Email settings</span></a></li>
-          <li class=""><a href="#paypal" data-toggle="tab"><i class="icon-money"></i> <span> Paypal settings</span></a></li>
-        </ul>
-
-        <div class="title">Left tabs</div>
+    <div class="col-md-3">
+      <div class="box">
+        <div class="padded">
+    <!-- <div class="well well-small"> -->
+          <img src="<%= @settings.avatar %>">
+        </div>
+        <div class="control-group clear">
+         <%= link_to 'Change logo', "#modal-image", :class => "inline btn btn-sm btn-blue", :data => {toggle: "modal"} %>
+        </div>
       </div>
+    </div>
 
-      <div class="box-content padded">
-        <div class="tab-content">
-          <div class="tab-pane active" id="email">
-            <%= simple_form_for @paypal do |f| %>
-              <%= f.input :api_username %>
-              <%= f.input :api_password %>
-              <%= f.input :api_signature %>
-            <%= f.button :submit %>
-            <% end %>
-          </div>
-          <div class="tab-pane" id="paypal">
-            <%= simple_form_for @mandrill do |f| %>
-              <%= f.input :api_email %>
-              <%= f.input :api_key %>
-            <%= f.button :submit %>
-            <% end %>
+    <div class="col-md-5">
+      <div class="box">
+        <div class="box-header">
+          <ul class="nav nav-tabs nav-tabs-left">
+            <li class="active"><a href="#email" data-toggle="tab"><i class="icon-envelope"></i><span> Email settings</span></a></li>
+            <li class=""><a href="#paypal" data-toggle="tab"><i class="icon-money"></i> <span> Paypal settings</span></a></li>
+          </ul>
+
+          <div class="title"></div>
+        </div>
+
+        <div class="box-content padded">
+          <div class="tab-content">
+            <div class="tab-pane active" id="email">
+              <%= simple_form_for @mandrill do |f| %>
+                <%= f.input :api_email %>
+                <%= f.input :api_key %>
+              <%= f.button :submit %>
+              <% end %>
+            </div>
+            <div class="tab-pane" id="paypal">
+              <%= simple_form_for @paypal do |f| %>
+                <%= f.input :api_username %>
+                <%= f.input :api_password %>
+                <%= f.input :api_signature %>
+              <%= f.button :submit %>
+              <% end %>
+            </div>
           </div>
         </div>
       </div>

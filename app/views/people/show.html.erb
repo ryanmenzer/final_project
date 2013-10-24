@@ -1,47 +1,67 @@
-<h1>Name: <%= @person.full_name %></h1>
+<div class="container">
+	<div class="row">
+    <div class="area-top clearfix">
+      <div class="pull-left header">
+        <h3 class="title">
+          <i class="icon-user"></i>
+          <%= @person.full_name %>
+        </h3>
+      </div>
+    </div>
+  </div>
+  <div class="box">
+    <div class="box-content padded">
+      <div class="row">
+        <div class="col-md-4">
+          <h4>User Id: <%= @person.id %></h4>
+        </div>
+        <div class="col-md-4">
+          <h4>Category: <%= @person.category.name %></h4>
+        </div>
+        <div class="col-md-4">
+          <h4>Gender: <%= @person.gender %></h4>
+        </div>
+        <div class="col-md-4">
+          <h4>Nationality: <%= @person.nationality %></h4>
+        </div>
+        <div class="col-md-4">
+          <h4>Phone Number: <%= @person.phone_number %></h4>
+        </div>
+        <div class="col-md-4">
+          <h4>Date of Birth: <%= @person.date_of_birth %></h4>
+        </div>
+        <div class="col-md-4">
+          <h4>Stories: <% @person.stories.each do |t| %></h4>
+              <h6> title: </h6> <%= t.title %> 
+              <h6> content: </h6> <%= t.content %> 
+              <br> 
+              <% end %>
+        </div>
+	    </div>
+	  </div>
+	</div>
+</div>
 
-<%= flash[:notice] %>
-<%= Tenant.current_tenant.id %>
-
-<br>
-	<p>
-	  User Id: <%= @person.id %>
-	</p>
-	<p>
-	  Category: <%= @person.category.name %>
-	</p>
-<!-- 	<p>
-		Full Name: <%= @person.full_name %> -->
-<!--     First Name: <%= @person.first_name %>
-    Last Name: <%= @person.last_name %> -->
-<!-- 	</p> -->
-	<p>
-    Gender: <%= @person.gender %>
-	</p>
-	<p>
-		Nationality: <%= @person.nationality %>
-	</p>
-	<p>
-    Phone No.: <%= @person.phone_number %>
-	</p>
-	<p>
-		Date of Birth: <%= @person.date_of_birth %>
-	</p>
-
-
-	<%= button_to "Edit", :edit_person, :class => "btn btn-blue", :controller => :people, :method => :get %>
-	<%= button_to 'Destroy', @person, :class => "btn btn-blue", :confirm => 'Are you sure?', :method => :delete %>
-  <%= link_to 'Add to group', "/people/addgroup/#{@person.id}", :class => "btn btn-blue"%> <br> 
+	<%= link_to "Edit", :edit_person, :class => "inline btn btn-blue", :controller => :people, :method => :get %>
+  <%= link_to 'Add to group', "/people/addgroup/#{@person.id}", :class => "inline btn btn-blue"%>
 
 	<% unless @person.user == nil %>
-		<%= link_to 'Edit Role', "/people/editroleform/#{@person.id}", :class => "btn btn-blue"%> <br> 
-		
+		<%= link_to 'Edit Role', "/people/editroleform/#{@person.id}", :class => "btn btn-blue"%>
 	<% end %>
-
 
 	<% if @person.category_id == 1 || @person.category_id == 2 %>
-  <%= link_to 'Create Story', new_story_path(object_id: @person.id, object_type: @person.class.name ), :class => "btn btn-blue"%> <br> 
+  <%= link_to 'Create Story', new_story_path(object_id: @person.id, object_type: @person.class.name ), :class => "btn btn-blue"%>
 	<% end %>
 
+	<%= link_to 'Destroy', @person, :class => "inline btn btn-red", :confirm => 'Are you sure?', :method => :delete %>
 
 
+
+<div class="control-group clear">
+	<br> 
+  <%= link_to 'Write Story', "#new-story", :class => "inline btn btn-sm btn-blue", :data => {toggle: "modal"} %>
+</div>
+
+ <%= flash[:success] %> 
+<% @story_type = {type: "Person", id: @person.id} %>
+<%= render 'modals/new_story' %>
