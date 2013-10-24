@@ -12,9 +12,9 @@
     Tenant.current_tenant
   end
 
-  def email_story(story)
+  def email_story(storycomplete)
     require 'mandrill'
-    @story = story
+    @story = storycomplete
     email_array = [{:email=> "eigil@sagafos.no",:name=> "Eigil Sagafos"},
                    {:email=> "titipongpisit2013@gmail.com",:name=> "Tee Thai"}]
 

@@ -1,0 +1,30 @@
+<div id="new-story" class="modal fade" style="display: none;" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 class="modal-title">Write Story</h4>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+          <%= simple_form_for Story.new, wrapper: :placeholder do |f| %>
+            Story Title: 
+            <%= f.input :title %>
+            Story Content: 
+            <%= f.input :content %>
+
+           <%= f.input :send_email, :as => :boolean, :input_html => { :checked => "checked" }, :placeholder => "Send email to sponsors" %> Send email to sponsors 
+            <%#= f.input :content, as: :check_boxes %> 
+            <%= f.input :storyable_id, as: :hidden, input_html: { value: @story_type[:id], name: "storyable_for[id]" } %>
+            <%= f.input :storyable_type, as: :hidden, input_html: { value: @story_type[:type], name: "storyable_for[type]" } %>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+         <%= f.button :submit, value: "Save Story" %>
+          <% end %>
+        <!-- <button type="button" class="btn btn-blue">Upload image</button> -->
+      </div>
+    </div><!-- /.modal-content -->
+  </div>
+</div>
