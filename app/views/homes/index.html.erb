@@ -21,12 +21,27 @@
 
         <% @stories.each do |s| %>
         <div class="box-section news with-icons">
-          <div class="avatar blue"><i class="icon-comment icon-2x"></i></div>
+          <div class="avatar blue">
+           <% if s.storyable_type == "Person" %>
+              <i class="icon-user icon-2x"></i>  
+              <% elsif s.storyable_type == "Project"%>
+               <i class="icon-bullhorn icon-2x"></i> 
+              <% end %>
+              
+
+            </div>
+          
           <div class="news-time">
             <span><%= s.updated_at.strftime("%d") %></span> <%= s.updated_at.strftime("%B") %>
           </div>
           <div class="news-content">
-            <div class="news-title"><a href="#"><%= s.title %></a></div>
+            <div class="news-title"><a href="#">
+              <% if s.storyable_type == "Person" %>
+                <%= s.storyable.full_name %> <br />
+              <% elsif s.storyable_type == "Project"%>
+                <%= s.storyable.name %> <br />
+                <% end %>
+              <%= s.title %></a></div>
             <div class="news-text">
               <%= s.content %>
             </div>
