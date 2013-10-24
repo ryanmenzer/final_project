@@ -1,67 +1,90 @@
 <div class="container">
-	<div class="row">
+  <div class="row">
     <div class="area-top clearfix">
       <div class="pull-left header">
         <h3 class="title">
-          <i class="icon-user"></i>
+          <i class="icon group"></i>    
           <%= @person.full_name %>
-        </h3>
-      </div>
+        <h3>
+      </div> 
     </div>
+  </div> 
+
+  <div class="row">
+    <div class="col-md-8">
+      <div class="box">
+          <div class="box-header">
+              <span class="title">Profile</span>
+          </div>
+          
+          <div class="box-content">
+            <div class="row">
+              <div class="col-md-4">
+                <h5>User Id: <%= @person.id %></h5> 
+                <h5>Category: <%= @person.category.name %></h5>
+                <h5>Gender: <%= @person.gender %></h5>
+                <h5>Nationality: <%= @person.nationality %></h5>
+                <h5>Phone Number: <%= @person.phone_number %></h5>
+                <h5>Date of Birth: <%= @person.date_of_birth %></h5>
+              </div> 
+              <div class="col-md-7">
+                <h4>Stories:  </h4>
+                <div class="box-content scrollable" style="height: 300px; overflow-y: auto">
+                <% @person.stories.each do |s| %>
+                    <div class="box-section news with-icons">
+                      <div class="avatar blue"><i class="icon-comment icon-2x"></i></div>
+                      <div class="news-time">
+                        <span><%= s.updated_at.strftime("%d") %></span> <%= s.updated_at.strftime("%B") %>
+                      </div>
+                      <div class="news-content">
+                        <div class="news-title"><a href="#"><%= s.title %></a></div>
+                        <div class="news-text">
+                          <%= s.content %>
+                        </div>
+                      </div>
+                    </div>
+                <% end %>
+              </div>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>  
+   
+  
+    <div class="col-md-4">
+        <div class="box">
+          <div class="box-header">
+            <span class="title">Actions</span>
+          </div>
+          <div class="padded">
+            <div class="action-nav-normal action-nav-line">
+              <div class="row action-nav-row ">
+                <div class="col-sm-6 action-nav-button">
+                  <a href="#new-story" title="Write Story" data-toggle="modal">
+                    <i class="icon-file-alt"></i>
+                    <span>Write Story</span>
+                  </a>
+                  <span class="triangle-button green"><i class="icon-plus"></i></span>
+                </div>
+              </div>
+            </div>
+            </div>
+        </div>
+      </div>
+
+
+
   </div>
-  <div class="box">
-    <div class="box-content padded">
-      <div class="row">
-        <div class="col-md-4">
-          <h4>User Id: <%= @person.id %></h4>
-        </div>
-        <div class="col-md-4">
-          <h4>Category: <%= @person.category.name %></h4>
-        </div>
-        <div class="col-md-4">
-          <h4>Gender: <%= @person.gender %></h4>
-        </div>
-        <div class="col-md-4">
-          <h4>Nationality: <%= @person.nationality %></h4>
-        </div>
-        <div class="col-md-4">
-          <h4>Phone Number: <%= @person.phone_number %></h4>
-        </div>
-        <div class="col-md-4">
-          <h4>Date of Birth: <%= @person.date_of_birth %></h4>
-        </div>
-        <div class="col-md-4">
-          <h4>Stories: <% @person.stories.each do |t| %></h4>
-              <h6> title: </h6> <%= t.title %> 
-              <h6> content: </h6> <%= t.content %> 
-              <br> 
-              <% end %>
-        </div>
-	    </div>
-	  </div>
-	</div>
-</div>
+</div> 
 
-	<%= link_to "Edit", :edit_person, :class => "inline btn btn-blue", :controller => :people, :method => :get %>
-  <%= link_to 'Add to group', "/people/addgroup/#{@person.id}", :class => "inline btn btn-blue"%>
-
-	<% unless @person.user == nil %>
-		<%= link_to 'Edit Role', "/people/editroleform/#{@person.id}", :class => "btn btn-blue"%>
-	<% end %>
-
-	<% if @person.category_id == 1 || @person.category_id == 2 %>
-  <%= link_to 'Create Story', new_story_path(object_id: @person.id, object_type: @person.class.name ), :class => "btn btn-blue"%>
-	<% end %>
-
-	<%= link_to 'Destroy', @person, :class => "inline btn btn-red", :confirm => 'Are you sure?', :method => :delete %>
+  
 
 
 
-<div class="control-group clear">
-	<br> 
-  <%= link_to 'Write Story', "#new-story", :class => "inline btn btn-sm btn-blue", :data => {toggle: "modal"} %>
-</div>
+  <%= flash[:success] %> 
+  <% @story_type = {type: "Person", id: @person.id} %>
+  <%= render 'modals/new_story' %>
 
- <%= flash[:success] %> 
-<% @story_type = {type: "Person", id: @person.id} %>
-<%= render 'modals/new_story' %>
+
+
