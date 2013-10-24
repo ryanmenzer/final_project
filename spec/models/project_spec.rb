@@ -3,32 +3,32 @@ require 'spec_helper'
 describe Project do
   context "validations and associations" do
     context "saving" do
-  	before do
-    	@tenant = Tenant.create(org_name: "Hello Inc")
-      Tenant.set_current_tenant @tenant.id
-      c = Category.create(name: "Staff")
-      r = Role.create(name: "Administrator")
-      @user = User.create(email: "hello@hello.com",
-                 password: "password",
-                 password_confirmation: "password",
-                 role_id: r.id)
-      @tenant.users << @user
-      manager =  Person.new(full_name: "Jim John Joe",
-                            user_id: @user.id,
-                            category_id: 1,
-                            gender: "male",
-                            nationality: "American",
-                            email: "jim@hello.com")
-  		@project = Project.new(manager_id: 1,
-  		                   name: "Innovative General Stuff")
-  		@project_no_name = Project.new(manager_id: 1,
-  		                   # name: "Innovative General Stuff"
-  		                   )
-  		@project_no_manager = Project.new(
-  			                 # manager_id: ,
-  		                   name: "Innovative Specific Stuff"
-  		                   )
-    end
+    	before do
+      	@tenant = Tenant.create(org_name: "Hello Inc")
+        Tenant.set_current_tenant @tenant.id
+        c = Category.create(name: "Staff")
+        r = Role.create(name: "Administrator")
+        @user = User.create(email: "hello@hello.com",
+                   password: "password",
+                   password_confirmation: "password",
+                   role_id: r.id)
+        @tenant.users << @user
+        manager =  Person.new(full_name: "Jim John Joe",
+                              user_id: @user.id,
+                              category_id: 1,
+                              gender: "male",
+                              nationality: "American",
+                              email: "jim@hello.com")
+    		@project = Project.new(manager_id: 1,
+    		                   name: "Innovative General Stuff")
+    		@project_no_name = Project.new(manager_id: 1,
+    		                   # name: "Innovative General Stuff"
+    		                   )
+    		@project_no_manager = Project.new(
+    			                 # manager_id: ,
+    		                   name: "Innovative Specific Stuff"
+    		                   )
+        end
 
 	    it "should save a project with a name" do
 	      expect(@project.save).to eq(true)
@@ -64,4 +64,17 @@ describe Project do
 		    project.macro.should == :has_many
       end
 	  end
+
+    context "field validations" do
+      it {should have_db_column(:tenant_id).of_type(:integer).with_options(:null => false ) }
+      it {should have_db_column(:manager_id).of_type(:integer).with_options(:null => false ) }
+      it {should have_db_column(:name).of_type(:string).with_options(:null => false ) }
+    end
+
+    context "database index validations" do
+      it { should have_db_index(:projects, :tenant_id) }
+      it { should have_db_index(:projects, :manager_id) }
+      it { should have_db_index(:projects, :name) }
+    end
+  end
 end
