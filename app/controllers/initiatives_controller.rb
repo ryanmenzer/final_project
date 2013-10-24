@@ -39,7 +39,10 @@ class InitiativesController < ApplicationController
 	end
 
 	def destroy
+		puts "====== method call ========="
 		@initiative = Initiative.find(params[:id])
+		puts "====== @ initiative ========"
+		puts @initiative
 		@initiative.destroy
 		redirect_to action: "index"
 	end
