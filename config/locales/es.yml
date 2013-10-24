@@ -1,5 +1,19 @@
 "es":
   hi: ¡Hola mundo!
+  top_nav:
+    select_language:
+    search:
+    profile:
+    logout:
+  menu:
+    dashboard:
+    our_people:
+    supporters:
+    staff:
+    initiatives:
+    sponsorships:
+    groups:
+    other:
 
   date:
     abbr_day_names:

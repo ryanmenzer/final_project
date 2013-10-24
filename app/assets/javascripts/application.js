@@ -9,7 +9,6 @@
 //
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
-//
 //= require vendor/jquery191
 //= require jquery_ujs
 //= require vendor/jqueryui1102
