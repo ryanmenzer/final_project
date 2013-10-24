@@ -7,12 +7,15 @@
 
           <% if current_page?('/people?cat=3') %>
              <i class="icon-trophy"></i>
+             <% @cat_id = 3 %>
              <%= 'Supporters' %>
           <% elsif current_page?('/people?cat=2')%>
             <i class="icon-user"></i>
+            <% @cat_id = 2 %>
             <%= 'All People' %>
           <% elsif current_page?('/people?cat=1')%>
             <i class="icon-key"></i>
+            <% @cat_id = 1 %>
             <%= 'Staff' %>
           <% end %>
 
