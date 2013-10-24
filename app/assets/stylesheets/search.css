@@ -1,0 +1,33 @@
+#search-result {
+  display: none;
+  position: absolute;
+  min-height: 40px;
+  margin-top: 10px;
+  min-width: 180px;
+}
+
+#search-result li {
+  position: relative;
+  text-align: center;
+  padding: 0;
+  display: block;
+  height: 50px;
+}
+
+
+
+#search-result li i {
+  left: 4px;
+  top: 10px;
+}
+
+#search-result li p {
+  margin-bottom: 0;
+  text-align: left;
+  padding-left: 42px;
+  padding-right: 6px;
+}
+
+#search-result li .name, #search-result li .full_name, #search-result li .title {
+  font-size: 15px;
+}
