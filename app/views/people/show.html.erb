@@ -34,14 +34,13 @@
 	  </div>
   </div>
 
+  <% unless @person.stories == [] %>
   <div class="col-md-6">
     <div class="box">
       <div class="box-header">
         <span class="title">MOST RECENT STORIES</span>
       </div>
       <div class="box-content scrollable" style="height: 300px; overflow-y: auto">
-      <!-- find me in partials/news_with_icons -->
-
       <% @person.stories.each do |s| %>
         <div class="box-section news with-icons">
           <div class="avatar blue"><i class="icon-comment icon-2x"></i></div>
@@ -59,6 +58,7 @@
       </div>
     </div>
   </div>
+  <% end %>
 </div>
 
 
