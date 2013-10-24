@@ -2,6 +2,12 @@ class Project < ActiveRecord::Base
 
   acts_as_tenant
 
+  include Searchable
+
+  after_save do
+    make_searchable :name
+  end
+
   attr_accessible :manager_id,
                   :name
 
