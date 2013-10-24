@@ -16,17 +16,42 @@
       <div class="box">
           <div class="box-header">
               <span class="title">Profile</span>
+                <ul class="box-toolbar">
+                  <a href="#" class="dropdown" data-toggle="dropdown">
+                    <li class="toolbar-link"><i class="icon-cog"></i>
+                      <ul class="dropdown-menu">
+                          <li>
+                            <a href="/people/<%=@person.id%>/edit">
+                                <i class="icon-pencil"></i>
+                                "Edit"
+                            </a>
+                            <a href="/people/addgroup/<%=@person.id%>">
+                                <i class="icon-plus-sign"></i>
+                                "Add to Group"
+                            </a>
+                            <% unless @person.user == nil %>
+                              <a href="/people/editroleform/<%=@person.id%>">
+                                  <i class="icon-pencil"></i>
+                                  "Edit Role"
+                              </a>
+                            <% end %>
+                      </ul> 
+                    </li> 
+                  </a>
+                </ul>
           </div>
           
           <div class="box-content">
             <div class="row">
               <div class="col-md-4">
-                <h5>User Id: <%= @person.id %></h5> 
-                <h5>Category: <%= @person.category.name %></h5>
-                <h5>Gender: <%= @person.gender %></h5>
-                <h5>Nationality: <%= @person.nationality %></h5>
-                <h5>Phone Number: <%= @person.phone_number %></h5>
-                <h5>Date of Birth: <%= @person.date_of_birth %></h5>
+                <div class="padded seperate-sections">
+                  <!-- <h5>User Id: <%= @person.id %></h5>  -->
+                  <h5>Category: <%= @person.category.name %></h5>
+                  <h5>Gender: <%= @person.gender %></h5>
+                  <h5>Nationality: <%= @person.nationality %></h5>
+                  <h5>Phone Number: <%= @person.phone_number %></h5>
+                  <h5>Date of Birth: <%= @person.date_of_birth %></h5>
+                </div> 
               </div> 
               <div class="col-md-7">
                 <h4>Stories:  </h4>
@@ -51,8 +76,7 @@
           </div>
       </div>
     </div>  
-   
-  
+
     <div class="col-md-4">
         <div class="box">
           <div class="box-header">
@@ -62,10 +86,12 @@
             <div class="action-nav-normal action-nav-line">
               <div class="row action-nav-row ">
                 <div class="col-sm-6 action-nav-button">
-                  <a href="#new-story" title="Write Story" data-toggle="modal">
-                    <i class="icon-file-alt"></i>
-                    <span>Write Story</span>
-                  </a>
+                  <% if @person.category_id == 1 || @person.category_id == 2 %>
+                    <a href="#new-story" title="Write Story" data-toggle="modal">
+                      <i class="icon-file-alt"></i>
+                      <span>Write Story</span>
+                    </a>
+                  <% end %>
                   <span class="triangle-button green"><i class="icon-plus"></i></span>
                 </div>
               </div>
@@ -73,37 +99,22 @@
             </div>
         </div>
       </div>
-
-
-
   </div>
 </div> 
 
-  
+
+<%#= link_to "Edit", :edit_person, :class => "inline btn btn-blue", :controller => :people, :method => :get %>
+<%#= link_to 'Add to group', "/people/addgroup/#{@person.id}", :class => "inline btn btn-blue"%>
+
+<% unless @person.user == nil %>
+	<%#= link_to 'Edit Role', "/people/editroleform/#{@person.id}", :class => "btn btn-blue"%>
+<% end %>
 
 
+<%#= link_to 'Destroy', @person, :class => "inline btn btn-red", :confirm => 'Are you sure?', :method => :delete %>
 
   <%= flash[:success] %> 
   <% @story_type = {type: "Person", id: @person.id} %>
   <%= render 'modals/new_story' %>
-
- 
-
- 
-
-
-<%= link_to "Edit", :edit_person, :class => "inline btn btn-blue", :controller => :people, :method => :get %>
-<%= link_to 'Add to group', "/people/addgroup/#{@person.id}", :class => "inline btn btn-blue"%>
-
-<% unless @person.user == nil %>
-	<%= link_to 'Edit Role', "/people/editroleform/#{@person.id}", :class => "btn btn-blue"%>
-<% end %>
-
-<% if @person.category_id == 1 || @person.category_id == 2 %>
-<%= link_to 'Create Story', new_story_path(object_id: @person.id, object_type: @person.class.name ), :class => "btn btn-blue"%>
-<% end %>
-
-<%= link_to 'Destroy', @person, :class => "inline btn btn-red", :confirm => 'Are you sure?', :method => :delete %>
-
           
 

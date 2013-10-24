@@ -11,10 +11,10 @@
             Story Title: 
             <%= f.input :title %>
             Story Content: 
-            <%= f.input :content %>
+            <%= f.input :content, :input_html => {:style => 'height: 250px'} %>
           
             
-              <%= f.input :send_email, :as => :boolean, :input_html => { :checked => "checked", name: "email" } %> Send Email to Sponsors
+              <%= f.input :send_email, :as => :boolean, :input_html => { :checked => "checked", name: "email"} %> Send Email to Sponsors
             
             <%#= f.input :content, as: :check_boxes %> 
             <%= f.input :storyable_id, as: :hidden, input_html: { value: @story_type[:id], name: "story[storyable_id]" } %>
