@@ -2,7 +2,7 @@
 
   protect_from_forgery
 
-  before_filter :check_subdomain
+  before_filter :check_subdomain, :if => Proc.new{Rails.env.production?}
   before_filter :authenticate_tenant!   # authenticate user and setup tenant
   before_filter :authenticate_user!
   before_filter :set_current_tenant
