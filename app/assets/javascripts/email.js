@@ -1,3 +1,3 @@
-$(document).ready(function(){
-  $('.wysihtml5').wysihtml5();
-});
+// $(document).ready(function(){
+//   $('.wysihtml5').wysihtml5();
+// });

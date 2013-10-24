@@ -9,13 +9,15 @@
         <div class="container">
           <div class="col-md-12">
           <%= simple_form_for Person.new do |f| %>
-            <%= f.input :full_name %>
             <%= f.input :first_name %>
             <%= f.input :last_name %>
             <%= f.input :gender %>
             <%= f.input :nationality %>
             <%= f.input :phone_number %>
-            <%= f.input :date_of_birth %>
+            <%= f.input :date_of_birth, as: :date, start_year: Date.today.year - 90,
+                              end_year: Date.today.year, discard_day: false,
+                              order: [:day, :month, :year] %>
+            <%= f.input :category_id, as: :hidden, input_html: { value: @cat_id } %>
           </div>
         </div>
       </div>

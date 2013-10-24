@@ -1,29 +1,3 @@
-module Searchable
-
-  # include Searchable
-  #
-  #  after_save do
-  #    add_index :full_name, :email        <- as many fields as you like
-  #  end
-  #
-
-  def make_searchable(*attrs)
-    index = Algolia::Index.new(self.tenant.subdomain)
-    object_params = {"id" => self.id,
-                     "tablename" => self.class.table_name,
-                      "url" => "/#{self.class.table_name}/#{self.id}"}
-
-    attrs.each do |attribute|
-      object_params[attribute.to_s] = self.send(attribute)
-    end
-
-    index.add_object(object_params)
-
-  end
-
-end
-
-
 module SearchableTenant
 
   ##################################################################  Params can be changed : https://github.com/algolia/algoliasearch-rails#search-settings
@@ -52,4 +26,3 @@ module SearchableTenant
   end
 
 end
-
