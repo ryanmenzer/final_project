@@ -2,15 +2,17 @@ UnusUniRails3::Application.routes.draw do
 
 
   scope "(:locale)", locale: /en|no|es|tl/ do
-  devise_for :users, :controllers => { :registrations => "milia/registrations" }
-    root to: "homes#index"
+    match '/' => 'homes#home', :constraints => { :subdomain => /.+/ }
+    root :to => 'homes#oliwi'
+    get '/dashboard' => 'homes#index'
+    devise_for :users, :controllers => { :registrations => "milia/registrations" }
     resources :emails
     resources :people
     resources :initiatives
     resources :images
     resources :groups
     resources :stories
-    get 'paypal_checkout', to: 'transactions#paypal_checkout'
+    get  'paypal_checkout', to: 'transactions#paypal_checkout'
     post '/transactions/paypal', to: 'transactions#paypal_create'
     # post '/paypal/confirm/:id', to: 'paypal_payment#confirm_payment'
     # resources :paypal_payments
@@ -22,18 +24,17 @@ UnusUniRails3::Application.routes.draw do
     resources :projects
     resources :paypal_settings
     resources :mandrill_settings
-    get '/users/:id' => 'users#show'
-    put '/users/:id' => 'users#update'
+    get  '/users/:id' => 'users#show'
+    put  '/users/:id' => 'users#update'
     post '/search' => 'search#search'
+    put  '/group/addperson', :to => 'groups#addperson'
+    get  '/people/addgroup/:id', :to => 'groups#addgroup'
+    post '/people/remove/:personid/group/:groupid', :to => 'groups#removeperson'
+    get  '/people/editroleform/:id', :to => 'people#editroleform'
+    put  '/people/editrole/:id', :to => 'people#editrole'
   end
 
   match 'locales/:locale', :to => 'locale#show'
-  put '/group/addperson', :to => 'groups#addperson'
-  get '/people/addgroup/:id', :to => 'groups#addgroup'
-  post '/people/remove/:personid/group/:groupid', :to => 'groups#removeperson'
-
-  get '/people/editroleform/:id', :to => 'people#editroleform'
-  put '/people/editrole/:id', :to => 'people#editrole'
 
 
 
