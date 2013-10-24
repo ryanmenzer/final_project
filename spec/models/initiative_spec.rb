@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Initiative do
-    context "Validations and Associations" do
+    context "validations and associations" do
       context "Saving" do
 
         before do
