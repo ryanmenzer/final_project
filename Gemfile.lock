@@ -59,7 +59,6 @@ GEM
       sass (~> 3.1)
     compass-rails (2.0.alpha.0)
       compass (>= 0.12.2, < 0.14)
-    country_select (1.2.0)
     curb (0.8.5)
     daemons (1.1.9)
     declarative_authorization (0.5.7)
@@ -226,7 +225,6 @@ DEPENDENCIES
   carrierwave
   coffee-rails (~> 3.2.1)
   compass-rails (~> 2.0.alpha.0)
-  country_select
   declarative_authorization (~> 0.5.7)
   devise
   devise-i18n-views
