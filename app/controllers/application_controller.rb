@@ -2,11 +2,19 @@
 
   protect_from_forgery
 
+  before_filter :check_subdomain
   before_filter :authenticate_tenant!   # authenticate user and setup tenant
   before_filter :authenticate_user!
   before_filter :set_current_tenant
   before_filter :set_locale
   before_filter { |c| Authorization.current_user = c.current_user }
+
+
+  def check_subdomain
+    if !Tenant.find_by_subdomain(request.subdomain)
+      redirect_to root_url(:host => request.domain)
+    end
+  end
 
   def current_tenant
     Tenant.current_tenant
