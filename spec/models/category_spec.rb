@@ -8,10 +8,10 @@ describe Category do
     @category_no_name = Category.new()
   end
 
-  	context "Validations and Associations" do
+  	context "validations and associations" do
       it "should save a category with a name" do
         expect(@category.save).to eq(true)
-      end  
+      end
 
      	it "should not save a category without a name" do
   	    expect{@category_no_name.save}.to raise_error(ActiveRecord::StatementInvalid)
