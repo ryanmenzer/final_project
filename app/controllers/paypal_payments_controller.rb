@@ -3,10 +3,6 @@ class PaypalPaymentsController < ApplicationController
   filter_access_to :all
   
   def confirm_payment
-    
-    p '*'*75
-    p params
-    p '*'*75
 
     pp = PaypalPayment.find(params[:id])
     ppr = PayPal::Recurring.new({
@@ -16,12 +12,43 @@ class PaypalPaymentsController < ApplicationController
       :description => "Test transaction"
     })
     
-    p '='*75
     response = ppr.request_payment
-    puts response.approved?
-    puts response.completed?
+    puts "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
+    p response
+    p response.methods
+    puts "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
+    if response.approved?
+      Transaction.create(transaction_type_id:  2,
+                         sponsorship_id: pp.sponsorship_id,
+                         payer_id: pp.payer_id,
+                         date: DateTime.now,
+                         amount: pp.amount
+                         )
 
+      flash[:success] = "Thank you. The payment has been approved"
+    else
+      flash[:error] = "Sorry. Something went wrong."
+    end
+    # puts response.completed?
+    session.delete(:paypal_payment_id)
     redirect_to :back
+  end
+
+  def manage_recurring
+    #have to add code to a view
+    #need to create a recurring profile id
+    #need to store a recurring profile id in db
+    # ppr = PayPal::Recurring.new()
+    
+    # case 
+    # when 
+    #   ppr.suspend
+    # when 
+    #   ppr.reactivate
+    # when 
+    #   ppr.cancel
+    # end
+  
   end
 
 end

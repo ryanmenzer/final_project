@@ -6,7 +6,9 @@ class SponsorshipsController < ApplicationController
 
   def show
     @sponsorship = Sponsorship.find(params[:id])
-    @paypal_signup = {}
+    if session[:paypal_payment_id]
+      @paypal_payment = PaypalPayment.find(session[:paypal_payment_id])
+    end
   end
 
   def new

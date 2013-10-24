@@ -18,7 +18,7 @@
   <% else %>
     <%= yield %>
   <% end %>
-<div id="flash-errors">
+<div id="flash-errors" style="display: none">
   <% flash.each do |name, msg| %>
     <%= content_tag :div, content_tag(:span, name, id: 'err-name') + content_tag(:span, msg, id: 'err-msg') ,{id: 'message', class: name }%>
   <% end %>
