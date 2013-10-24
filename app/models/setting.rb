@@ -8,6 +8,7 @@ class Setting < ActiveRecord::Base
                   :cat_1_name,
                   :cat_2_name,
                   :cat_3_name,
+                  :default_email,
                   :email,
                   :paypal_setting_id,
                   :mandrill_setting_id,
@@ -15,8 +16,17 @@ class Setting < ActiveRecord::Base
 
   belongs_to :tenant
   belongs_to :primary_contact
+  belongs_to :logo, class_name: "Image"
 
   has_one    :paypal_setting
   has_one    :mandrill_setting
+
+  def avatar
+    if self.logo_id
+      self.logo.url.avatar
+    else
+      ActionController::Base.helpers.image_path("avatar-placeholder.jpg")
+    end
+  end
 
 end

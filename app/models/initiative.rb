@@ -1,10 +1,10 @@
 class Initiative < ActiveRecord::Base
 
-  include Searchable
+  # include Searchable
 
-  after_save do
-    make_searchable :title
-  end
+  # after_save do
+  #   make_searchable :title
+  # end
 
   acts_as_tenant
 
@@ -23,6 +23,7 @@ class Initiative < ActiveRecord::Base
   has_many   :stories
   has_many   :images, as: :imageable
   has_many   :stories, as: :storyable
+  has_many   :transactions, through: :sponsorships
 
   def people
     rec = self.receivers.where(:receiverable_type => "Person")

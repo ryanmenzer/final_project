@@ -1,4 +1,5 @@
 class GroupsController < ApplicationController
+  filter_access_to :all
   def index 
     @groups = Group.paginate(page: params[:page])
   end 
@@ -47,12 +48,18 @@ class GroupsController < ApplicationController
     personid = params[:id]
     group = Group.find(groupid)
     group.members << Person.find(personid)
-    redirect_to(people_path)
+    redirect_to(group_path(group))
   end 
 
-  def addgroup 
+  def addgroup
     @person = Person.find(params[:id])
     @groupall = Group.all
+    puts '++++++++++++++++++++++++++++++++++++++++'
+    p @groupall
+    if @groupall == []
+      flash[:notice] = "Sorry. No groups."
+      redirect_to :back and return
+    end
   end 
 
   def removeperson
@@ -60,6 +67,10 @@ class GroupsController < ApplicationController
     group = Group.find(params[:groupid])
     group.members.delete(person) 
     redirect_to(group_path(group))
+  end 
+
+  def removemembersform
+
   end 
 
 

@@ -1,7 +1,7 @@
 class InitiativesController < ApplicationController
-
+	filter_access_to :all
 	def index
-		@initiatives = Initiative.all
+		@initiatives = Initiative.paginate(page: params[:page])
 	end
 
 	def new
@@ -21,6 +21,7 @@ class InitiativesController < ApplicationController
 		@sponsorships = @initiative.sponsorships
 		@people = @initiative.people.sort_by { |p| p.full_name }
 		@projects = @initiative.projects.sort_by { |p| p.name }
+		@sum = @initiative.transactions.sum('amount')
 	end
 
 	def edit
