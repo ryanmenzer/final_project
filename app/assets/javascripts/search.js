@@ -1,14 +1,15 @@
 function renderResults(response){
   var resultHtml = ""
   $.each(response, function(i, row){
-    if (row.tablename === "initiatives")
-    {
-      resultHtml = resultHtml + '<a href="' + row.url + '"><li>'+ row.title + '</li></a>'
+
+    resultHtml = resultHtml + '<a href="' + row.url + '"><li style="border-bottom:1px solid gray">' 
+    
+    for(var attr in row._highlightResult){
+        resultHtml = resultHtml +  "<span>" + this._highlightResult[attr].value.replace(/<em>/g,"<b>").replace(/<\/em>/g, "</b>") + "</span><br>"
     }
-    else if (row.tablename === "people")
-    {
-      resultHtml = resultHtml + '<a href="' + row.url + '"><li>'+ row.full_name + " " + row.email + '</li></a>'
-    }
+
+    resultHtml = resultHtml + '<em>' + row.tablename + '</em>' + '</li></a><br>'
+
   });
 
   return resultHtml
