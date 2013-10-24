@@ -8,7 +8,7 @@ class SearchMiddleware
     if env["PATH_INFO"] == "/search"
       request = Rack::Request.new(env)
 
-      searchparams = { "attributes" => "url,tablename", "attributesToHighlight" => "full_name,email,title" ,  "hitsPerPage" => 5}
+      searchparams = { "attributes" => "url,tablename", "attributesToHighlight" => "full_name,email,title,name" ,  "hitsPerPage" => 8}
 
       results = Tenant.current_tenant.search(request.params["query"], searchparams)
 
