@@ -10,11 +10,14 @@
           <%= f.text_field :amount %>
         </p>
         <p> 
-          Payer: <br> 
-          <% @sponsor.each do |t| %>
-          <%= f.radio_button :payer_id, t.id %> 
-          <%= f.label :payer_id, t.full_name, :value => t.id %> <br>
-          <% end %> 
+          Payer: <br>
+          <% if @sponsor %>
+            <% @sponsor.each do |t| %>
+              <%= f.radio_button :payer_id, t.id %> 
+              <%= f.label :payer_id, t.full_name, :value => t.id %> <br>
+            <% end %>
+          <% end %>
+
         <p>
           <%= f.hidden_field :sponsorship_id %>
           <%= f.hidden_field :transaction_type_id %> 

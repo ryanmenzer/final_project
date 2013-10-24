@@ -49,15 +49,11 @@ class TransactionsController < ApplicationController
   def paypal_create
 
     sponsorship = Sponsorship.find(params[:sponsorship_id])
+    @paypal_payment = PaypalPayment.create(active: false,
+                                   amount: params[:amount],
+                                   payer_id: params[:payer_id])
 
-    PaypalPayment.create(payer_id: sponsorship.sponsors.first.id,
-                                           sponsorship_id: sponsorship.id,
-                                           active: false,
-                                           amount: params[:amount])
-
-    puts  '*'*100
-    puts  PaypalPayment.last.amount
-    puts  '*'*100
+    sponsorship.paypal_payments << @paypal_payment
 
     ppr = PayPal::Recurring.new(
       return_url: paypal_checkout_url(id: params[:sponsorship_id]),
@@ -67,9 +63,10 @@ class TransactionsController < ApplicationController
       currency: "USD"
       )
 
-    response = ppr.checkout
+     response = ppr.checkout
 
     if response.valid?
+      session[:paypal_payment_id] = @paypal_payment.id
       redirect_to response.checkout_url
     else
       raise response.errors.inspect
@@ -78,18 +75,11 @@ class TransactionsController < ApplicationController
   end
 
   def paypal_checkout
+    @paypal_payment = PaypalPayment.find(session[:paypal_payment_id])
+    @paypal_payment.update_attributes(paypal_payer_id: params[:PayerID],
+                                      paypal_token: params[:token])
+
     @sponsorship = Sponsorship.find(params[:id])
-    @sponsorship.sponsors.first.id
-
-   pp = @sponsorship.paypal_payments.first
-
-    puts  '*'*100
-    puts  pp.amount
-    puts  '*'*100
-
-    @paypal_payment = pp.update_attributes(paypal_payer_id: params[:PayerID],
-                                           paypal_token: params[:token],
-                                           )
     redirect_to @sponsorship
   end
 

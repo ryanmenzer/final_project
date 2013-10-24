@@ -7,7 +7,20 @@
       </div>
       <div class="modal-body">
         <%= form_tag("/transactions/paypal", method: "post", html: {class: "fill-up"}) do %>
-          <%= label_tag(:a, "Payemnt type") %>
+          <div>
+          <%= label_tag(:payer_id, "Sponsor") %>
+          <br />
+          <% if @sponsorship.sponsors.count >= 1 %> 
+            <% @sponsorship.sponsors.each do |s| %>
+                <%= hidden_field_tag(:payer_id, s.id) %>
+                <%= radio_button_tag(:payer_id, s.id) %>
+                <%= label_tag(:payer_id, s.full_name, :value => s.id) %><br />
+              <% end %>
+          <% end %>
+         </div>
+         <br />
+          
+          <%= label_tag(:a, "Payment type") %>
           <div>
           <%= radio_button_tag(:recurring, true) %>
           <%= label_tag(:recurring, "Recurring") %>
@@ -35,17 +48,18 @@
           <%= radio_button_tag(:period, :yearly) %>
           <%= label_tag(:period, "Yearly") %>
           </div>
-          <%= label_tag(:period, "Frequency") %>
+           <br />    
 
           <%= label_tag(:amount, "Amount") %>
           <%= text_field_tag(:amount) %>
+          <br />
 
           <%= hidden_field_tag(:sponsorship_id, @sponsorship.id) %>
-
+        
           <%= submit_tag "Continue to paypal" %>
 
-
-        <% end %>
+        <% end %> 
+           
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
