@@ -44,6 +44,7 @@
           </tr>
           </thead>
 
+
           <tbody>
             <% @people.each do |person| %>
             <tr class="status-pending">
@@ -51,7 +52,7 @@
               <td><%= person.email %></td>
               <td><%= person.gender %></td>
               <td><%= person.date_of_birth %></td>
-              <td>33</td>
+              <td><%= Date.today.strftime.to_i - person.date_of_birth.strftime.to_i %></td>
               <td><%= person.category.name %></td>
               <td>
                 <div class="btn-group">
