@@ -51,12 +51,14 @@
           <tbody>
             <% @people.each do |person| %>
             <tr class="status-pending">
-              <td><%= person.full_name %></td>
+
+              <td><a href="/people/<%= person.id %>"><%= person.full_name %></a></td>
               <td><%= person.email %></td>
               <td><%= person.gender %></td>
               <td><%= person.date_of_birth %></td>
               <td><%= person.age %></td>
               <td><%= person.category.name %></td>
+
               <td>
                 <div class="btn-group">
                   <button class="btn btn-xs btn-default dropdown-toggle" data-toggle="dropdown"><i class="icon-cog"></i></button>
@@ -74,9 +76,9 @@
             <% end %>
           </tbody>
         </table>
-        <%= will_paginate @people %>
       </div>
     </div>
+        <%= will_paginate @people %>
 
 
     </div>
