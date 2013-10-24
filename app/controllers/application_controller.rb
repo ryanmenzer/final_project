@@ -9,6 +9,9 @@
   before_filter :set_locale
   before_filter { |c| Authorization.current_user = c.current_user }
 
+def after_sign_in_path_for(resource)
+  dashboard_path
+end
 
   def check_subdomain
     if !Tenant.find_by_subdomain(request.subdomain)
