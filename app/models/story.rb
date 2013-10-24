@@ -8,6 +8,8 @@ class Story < ActiveRecord::Base
                   :storyable_id,
                   :storyable_type
 
+  attr_accessor :send_email
+
   belongs_to :author, class_name: "Person"
   belongs_to :storyable, polymorphic: true
 

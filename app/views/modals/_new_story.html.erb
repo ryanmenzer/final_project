@@ -13,10 +13,10 @@
             Story Content: 
             <%= f.input :content %>
 
-           <%= f.input :send_email, :as => :boolean, :input_html => { :checked => "checked" }, :placeholder => "Send email to sponsors" %> Send email to sponsors 
+            <%= f.input :send_email, :as => :boolean, :input_html => { :checked => "checked", name: "email" } %>
             <%#= f.input :content, as: :check_boxes %> 
-            <%= f.input :storyable_id, as: :hidden, input_html: { value: @story_type[:id], name: "storyable_for[id]" } %>
-            <%= f.input :storyable_type, as: :hidden, input_html: { value: @story_type[:type], name: "storyable_for[type]" } %>
+            <%= f.input :storyable_id, as: :hidden, input_html: { value: @story_type[:id], name: "story[storyable_id]" } %>
+            <%= f.input :storyable_type, as: :hidden, input_html: { value: @story_type[:type], name: "story[storyable_type]" } %>
         </div>
       </div>
       <div class="modal-footer">
