@@ -1,4 +1,3 @@
-
 class LocalesController < ApplicationController
   filter_access_to :all
 	def show
@@ -10,6 +9,5 @@ class LocalesController < ApplicationController
 		  redirect_to :back
 	  end
 	end
-
 end
 

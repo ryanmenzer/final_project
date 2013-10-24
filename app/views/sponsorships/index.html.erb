@@ -1,9 +1,17 @@
 <div class="container">
-<div class="box-header">
+  <div class="row">
+    <div class="area-top clearfix">
+      <div class="pull-left header">
+        <h3 class="title">
+          <i class="icon-heart"></i>
+          Sponsorships
+        </h3>
+      </div>
+    </div>
+  </div>
 
-  <div class="title">
+  <table class="table table-normal">
 
-    <table class="table table-hover">
       <thead>
         <tr class="info">
           <td>Amount</td>
@@ -18,10 +26,16 @@
         <% @sponsorships.each do |s| %>
           <tr>
             <td><a href="sponsorships/<%= s.id %>"><%= s.amount %></a></td>
-            <td><a href="sponsorships/<%= s.id %>"><%= s.recurring_payment  %></a></td>
-            <td><a href="sponsorships/<%= s.id %>"><%= s.active  %></a></td>
+            <td><% if s.recurring_payment %>
+                <i class="icon-refresh"></i>
+              <% end %></a></td>
+            <td class="status-success">
+              <% if s.active %>
+                <i class="icon-ok"></i>
+              <% end %></td>
             <td><a href="sponsorships/<%= s.id %>"><%= s.start_date  %></a></td>
             <td><a href="sponsorships/<%= s.id %>"><%= s.end_date  %></a></td></a></td>
+            <td><a href="sponsorships/<%= s.id %>"></a></td></a></td>
           </tr>
         <% end %>
       </tbody>

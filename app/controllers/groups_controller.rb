@@ -48,7 +48,7 @@ class GroupsController < ApplicationController
     personid = params[:id]
     group = Group.find(groupid)
     group.members << Person.find(personid)
-    redirect_to(people_path)
+    redirect_to(group_path(group))
   end 
 
   def addgroup
@@ -67,6 +67,10 @@ class GroupsController < ApplicationController
     group = Group.find(params[:groupid])
     group.members.delete(person) 
     redirect_to(group_path(group))
+  end 
+
+  def removemembersform
+
   end 
 
 

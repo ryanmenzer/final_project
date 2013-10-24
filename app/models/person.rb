@@ -1,6 +1,10 @@
 class Person < ActiveRecord::Base
 
-  # include Searchable
+  include Searchable
+
+  after_save do
+    make_searchable :full_name, :email
+  end
 
   acts_as_tenant
 
@@ -23,7 +27,7 @@ class Person < ActiveRecord::Base
   belongs_to              :profile_picture, class_name: "Image"
 
   has_many                :groups  #, foreign_key: :manager_id
-  has_many                :stories
+  has_many                :stories #, foreign_key: :author_id
   has_many                :projects
   has_many                :initiatives
   has_many                :images
@@ -39,9 +43,7 @@ class Person < ActiveRecord::Base
 
   # has_one    :primary_contact, class_name: "Tenant"
 
-  # after_save do
-  #   make_searchable :full_name, :email
-  # end
+
 
   def avatar
     if self.profile_picture_id

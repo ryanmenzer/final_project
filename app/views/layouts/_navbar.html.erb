@@ -32,33 +32,34 @@
           <div class="dropdown cdrop">
             <input id="search-field" type="text" class="search-query animated" placeholder="<%= t "top_nav.search" %>">
             <i class="icon-search"></i>
-              <ul class="dropdown-menu pull-left" id="search-results" >
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li class="divider"></li>
-                <li><a href="#">Separated link</a></li>
-              </ul>
+              <div class="chat-message-box" id="search-result" >
+
+
+              </div>
             </div>
         </div>
       </form>
 
       <ul class="nav navbar-nav navbar-left">
         <li class="dropdown">
+           <% if current_user.person %>
           <a href="#" class="dropdown-toggle dropdown-avatar" data-toggle="dropdown">
           <span>
             <img class="menu-avatar" src="<%= current_user.person.avatar %>"> <span><%= current_user.person.full_name %><i class="icon-caret-down"></i></span>
           </span>
           </a>
+          <% end %>
           <ul class="dropdown-menu padded">
 
             <!-- the first element is the one with the big avatar, add a with-image class to it -->
-
+           <% if current_user.person %>
             <li class="with-image">
               <div class="avatar">
                 <img src="<%= current_user.person.avatar %>">
               </div>
               <span><%= current_user.person.full_name %></span>
             </li>
+             <% end %>
 
             <li class="divider"></li>
 
