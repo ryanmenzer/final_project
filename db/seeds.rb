@@ -32,8 +32,11 @@ Role.create(name: "Guest")
 
 puts "Setting up 5 test tenants"
 
+subdomains = ["ssmi", "newlife", "helpinghand", "reachout", "nia"]
+
 5.times do
-  tenant = Tenant.new(org_name: Faker::Company.name)
+  tenant = Tenant.new(org_name: Faker::Company.name,
+                      subdomain: subdomains.shift)
   tenant.save
 end
 
@@ -53,6 +56,7 @@ puts "Setting up 5 test admins"
   person =  Person.create(full_name: Faker::Name.name,
                           user_id: u.id,
                           category_id: 1,
+                          date_of_birth: "#{rand(1955..1990)}-#{rand(1..12)}-#{rand(1..28)}",
                           gender: ["male", "female"].sample,
                           nationality: ["American", "Norwegian","Phillipino"].sample,
                           email: Faker::Internet.email)
@@ -77,6 +81,7 @@ Tenant.all.each do |tenant|
     person =  Person.new(full_name: Faker::Name.name,
                          user_id: u.id,
                          category_id: 1,
+                         date_of_birth: "#{rand(1940..2000)}-#{rand(1..12)}-#{rand(1..28)}",
                          gender: ["male", "female"].sample,
                          nationality: ["American", "Norwegian","Phillipino"].sample,
                          email: Faker::Internet.email)
@@ -98,6 +103,7 @@ Tenant.all.each do |tenant|
     p = Person.new(full_name: Faker::Name.name,
                    category_id: 3,
                    gender: ["male", "female"].sample,
+                   date_of_birth: "#{rand(1940..1990)}-#{rand(1..12)}-#{rand(1..28)}",
                    nationality: ["American", "Norwegian","Norwegian"].sample,
                    email: Faker::Internet.email)
     p.save
@@ -117,8 +123,9 @@ Tenant.all.each do |tenant|
     print "."
     u = Person.new(full_name: Faker::Name.name,
                    category_id: 2,
+                   date_of_birth: "#{rand(1990..2008)}-#{rand(1..12)}-#{rand(1..28)}",
                    gender: ["male", "female"].sample,
-                   nationality: "Phillipino",
+                   nationality: "Filipino",
                    email: Faker::Internet.email)
     u.save
   end
