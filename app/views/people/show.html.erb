@@ -5,6 +5,7 @@
         <h3 class="title">
           <i class="icon-user"></i>
           <%= @person.full_name %>
+          <%= flash[:success] %> 
         </h3>
       </div>
     </div>
@@ -48,4 +49,13 @@
 
 	<%= link_to 'Destroy', @person, :class => "inline btn btn-red", :confirm => 'Are you sure?', :method => :delete %>
 
+
+
+<div class="control-group clear">
+	<br> 
+  <%= link_to 'Write Story', "#new-story", :class => "inline btn btn-sm btn-blue", :data => {toggle: "modal"} %>
+</div>
+
+<% @story_type = {type: "person", id: @person.id} %>
+<%= render 'modals/new_story' %>
 
