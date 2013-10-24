@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require vendor/jquery191
+//= require jquery_ujs
 //= require vendor/jqueryui1102
 //= require vendor/bootstrap/bootstrap
 //= require vendor/bootstrap-datepicker
