@@ -1,10 +1,10 @@
 class Person < ActiveRecord::Base
 
-  include Searchable
+  # include Searchable
 
-  after_save do
-    make_searchable :full_name, :email
-  end
+  # after_save do
+  #   make_searchable :full_name, :email
+  # end
 
   acts_as_tenant
 
@@ -43,6 +43,11 @@ class Person < ActiveRecord::Base
 
   # has_one    :primary_contact, class_name: "Tenant"
 
+  def age
+    if self.date_of_birth
+      Date.today.strftime.to_i - self.date_of_birth.strftime.to_i
+    end
+  end
 
 
   def avatar
