@@ -3,7 +3,7 @@
 
   <div class="row-fluid well" style="margin-top: 70px; margin-left: 0px;">
        <div class="span5 offset2">
-          <center><%= image_tag('oliwi-logo-wide.png', :size => "360x70") %></center>
+          <center><%= image_tag('oliwi-logo-wide.png', :size => "360x70", :class => "img-responsive") %></center>
        </div>
   </div>
 
@@ -62,7 +62,7 @@
   <div><%= f.submit "Login", class: "btn btn-default btn-block" %><!-- <i class='icon-signin'></i> --></div>
 <% end %>
 
-<%= render "devise/shared/links" %>
+<%#= render "devise/shared/links" %>
 
         <div>
          <!--  <a href="sign_up.html">
