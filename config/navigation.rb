@@ -4,7 +4,6 @@ SimpleNavigation::Configuration.run do |navigation|
     primary.item :dashboard,  t("menu.dashboard"),   root_path, :opts => {:icon => 'icon-dashboard'}
     primary.item :our_people, t("menu.our_people"),  :opts => {:icon => 'icon-user'} do |sub_nav|
       sub_nav.item :list_all, t("menu.list_all"),    "/people?cat=2", :opts => {:icon => 'icon-list'}
-      sub_nav.item :add_one,  t("menu.add_new"),     new_person_path, :opts => {:icon => 'icon-plus'}
     end
     primary.item :supporters, t("menu.supporters"),  :opts => {:icon => 'icon-trophy'} do |sub_nav|
       sub_nav.item :list_all, t("menu.list_all"),    "/people?cat=3", :opts => {:icon => 'icon-list'}
