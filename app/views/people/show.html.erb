@@ -30,38 +30,61 @@
         <div class="col-md-4">
           <h4>Date of Birth: <%= @person.date_of_birth %></h4>
         </div>
-        <div class="col-md-4">
-          <h4>Stories: <% @person.stories.each do |t| %></h4>
-              <h6> title: </h6> <%= t.title %> 
-              <h6> content: </h6> <%= t.content %> 
-              <br> 
-              <% end %>
-        </div>
 	    </div>
 	  </div>
-	</div>
+  </div>
+
+  <div class="col-md-6">
+    <div class="box">
+      <div class="box-header">
+        <span class="title">MOST RECENT STORIES</span>
+      </div>
+      <div class="box-content scrollable" style="height: 300px; overflow-y: auto">
+      <!-- find me in partials/news_with_icons -->
+
+      <% @person.stories.each do |s| %>
+        <div class="box-section news with-icons">
+          <div class="avatar blue"><i class="icon-comment icon-2x"></i></div>
+          <div class="news-time">
+           <span><%= s.updated_at.strftime("%d") %></span> <%= s.updated_at.strftime("%B") %>
+          </div>
+          <div class="news-content">
+            <div class="news-title"><a href="#"><%= s.title %></a></div>
+            <div class="news-text">
+            <%= s.content %>
+          </div>
+          </div>
+        </div>
+      <% end %>
+      </div>
+    </div>
+  </div>
 </div>
 
-	<%= link_to "Edit", :edit_person, :class => "inline btn btn-blue", :controller => :people, :method => :get %>
-  <%= link_to 'Add to group', "/people/addgroup/#{@person.id}", :class => "inline btn btn-blue"%>
 
-	<% unless @person.user == nil %>
-		<%= link_to 'Edit Role', "/people/editroleform/#{@person.id}", :class => "btn btn-blue"%>
-	<% end %>
 
-	<% if @person.category_id == 1 || @person.category_id == 2 %>
-  <%= link_to 'Create Story', new_story_path(object_id: @person.id, object_type: @person.class.name ), :class => "btn btn-blue"%>
-	<% end %>
+<%= link_to "Edit", :edit_person, :class => "inline btn btn-blue", :controller => :people, :method => :get %>
+<%= link_to 'Add to group', "/people/addgroup/#{@person.id}", :class => "inline btn btn-blue"%>
 
-	<%= link_to 'Destroy', @person, :class => "inline btn btn-red", :confirm => 'Are you sure?', :method => :delete %>
+<% unless @person.user == nil %>
+	<%= link_to 'Edit Role', "/people/editroleform/#{@person.id}", :class => "btn btn-blue"%>
+<% end %>
+
+<% if @person.category_id == 1 || @person.category_id == 2 %>
+<%= link_to 'Create Story', new_story_path(object_id: @person.id, object_type: @person.class.name ), :class => "btn btn-blue"%>
+<% end %>
+
+<%= link_to 'Destroy', @person, :class => "inline btn btn-red", :confirm => 'Are you sure?', :method => :delete %>
 
 
 
 <div class="control-group clear">
-	<br> 
+	<br>
   <%= link_to 'Write Story', "#new-story", :class => "inline btn btn-sm btn-blue", :data => {toggle: "modal"} %>
 </div>
 
- <%= flash[:success] %> 
+
+
+<%= flash[:success] %>
 <% @story_type = {type: "Person", id: @person.id} %>
 <%= render 'modals/new_story' %>
