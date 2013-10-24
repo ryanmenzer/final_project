@@ -23,7 +23,7 @@ class Person < ActiveRecord::Base
   belongs_to              :profile_picture, class_name: "Image"
 
   has_many                :groups  #, foreign_key: :manager_id
-  has_many                :stories
+  has_many                :stories #, foreign_key: :author_id
   has_many                :projects
   has_many                :initiatives
   has_many                :images
