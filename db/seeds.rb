@@ -43,9 +43,9 @@ puts "Setting up 5 test admins"
   tenant = Tenant.all[index]
   Tenant.set_current_tenant tenant.id
 
-  u = User.new(email: "eigil@sagafos.no",
-               password: "744erayY",
-               password_confirmation: "744erayY",
+  u = User.new(email: Faker::Internet.email,
+               password: "password",
+               password_confirmation: "password",
                role_id: 1)
   # u.tenant_id = tenant.id
   u.save
