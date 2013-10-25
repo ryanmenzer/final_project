@@ -136,7 +136,7 @@
 												<% end %>
 											</td>
 											<td>
-												<%= s.amount.to_i %>
+												<%= number_to_currency(s.amount) %>
 											</td>
 											<td class="status-success">
 												<% if s.active %>
