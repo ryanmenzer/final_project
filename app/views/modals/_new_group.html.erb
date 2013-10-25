@@ -1,0 +1,25 @@
+  <div id="new-group" class="modal fade" style="display: none;" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 class="modal-title">Add Group</h4>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+          <div class="col-md-12">
+          <%= simple_form_for Group.new do |f| %>
+            <%= f.input :name %>
+            <%#= f.input :manager_id %>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+         <%= f.button :submit, value: "Submit" %>
+          <% end %>
+        <!-- <button type="button" class="btn btn-blue">Upload image</button> -->
+      </div>
+    </div><!-- /.modal-content -->
+  </div>
+</div>
