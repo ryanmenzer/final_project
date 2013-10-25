@@ -1,12 +1,14 @@
+require 'searchable'
+
 class Project < ActiveRecord::Base
 
   acts_as_tenant
 
-  # include Searchable
+  include Searchable
 
-  # after_save do
-  #   make_searchable :name
-  # end
+  after_save do
+    make_searchable :name
+  end
 
   attr_accessible :manager_id,
                   :name
