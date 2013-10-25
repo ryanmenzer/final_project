@@ -174,7 +174,7 @@
 			              </ul>
 
 			              <div class="progress">
-			                <div class="progress-bar progress-blue tip" title="" data-percent="<%= @sum/@initiative.goal*100 %>" data-original-title="%" style="width: ;"></div>
+			                <div class="progress-bar progress-blue tip" title="" data-percent="<% if @sum != 0 && @initiative.goal != 0 %><%= @sum/@initiative.goal*100 %><% end %>" data-original-title="%" style="width: ;"></div>
 			              </div>
 
 			              <div class="stats-label">given of goal: <%= number_to_currency(@initiative.goal) %></div>
