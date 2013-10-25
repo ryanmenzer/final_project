@@ -11,68 +11,113 @@
         </div>
       </div>
     </div>
-    <div class="box">
-      <div class="box-content padded">
-        <div class="row">
-          <div class="col-md-4">
-            <h4>Sponsors: </h4>
-            <% @sponsorship.receivers.each do |s| %>
-              <% if s.receiverable_type == "Person" %>
-                <h5><%= s.receiverable.full_name %></h5>
-              <% elsif s.receiverable_type == "Project" %>
-                <h5><%= s.receiverable.name %></h5>
-              <% end %>
-            <% end %>
-          </div>
-          <div class="col-md-4" style="width: 100px;">
-            <i class="icon-angle-right icon-4x"></i>
-          </div>
-          <div class="col-md-4">
-            <h4>Receivers: </h4>
-            <% @sponsorship.sponsors.each do |t| %>
-              <h5><%= t.full_name %></h5>
-            <% end %>
+
+    <div class="row">
+      <div class="col-md-7">
+        <div class="box">
+          <div class="box-content padded">
+            <div class="row">
+              <div class="col-md-4">
+                <% if @sponsorship.receivers.where("receiverable_type = 'Person'").count == 1 %>
+                <h4>Sponsor: </h4>
+                <% else %>
+                <h4>Sponsors: </h4>
+                <% end %>
+                <% @sponsorship.receivers.each do |s| %>
+                  <% if s.receiverable_type == "Person" %>
+                    <h5><%= s.receiverable.full_name %></h5>
+                  <% elsif s.receiverable_type == "Project" %>
+                    <h5><%= s.receiverable.name %></h5>
+                  <% end %>
+                <% end %>
+              </div>
+              <div class="col-md-4" style="width: 100px;">
+                <i class="icon-angle-right icon-4x"></i>
+              </div>
+              <div class="col-md-4">
+                <% if @sponsorship.sponsors.count == 1 %>
+                <h4>Receiver: </h4>
+                <% else %>
+                <h4>Receivers: </h4>
+                <% end %>
+                <% @sponsorship.sponsors.each do |t| %>
+                  <h5><%= t.full_name %></h5>
+                <% end %>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+      <div class="col-md-5">
+        <!-- <div class="box">
+          <div class="box-content padded"> -->
+            <div class="action-nav-normal action-nav-line">
 
-  <div class="box">
-    <div class="box-header">
-      <h4 style="margin: 10px;">Transactions</h4>
-      <table class="table table-normal">
-        <thead>
-          <tr>
-            <td>Date</td>
-            <td>Full name</td>
-            <td>Amount</td>
-          </tr>
-        </thead>
-        <tbody>
-          <% @sponsorship.transactions.each do |t| %>
-            <tr>
-              <td>date: <%= t.date %> </td>
-              <td>sponsor: <%= t.payer.full_name  %> </td>
-              <td>amount: <%= t.amount %></td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
+              <div class="col-sm-4 action-nav-button">
+                <a href="<%= new_transaction_path(sponsorship_id: @sponsorship.id, transaction_type_id: 0) %>" title="Users">
+                  <i class="icon-money"></i>
+                  <span>Add transaction</span>
+                </a>
+              </div>
+
+              <div class="col-sm-4 action-nav-button">
+                <a href="#modal-paypal" title="Friends", data-toggle="modal">
+                  <i class="icon-exchange"></i>
+                  <span>Setup Paypal</span>
+                </a>
+              </div>
+
+              <div class="col-sm-4 action-nav-button">
+                <%= link_to(('<i class="icon-circle-arrow-left"></i>
+                  <span>Back to initiative</span>').html_safe,:back) %>
+              </div>
+        <!--     </div>
+          </div> -->
+        </div>
+      </div>
     </div>
   </div>
 
 
 
-<%= link_to 'Add manual transaction', new_transaction_path(sponsorship_id: @sponsorship.id, transaction_type_id: 0), :class => "btn btn-blue"%>
 
-<%= link_to 'Pay with paypal', "#modal-paypal", :class => "btn btn-blue", :data => {toggle: "modal"}%>
+    <div class="box">
+      <div class="box-header">
+        <h4 style="margin: 10px;">Transactions</h4>
+        <table class="table table-normal">
+          <thead>
+            <tr>
+              <td>Date</td>
+              <td>Full name</td>
+              <td>Amount</td>
+            </tr>
+          </thead>
+          <tbody>
+            <% @sponsorship.transactions.each do |t| %>
+              <tr>
+                <td><%= t.date %></td>
+                <td><%= t.payer.full_name %></td>
+                <td>$ <%= t.amount.to_i %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
 
-<%= link_to 'Pay finish', "#modal-paypal-confirm", :class => "btn btn-blue", :data => {toggle: "modal"}%>
-</div>
+
+
+
+
+
+
 <%= render "modals/paypal" %>
 
+</div>
 
 <% if @paypal_payment %>
+  <%= link_to 'Pay finish', "#modal-paypal-confirm", :class => "btn btn-blue", :data => {toggle: "modal"}%>
+
   <%= render "modals/paypal_confirm" %>
   <div id="paypal-confirmation"></div>
 <% end %>
