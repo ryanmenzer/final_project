@@ -1,0 +1,29 @@
+<div id="new-initiative" class="modal fade" style="display: none;" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 class="modal-title">Add Initiative</h4>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+          <div class="col-md-12">
+          <%= simple_form_for Initiative.new do |f| %>
+            <%= f.input :title %>
+            <%= f.input :description, :input_html => {:style => 'height: 150px'} %>
+            <%= f.input :goal %>
+            <%= f.input :active %>
+            <%= f.input :start_date %>
+            <%= f.input :end_date %>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+         <%= f.button :submit, value: "Submit" %>
+          <% end %>
+        <!-- <button type="button" class="btn btn-blue">Upload image</button> -->
+      </div>
+    </div><!-- /.modal-content -->
+  </div>
+</div>

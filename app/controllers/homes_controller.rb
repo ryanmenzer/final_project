@@ -1,8 +1,5 @@
 class HomesController < ApplicationController
 
-  # before_filter :authenticate_tenant!   # authenticate user and setup tenant
-  # before_filter :authenticate_user!
-  # before_filter :set_current_tenant
 
   skip_before_filter :check_subdomain, :only => [ :home, :oliwi  ]
   skip_before_filter :authenticate_tenant!, :only => [ :index,:oliwi, :home ]
