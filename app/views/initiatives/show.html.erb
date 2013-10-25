@@ -1,65 +1,58 @@
 <div class="container">
-
-    <div class="row">
-
-      <div class="area-top clearfix">
-        <div class="pull-left header">
-          <h3 class="title">
-            <i class="icon-bullhorn"></i>
-            <%= @initiative.title %>
-          </h3>
-          <h5>
-            <span>
-            	<% if @initiative.active == true %>
-              	<%= "ACTIVE" %>
-              <% else %>
-              	<%= "inactive" %>
-              <% end %>
-            </span>
-          </h5>
-        </div>
+  <div class="row">
+    <div class="area-top clearfix">
+      <div class="pull-left header">
+        <h3 class="title">
+          <i class="icon-bullhorn"></i>
+          <%= @initiative.title %>
+        </h3>
+        <h5>
+          <span>
+          	<% if @initiative.active == true %>
+            	<%= "ACTIVE" %>
+            <% else %>
+            	<%= "inactive" %>
+            <% end %>
+          </span>
+        </h5>
       </div>
     </div>
+  </div>
 
-  <div class="row">
-	  <div class="col-md-6">
-	    <div class="box">
-	      <div class="box-header">
-	        <span class="title"><i class="icon-comment-alt="></i> DESCRIPTION</span>
-	      </div>
-	      <div class="box-content padded">
-	        <%= @initiative.description %>
-	      </div>
-	    </div>
-	  </div>
-	  <div id="goal", class="col-md-3", style="height:160px; display:block; padding:0px">
-	  	<div id="goal" style="height:160px;">
-	  		<script>
-  				var g = new JustGage({
-				    id: "goal",
-				    value: <%= @sum %>,
-				    min: 0,
-				    max: <%= @initiative.goal %>,
-				    title: "Goal: <%= @initiative.goal.to_i %>",
-				    levelColors: [ "#ff0000", "#ffff00", "#008000" ]
-  					});
-				</script>
+	<div class="row">
+		<div class="col-md-6">
+		  <div class="action-nav-normal action-nav-line">
+	  		<div class="row action-nav-row">
+
+			    <div class="col-sm-4 action-nav-button">
+			    	<%= link_to '<i class="icon-heart icon-2x"></i>
+			        <span>Setup sponsorship</span>'.html_safe, "#spon-add-receivers", :data => {toggle: "modal"}  %>
+			    </div>
+
+			    <div class="col-sm-2 action-nav-button">
+			    	<%= link_to '<i class="icon-user"></i>
+			        <span>Add person</span>'.html_safe, new_receiver_path({:type => "person", :initiative_id => @initiative.id}), :class => "btn btn-lg btn-green" %>
+			      <span class="triangle-button green"><i class="icon-plus"></i></span>
+			    </div>
+
+			    <div class="col-sm-2 action-nav-button">
+
+					<%= link_to '<i class="icon-building"></i>
+			        <span>Add project</span>'.html_safe, new_receiver_path({:type => "project", :initiative_id => @initiative.id}) %>
+			      <span class="triangle-button green"><i class="icon-plus"></i></span>
+			    </div>
+
+			    <div class="col-sm-2 action-nav-button">
+			    	<%= link_to(('<i class="icon-edit"></i><span>Edit</span>').html_safe, edit_initiative_path) %>
+			    </div>
+
+			    <div class="col-sm-2 action-nav-button">
+						<%= link_to(('<i class="icon-trash"></i><span>Delete</span>').html_safe, @initiative, :confirm => 'Are you sure?', :method => :delete) %>
+			    </div>
+	  		</div>
 			</div>
-	  </div>
-	  <h4 class="gray"><span>Start Date</span><br><%= @initiative.start_date %></h4>
-	  <h4 class="gray"><span>End Date</span><br><%= @initiative.end_date %></h4>
-	  	<%= link_to "Edit", :edit_initiative, :class => "inline btn btn-lg btn-blue", :controller => :initiatives, :method => :get %>
-		<%= link_to 'Destroy', @initiative, :class => "inline btn btn-lg btn-red", :confirm => 'Are you sure?', :method => :delete %>
-		<%= link_to 'Back', initiatives_path, :class => "inline btn btn-lg btn-brown", :method => :get %>
-	</div>
+			<hr class="divider">
 
-	<div>
-		<%= link_to 'Add Person', new_receiver_path({:type => "person", :initiative_id => @initiative.id}), :class => "btn btn-lg btn-green" %>
-		<%= link_to 'Add Project', new_receiver_path({:type => "project", :initiative_id => @initiative.id}), :class => "btn btn-lg btn-green" %>
-		<%= link_to 'Setup sponsorship', "#spon-add-receivers", :class => "btn btn-lg btn-green", :data => {toggle: "modal"} %>
-	</div>
-
-		<div class="col-md-6" style="padding-left: 0px;">
 			<div class="box">
 	      <div class="box-header">
 	        <ul class="nav nav-tabs nav-tabs-left">
@@ -69,7 +62,7 @@
 	        </ul>
 	      </div>
 
-	      <div class="box-content">
+	      <div class="box-content scrollable" style="max-height: 600px; overflow-y: auto">
 	        <div class="tab-content">
 	          <div class="tab-pane active" id="home">
 	          	<table class="table table-normal">
@@ -159,34 +152,99 @@
 	          </div>
 	        </div>
 	      </div>
+
 		  </div>
 		</div>
 
 		<div class="col-md-6">
-	    <div class="box">
-	      <div class="box-header">
-	        <span class="title">STORIES</span>
-	      </div>
-	      <div class="box-content scrollable" style="height: 300px; overflow-y: auto">
-	        <!-- find me in partials/news_with_icons -->
-	        <% @stories.each do |s| %>
-	        <div class="box-section news with-icons">
-	          <div class="avatar blue"><i class="icon-comment icon-2x"></i></div>
-	          <div class="news-time">
-	            <span><%= s.updated_at.strftime("%d") %></span> <%= s.updated_at.strftime("%B") %>
-	          </div>
-	          <div class="news-content">
-	            <div class="news-title"><a href="#"><%= s.title %></a></div>
-	            <div class="news-text">
-	              <%= s.content %>
-	            </div>
-	          </div>
-	        </div>
-	        <% end %>
-	      </div>
-	    </div>
-	  </div>
+		  <div class="box">
+		  	<div class="box-header">
+		    	<span class="title"><i class="icon-comment-alt="></i> STATS</span>
+		   	</div>
+		    <div class="box-content padded">
+					<div class="row">
+						<div class="col-md-6 separate-sections" style="margin-top: 5px;">
+
+			        <div class="row">
+			          <div class="col-md-12">
+			            <div class="dashboard-stats">
+			              <ul class="list-inline">
+			                <li class="glyph"><i class="icon-money icon-2x"></i></li>
+			                <li class="count"><%= number_to_currency(@sum) %></li>
+			              </ul>
+
+			              <div class="progress">
+			                <div class="progress-bar progress-blue tip" title="" data-percent="<%= @sum/@initiative.goal*100 %>" data-original-title="%" style="width: ;"></div>
+			              </div>
+
+			              <div class="stats-label">given of goal: <%= number_to_currency(@initiative.goal) %></div>
+			            </div>
+			          </div>
+			        </div>
+
+			        <div class="row" style="margin-top:30px;">
+			          <div class="col-md-6">
+			            <div class="dashboard-stats small">
+			              <ul class="list-inline">
+			                <li class="glyph"><i class="icon-user"></i></li>
+			                <li class="count">17</li>
+			              </ul>
+			              <div class="progress">
+			                <div class="progress-bar progress-blue tip" title="" data-percent="65" data-original-title="65%" style="width: 65%;"></div>
+			              </div>
+
+			              <div class="stats-label">People</div>
+			            </div>
+			          </div>
+
+			          <div class="col-md-6">
+			            <div class="dashboard-stats small">
+			              <ul class="list-inline">
+			                <li class="glyph"><i class="icon-eye-open"></i></li>
+			                <li class="count">2</li>
+			              </ul>
+			              <div class="progress">
+			                <div class="progress-bar progress-blue tip" title="" data-percent="20" data-original-title="80%" style="width: 80%;"></div>
+			              </div>
+			              <div class="stats-label">Projects</div>
+			            </div>
+			          </div>
+			        </div>
+
+			      </div>
+					</div>
+		    </div>
+		   </div>
+
+
+		    <div class="box">
+		      <div class="box-header">
+		        <span class="title">STORIES</span>
+		      </div>
+		      <div class="box-content scrollable" style="max-height: 600px; overflow-y: auto">
+		        <!-- find me in partials/news_with_icons -->
+		        <% @stories.each do |s| %>
+		        <div class="box-section news with-icons">
+		          <div class="avatar blue"><i class="icon-comment icon-2x"></i></div>
+		          <div class="news-time">
+		            <span><%= s.updated_at.strftime("%d") %></span> <%= s.updated_at.strftime("%B") %>
+		          </div>
+		          <div class="news-content">
+		            <div class="news-title"><a href="#"><%= s.title %></a></div>
+		            <div class="news-text">
+		              <%= s.content %>
+		            </div>
+		          </div>
+		        </div>
+		        <% end %>
+		      </div>
+			  </div>
+		  </div>
+		</div>
+
 	</div>
-</div>
+
+</var> <!-- end container -->
+
 
 <%= render 'modals/add_receivers' %>
