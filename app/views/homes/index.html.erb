@@ -36,6 +36,7 @@
           </div>
           <div class="news-content">
             <div class="news-title"><a href="#">
+              <!-- refactor eager loading (includes) in active record -->
               <% if s.storyable_type == "Person" %>
                 <%= s.storyable.full_name %> <br />
               <% elsif s.storyable_type == "Project"%>
