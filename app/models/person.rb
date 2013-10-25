@@ -1,10 +1,12 @@
+require 'searchable'
+
 class Person < ActiveRecord::Base
 
-  # include Searchable
+  include Searchable
 
-  # after_save do
-  #   make_searchable :full_name, :email
-  # end
+  after_save do
+    make_searchable :full_name, :email
+  end
 
   acts_as_tenant
   before_save :set_full_name

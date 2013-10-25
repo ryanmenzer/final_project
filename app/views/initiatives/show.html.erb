@@ -56,6 +56,7 @@
 	<div>
 		<%= link_to 'Add Person', new_receiver_path({:type => "person", :initiative_id => @initiative.id}), :class => "btn btn-lg btn-green" %>
 		<%= link_to 'Add Project', new_receiver_path({:type => "project", :initiative_id => @initiative.id}), :class => "btn btn-lg btn-green" %>
+		<%= link_to 'Setup sponsorship', "#spon-add-receivers", :class => "btn btn-lg btn-green", :data => {toggle: "modal"} %>
 	</div>
 
 		<div class="col-md-6" style="padding-left: 0px;">
@@ -185,7 +186,7 @@
 	      </div>
 	    </div>
 	  </div>
-
 	</div>
-
 </div>
+
+<%= render 'modals/add_receivers' %>
