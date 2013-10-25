@@ -19,3 +19,4 @@
 /config/initializer/algoliasearch.rb
 # Ignore images
 /public/uploads/tmp/
+/config/database.yml
