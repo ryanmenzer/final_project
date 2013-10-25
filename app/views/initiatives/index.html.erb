@@ -56,9 +56,9 @@
         <div class="action-nav-normal action-nav-line">
           <div class="row action-nav-row ">
             <div class="col-sm-6 action-nav-button">
-              <a href="<%= url_for(new_initiative_path)%>" title="New Initiative">
+              <a href="#new-initiative" title="Add Initiative" data-toggle="modal">
                 <i class="icon-group"></i>
-                <span>Create Initiative</span>
+                <span>Add Initiative</span>
               </a>
               <span class="triangle-button green"><i class="icon-plus"></i></span>
             </div>
@@ -69,9 +69,6 @@
   </div>
   </div>
   </div>
-
-
-
-
-
 </div>
+<%= render 'modals/new_initiative' %>
+
