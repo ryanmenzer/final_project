@@ -30,13 +30,8 @@ test:
 
 
 production:
-  aadapter: postgresql
+  adapter: postgresql
   encoding: unicode
   pool: 5
-  database: dbatualrnvs2fk
-  username: suwyvqhusjvzwm
-  password: hj_khkKW87dN7VHShU3XtcsTfY
-  host: ec2-54-204-20-28.compute-1.amazonaws.com
-  port: 5432
 
 
