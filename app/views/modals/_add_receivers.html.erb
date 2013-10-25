@@ -1,0 +1,35 @@
+<div id="spon-add-receivers" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+        <h4 class="modal-title">Choose the receivers for this sponsorship</h4>
+      </div>
+      <!-- <div class="modal-body"> -->
+        <div class="box-content">
+          <table class="table table-normal">
+            <thead>
+            <tr>
+              <td style="width: 40px"></td>
+              <td>Name</td>
+            </tr>
+            </thead>
+            <tbody>
+            <% @people.each do |p| %>
+              <tr class="info">
+                <td><input type="checkbox" class="icheck" id="<%= "person-" + p.id.to_s %>" style="position: absolute; opacity: 0;"></td>
+                <td><%= p.full_name %></td>
+              </tr>
+            <% end %>
+
+            </tbody>
+          </table>
+<!--   </div> -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-blue">Next</button>
+      </div>
+    </div>
+  </div>
+</div>
