@@ -20,24 +20,28 @@ function renderResults(response){
 
 $(document).ready(function(){
 
-  $("#search-field").on("focus", function(){
-    $('#search-result').show();
+  $("#search-field").on("blur", function(){
+    $('#search-result').hide();
   })
-
-  // $("#search-field").on("blur", function(){
-  //   $('#search-result').hide();
-  // })
 
   $(document).on("keyup", "#search-field", function(){
     searchQuery = $("#search-field").val();
     var data = {query: searchQuery};
-    $.post('/search', data, function(response){
-      // console.log($('#search-result'));
-      $('#search-result').html("")
-      $('#search-result').show();
-      console.log(renderResults(response));
-      $('#search-result').html(renderResults(response));
-    });
+    if( !this.value ) {
+      $('#search-result').html("");
+      $('#search-result').hide();
+    } else {
+      $.post('/search', data, function(response){
+        var results = renderResults(response)
+        $('#search-result').html("")
+        if(results.length > 30) {
+          $('#search-result').show();
+          $('#search-result').html(renderResults(response));
+        } else {
+          $('#search-result').hide();
+        }
+      });
+    }
 
   });
 
