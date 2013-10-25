@@ -30,9 +30,8 @@ test:
 
 
 production:
-  adapter: postgresql
+  aadapter: postgresql
   encoding: unicode
-  database: unus-uni-rails3
   pool: 5
 
 
