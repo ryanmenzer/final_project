@@ -4,18 +4,27 @@ function Sponsorship(){
   this.sponsors = [];
 }
 
-var sponsorship = new Sponsorship();
 
 
 
 $(document).ready(function(){
 
- $('#spon-add-receivers input').on('ifChecked', function(event){
-  var id = $(this).attr('id')
-  console.log(id);
-  sponsorship.people.push({"person": id});
-  console.log(sponsorship);
- });
+
+  var sponsorship = new Sponsorship();
+
+  $('#spon-add-receivers input').on('ifChecked', function(event){
+    var id = $(this).attr('id')
+    console.log(id);
+    sponsorship.people.push(id);
+    console.log(sponsorship);
+  });
+
+  $('#spon-add-receivers input').on('ifUnchecked', function(event){
+    var id = $(this).attr('id')
+    console.log(id);
+    sponsorship.people.splice( $.inArray(id, sponsorship.people), 1 );
+    console.log(sponsorship);
+  });
 
 
 });
