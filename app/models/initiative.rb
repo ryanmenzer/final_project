@@ -1,10 +1,20 @@
+require 'searchable'
+
 class Initiative < ActiveRecord::Base
 
-  # include Searchable
+  include Searchable
 
-  # after_save do
-  #   make_searchable :title
-  # end
+  after_create do
+    make_searchable :title
+  end
+
+  before_destroy do
+    destroy_search
+  end
+
+  before_update do
+    update_search :title
+  end
 
   acts_as_tenant
 
@@ -15,7 +25,8 @@ class Initiative < ActiveRecord::Base
                   :goal,
                   :active,
                   :start_date,
-                  :end_date
+                  :end_date,
+                  :algolia_id
 
   belongs_to :manager, class_name: "Person"
   has_many   :sponsorships

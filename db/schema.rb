@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131022215418) do
+ActiveRecord::Schema.define(:version => 20131026232916) do
 
   create_table "categories", :force => true do |t|
     t.integer  "tenant_id"
@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(:version => 20131022215418) do
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "algolia_id"
   end
 
   add_index "groups", ["manager_id"], :name => "index_groups_on_manager_id"
@@ -81,6 +82,7 @@ ActiveRecord::Schema.define(:version => 20131022215418) do
     t.date     "end_date"
     t.datetime "created_at",                           :null => false
     t.datetime "updated_at",                           :null => false
+    t.integer  "algolia_id"
   end
 
   add_index "initiatives", ["end_date"], :name => "index_initiatives_on_end_date"
@@ -142,6 +144,7 @@ ActiveRecord::Schema.define(:version => 20131022215418) do
     t.string   "email"
     t.string   "country"
     t.integer  "profile_picture_id"
+    t.integer  "algolia_id"
   end
 
   add_index "people", ["category_id"], :name => "index_people_on_category_id"
@@ -168,6 +171,7 @@ ActiveRecord::Schema.define(:version => 20131022215418) do
     t.string   "name",       :null => false
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "algolia_id"
   end
 
   add_index "projects", ["manager_id"], :name => "index_projects_on_manager_id"

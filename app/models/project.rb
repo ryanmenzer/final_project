@@ -6,12 +6,21 @@ class Project < ActiveRecord::Base
 
   include Searchable
 
-  after_save do
+  after_create do
     make_searchable :name
   end
 
+  before_destroy do
+    destroy_search
+  end
+
+  before_update do
+    update_search :name
+  end
+
   attr_accessible :manager_id,
-                  :name
+                  :name,
+                  :algolia_id
 
   belongs_to :manager, class_name: "Person"
 

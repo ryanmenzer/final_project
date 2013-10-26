@@ -21,7 +21,7 @@ function renderResults(response){
 $(document).ready(function(){
 
   $("#search-field").on("blur", function(){
-    $('#search-result').hide();
+    setTimeout(function(){$('#search-result').hide()},150)
   })
 
   $(document).on("keyup", "#search-field", function(){
