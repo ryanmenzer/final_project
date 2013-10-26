@@ -8,7 +8,7 @@ module Searchable
   #
 
   def make_searchable(*attrs)
-    unless Rails.env.test?
+    if Rails.env.production?
 
     index = Algolia::Index.new(self.tenant.subdomain)
     object_params = {"id" => self.id,
@@ -26,7 +26,7 @@ module Searchable
   end
 
   def destroy_search
-    unless Rails.env.test?
+    if Rails.env.production?
 
     index = Algolia::Index.new(self.tenant.subdomain)
     index.delete_object(self.algolia_id.to_s)
@@ -36,7 +36,7 @@ module Searchable
 
   def update_search(*attrs)
 
-    unless Rails.env.test?
+    if Rails.env.production?
 
       index = Algolia::Index.new(self.tenant.subdomain)
       object_params = {"id" => self.id,
