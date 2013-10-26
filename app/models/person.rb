@@ -4,11 +4,20 @@ class Person < ActiveRecord::Base
 
   include Searchable
 
-  after_save do
+  after_create do
     make_searchable :full_name, :email
   end
 
+  before_destroy do
+    destroy_search
+  end
+
+  before_update do
+    update_search :full_name, :email
+  end
+
   acts_as_tenant
+
   before_save :set_full_name
 
   attr_accessible :category_id,
@@ -19,6 +28,7 @@ class Person < ActiveRecord::Base
                   :last_name,
                   :gender,
                   :date_of_birth,
+                  :algolia_id,
                   :phone_number,
                   :nationality,
                   :email,

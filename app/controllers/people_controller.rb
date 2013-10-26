@@ -1,5 +1,7 @@
 class PeopleController < ApplicationController
+
   filter_access_to :all
+
   def index
     if params[:cat]
       @people = Person.where(category_id: params[:cat]).paginate(page: params[:page])
