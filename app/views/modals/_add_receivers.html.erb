@@ -6,19 +6,22 @@
         <h4 class="modal-title">Choose the receivers for this sponsorship</h4>
       </div>
       <!-- <div class="modal-body"> -->
-        <div class="box-content">
-          <table class="table table-normal">
+        <div class="box-content" id="">
+          <div id="dataTables"></div>
+          <table cellpadding="0" cellspacing="0" border="0" class="dTable responsive">
             <thead>
             <tr>
               <td style="width: 40px"></td>
               <td>Name</td>
+              <td>Type</td>
             </tr>
             </thead>
             <tbody>
             <% @people.each do |p| %>
               <tr class="info">
-                <td><input type="checkbox" class="icheck" id="<%= "person-" + p.id.to_s %>" style="position: absolute; opacity: 0;"></td>
+                <td><input type="checkbox" class="icheck" id="<%= p.id.to_s %>" style="position: absolute; opacity: 0;"></td>
                 <td><%= p.full_name %></td>
+                <td> Person or Project </td>
               </tr>
             <% end %>
 
