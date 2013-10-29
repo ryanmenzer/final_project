@@ -72,9 +72,9 @@ describe Project do
     end
 
     context "database index validations" do
-      it { should have_db_index(:projects, :tenant_id) }
-      it { should have_db_index(:projects, :manager_id) }
-      it { should have_db_index(:projects, :name) }
+      it { should have_db_index(:tenant_id) }
+      it { should have_db_index(:manager_id) }
+      it { should have_db_index(:name) }
     end
   end
 end
