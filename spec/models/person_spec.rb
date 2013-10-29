@@ -20,7 +20,6 @@ describe Person do
         expect(@person.save).to eq(true)
       end
 
-     # With {}: proc doesn't execute the code / lets rspec catch the exception
   	  it "should not save a person without a category id" do
   	    expect{@person_no_cid.save}.to raise_error(ActiveRecord::StatementInvalid)
   	  end
@@ -57,6 +56,11 @@ describe Person do
 
       it "should have many initiatives" do
         person = Person.reflect_on_association(:initiatives)
+        person.macro.should == :has_many
+      end
+
+      it "should have many receivers" do
+        person = Person.reflect_on_association(:receivers)
         person.macro.should == :has_many
       end
 

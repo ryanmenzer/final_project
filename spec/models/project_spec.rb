@@ -28,7 +28,7 @@ describe Project do
     			                 # manager_id: ,
     		                   name: "Innovative Specific Stuff"
     		                   )
-      end
+        end
 
 	    it "should save a project with a name" do
 	      expect(@project.save).to eq(true)
@@ -64,5 +64,18 @@ describe Project do
 		    project.macro.should == :has_many
       end
 	  end
+
+    context "field validations" do
+      it {should have_db_column(:tenant_id).of_type(:integer).with_options(:null => false ) }
+      it {should have_db_column(:manager_id).of_type(:integer).with_options(:null => false ) }
+      it {should have_db_column(:name).of_type(:string).with_options(:null => false ) }
+    end
+
+    context "database index validations" do
+      it { should have_db_index(:tenant_id) }
+      it { should have_db_index(:manager_id) }
+      it { should have_db_index(:name) }
+    end
+
   end
 end
