@@ -3,11 +3,13 @@ module Searchable
   # include Searchable
   #
   #  after_save do
-  #    add_index :full_name, :email        <- as many fields as you like
+  #    make_searchable :full_name, :email        <- as many fields as you like
   #  end
   #
 
   def make_searchable(*attrs)
+    if Rails.env.production?
+
     index = Algolia::Index.new(self.tenant.subdomain)
     object_params = {"id" => self.id,
                      "tablename" => self.class.table_name,
@@ -17,8 +19,38 @@ module Searchable
       object_params[attribute.to_s] = self.send(attribute)
     end
 
-    index.add_object(object_params)
+      algolia = index.add_object(object_params)
+      self.update_attributes(algolia_id: algolia["objectID"])
 
+    end
+  end
+
+  def destroy_search
+    if Rails.env.production?
+
+    index = Algolia::Index.new(self.tenant.subdomain)
+    index.delete_object(self.algolia_id.to_s)
+
+    end
+  end
+
+  def update_search(*attrs)
+
+    if Rails.env.production?
+
+      index = Algolia::Index.new(self.tenant.subdomain)
+      object_params = {"id" => self.id,
+                       "tablename" => self.class.table_name,
+                       "url" => "/#{self.class.table_name}/#{self.id}",
+                       "objectID" => self.algolia_id.to_s}
+
+      attrs.each do |attribute|
+        object_params[attribute.to_s] = self.send(attribute)
+      end
+
+      algolia = index.save_object(object_params)
+
+    end
   end
 
 end

@@ -76,5 +76,6 @@ describe Project do
       it { should have_db_index(:manager_id) }
       it { should have_db_index(:name) }
     end
+
   end
 end

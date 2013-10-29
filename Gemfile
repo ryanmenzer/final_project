@@ -7,7 +7,7 @@ gem 'rails', '3.2.13'
 
 gem 'pg'
 gem "algoliasearch"
-gem 'rack-mini-profiler'
+# gem 'rack-mini-profiler'
 
 # group :production do
 #   gem "mysql2", "~> 0.3.13"
@@ -16,13 +16,13 @@ gem 'rack-mini-profiler'
 gem 'compass-rails', '~> 2.0.alpha.0'
 gem 'will_paginate', '> 3.0'
 gem 'bootstrap-will_paginate'
+gem 'sass-rails',   '~> 3.2.3'
+gem 'coffee-rails', '~> 3.2.1'
 
 
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby

@@ -68,7 +68,8 @@
             <div class="action-nav-normal action-nav-line">
               <div class="row action-nav-row ">
                 <div class="col-sm-6 action-nav-button">
-                  <a href="<%= url_for(new_group_path)%>" title="New Project">
+                  <!-- <a href="<%= url_for(new_group_path)%>" title="New Group"> -->
+                   <a href="#new-group" title="New Group" data-toggle="modal"> 
                     <i class="icon-group"></i>
                     <span>Create Group</span>
                   </a>
@@ -81,4 +82,5 @@
       </div>
   </div>
 </div>
-<% #= render 'modals/create_email' %>
+<%= render 'modals/create_email' %>
+<%= render 'modals/new_group' %>

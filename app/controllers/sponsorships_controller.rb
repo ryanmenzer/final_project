@@ -12,7 +12,7 @@ class SponsorshipsController < ApplicationController
   end
 
   def new
-
+    @sponsorship = Sponsorship.new()
   end
 
 end
