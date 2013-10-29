@@ -10,11 +10,7 @@ require 'capybara/rspec'
 Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 
 RSpec.configure do |config|
-
-  config.include Warden::Test::Helpers, :type => :request
-  config.after :each do
-    Warden.test_reset!
-  end
+  # config.include Devise::TestHelpers, :type => :controller
 
   # ## Mock Framework
   #
