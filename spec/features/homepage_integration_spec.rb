@@ -1,7 +1,11 @@
 require 'spec_helper'
 require 'support/user_helper'
+# include Warden::Test::Helpers
+# Warden.test_mode!
+
 
 include UserHelper
+
 
 describe "Homepage" do
 
@@ -16,9 +20,14 @@ describe "Homepage" do
                role_id: r.id)
     @tenant.users << @user
     sign_in_user(@user)
+    # click_link "Sign in here"
+    # fill_in "email", with: @user.email
+    # fill_in "password", with: @user.password
+    # click_button 'Login'
   end
 
   it "Should have general content" do
+    save_and_open_page
     body.should have_css('.box-header', visible: "Most Recent Stories")
     body.should have_css('.box-header', visible: "Last Updated Initiative")
     body.should have_css('.box-header', visible: "Current People Stats")
@@ -27,11 +36,10 @@ describe "Homepage" do
   end
 
   it "Should have a sidebar with various options" do
-    page.should have_link "Dashboard"
+    page.should have_link t('menu.dashboard')
     page.should have_link "Our People"
-      page.should have_link "List All"
     page.should have_link "Supporters"
-    page.should have_link "Staff"
+    page.should have_content t('menu.staff')
     page.should have_link "Initiatives"
     page.should have_link "Groups"
     page.should have_link "Settings"
@@ -40,16 +48,6 @@ describe "Homepage" do
   it "Should have top navigation bar with language selector" do
      page.should have_content t('top_nav.select_language')
   end
-
-  it "clicks on the People: List All link" do
-    click_link('List All', match: :first)
-    body.should have_content "All People"
-  end
-
-  # it "clicks on the Supporters: List All link" do
-  #   click_link('List All', '/people?cat=3')
-  #   page.should have_content "Supporter"
-  # end
 
   it "clicks on the Staff" do
     find(".primary-sidebar").click_link("Staff")
