@@ -1,4 +1,4 @@
-UnusUniRails3::Application.routes.draw do
+Oliwi::Application.routes.draw do
 
 
   scope "(:locale)", locale: /en|no|es|tl/ do
