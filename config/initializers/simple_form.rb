@@ -63,7 +63,7 @@ SimpleForm.setup do |config|
     b.use :html5
     b.use :placeholder
     b.wrapper :tag => 'div', :class => 'form-group ' do |input|
-      input.use :label, :class => 'control-label col-lg-3'
+      input.use :label, :wrap_with => { :class => 'control-label col-lg-3' }
       input.wrapper :tag => 'div', :class => 'col-lg-9' do |append|
         append.use :input
       end

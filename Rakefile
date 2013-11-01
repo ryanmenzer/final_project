@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-UnusUniRails3::Application.load_tasks
+Oliwi::Application.load_tasks

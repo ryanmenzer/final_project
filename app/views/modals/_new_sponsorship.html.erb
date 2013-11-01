@@ -1,143 +1,48 @@
-<div class="wizard" id="wizard-demo">
-  <h1>New Sponsorship Agreement</h1>
+<div class="wizard" id="sponsorship-setup">
+<h1>New sponsorship</h1>
 
-  <div class="wizard-card" data-onValidated="setServerName" data-cardname="name">
+<div class="wizard-card" data-onValidated="setServerName" data-cardname="name">
+  <h3 style="display: none">Select receviers</h3>
+    <div id="dataTables"></div>
+      <table cellpadding="0" cellspacing="0" border="0" class="dTable responsive">
+        <thead>
+        <tr>
+          <td style="width: 40px"></td>
+          <td>Name</td>
+          <td>Type</td>
+        </tr>
+        </thead>
+        <tbody>
+        <% @people.each do |p| %>
+          <tr class="info">
+            <td><input type="checkbox" class="icheck" id="<%= p.id.to_s %>" style="position: absolute; opacity: 0;"></td>
+            <td><%= p.full_name %></td>
+            <td> Person or Project </td>
+          </tr>
+        <% end %>
 
-  <div class="box">
-  <div class="box-header">
-    <span class="title">Here be your stats</span>
-    <ul class="box-toolbar">
-      <li><span class="label label-blue">189</span></li>
-    </ul>
-  </div>
-  <div class="box-content">
-    <table class="table table-normal">
-      <thead>
-      <tr>
-        <td></td>
-        <td>Item</td>
-        <td>Stats</td>
-      </tr>
-      </thead>
-
-      <tbody>
-      <tr>
-        <td style="width: 60px;"><div class="sparkline"><!--5,10,15,20,18,16,14,20,15,16,12,10--></div></td>
-        <td style="text-align: center;"><i class="icon-user"></i> Visitors</td>
-        <td class="status-error"><i class="icon-circle-arrow-down"></i> -5%</td>
-      </tr>
-
-      <tr>
-        <td style="width: 60px;"><div class="sparkline" data-color="green"><!--5,6,8,14,18,10,12,16,15,16,12,15--></div></td>
-        <td style="text-align: center;"><i class="icon-comments-alt"></i> Comments</td>
-        <td class="status-success"><i class="icon-circle-arrow-up"></i> +10%</td>
-      </tr>
-
-      <tr>
-        <td style="width: 60px;"><div class="sparkline"><!--15,16,8,14,18,10,14,16,15,16,12,10--></div></td>
-        <td style="text-align: center;"><i class="icon-bell"></i> Events</td>
-        <td class="status-error"><i class="icon-circle-arrow-down"></i> -15%</td>
-      </tr>
-
-      <tr>
-        <td style="width: 60px;"><div class="sparkline" data-color="green"><!--8,11,12,23,14,16,12,18,15,16,12,20--></div></td>
-        <td style="text-align: center;"><i class="icon-money"></i> Income</td>
-        <td class="status-success"><i class="icon-circle-arrow-up"></i> +20%</td>
-      </tr>
-         <tr>
-        <td style="width: 60px;"><div class="sparkline"><!--5,10,15,20,18,16,14,20,15,16,12,10--></div></td>
-        <td style="text-align: center;"><i class="icon-user"></i> Visitors</td>
-        <td class="status-error"><i class="icon-circle-arrow-down"></i> -5%</td>
-      </tr>
-
-      <tr>
-        <td style="width: 60px;"><div class="sparkline" data-color="green"><!--5,6,8,14,18,10,12,16,15,16,12,15--></div></td>
-        <td style="text-align: center;"><i class="icon-comments-alt"></i> Comments</td>
-        <td class="status-success"><i class="icon-circle-arrow-up"></i> +10%</td>
-      </tr>
-
-      <tr>
-        <td style="width: 60px;"><div class="sparkline"><!--15,16,8,14,18,10,14,16,15,16,12,10--></div></td>
-        <td style="text-align: center;"><i class="icon-bell"></i> Events</td>
-        <td class="status-error"><i class="icon-circle-arrow-down"></i> -15%</td>
-      </tr>
-
-      <tr>
-        <td style="width: 60px;"><div class="sparkline" data-color="green"><!--8,11,12,23,14,16,12,18,15,16,12,20--></div></td>
-        <td style="text-align: center;"><i class="icon-money"></i> Income</td>
-        <td class="status-success"><i class="icon-circle-arrow-up"></i> +20%</td>
-      </tr>
-         <tr>
-        <td style="width: 60px;"><div class="sparkline"><!--5,10,15,20,18,16,14,20,15,16,12,10--></div></td>
-        <td style="text-align: center;"><i class="icon-user"></i> Visitors</td>
-        <td class="status-error"><i class="icon-circle-arrow-down"></i> -5%</td>
-      </tr>
-
-      <tr>
-        <td style="width: 60px;"><div class="sparkline" data-color="green"><!--5,6,8,14,18,10,12,16,15,16,12,15--></div></td>
-        <td style="text-align: center;"><i class="icon-comments-alt"></i> Comments</td>
-        <td class="status-success"><i class="icon-circle-arrow-up"></i> +10%</td>
-      </tr>
-
-      <tr>
-        <td style="width: 60px;"><div class="sparkline"><!--15,16,8,14,18,10,14,16,15,16,12,10--></div></td>
-        <td style="text-align: center;"><i class="icon-bell"></i> Events</td>
-        <td class="status-error"><i class="icon-circle-arrow-down"></i> -15%</td>
-      </tr>
-
-      <tr>
-        <td style="width: 60px;"><div class="sparkline" data-color="green"><!--8,11,12,23,14,16,12,18,15,16,12,20--></div></td>
-        <td style="text-align: center;"><i class="icon-money"></i> Income</td>
-        <td class="status-success"><i class="icon-circle-arrow-up"></i> +20%</td>
-      </tr>
-         <tr>
-        <td style="width: 60px;"><div class="sparkline"><!--5,10,15,20,18,16,14,20,15,16,12,10--></div></td>
-        <td style="text-align: center;"><i class="icon-user"></i> Visitors</td>
-        <td class="status-error"><i class="icon-circle-arrow-down"></i> -5%</td>
-      </tr>
-
-      <tr>
-        <td style="width: 60px;"><div class="sparkline" data-color="green"><!--5,6,8,14,18,10,12,16,15,16,12,15--></div></td>
-        <td style="text-align: center;"><i class="icon-comments-alt"></i> Comments</td>
-        <td class="status-success"><i class="icon-circle-arrow-up"></i> +10%</td>
-      </tr>
-
-      <tr>
-        <td style="width: 60px;"><div class="sparkline"><!--15,16,8,14,18,10,14,16,15,16,12,10--></div></td>
-        <td style="text-align: center;"><i class="icon-bell"></i> Events</td>
-        <td class="status-error"><i class="icon-circle-arrow-down"></i> -15%</td>
-      </tr>
-
-      <tr>
-        <td style="width: 60px;"><div class="sparkline" data-color="green"><!--8,11,12,23,14,16,12,18,15,16,12,20--></div></td>
-        <td style="text-align: center;"><i class="icon-money"></i> Income</td>
-        <td class="status-success"><i class="icon-circle-arrow-up"></i> +20%</td>
-      </tr>
-
-      </tbody>
-    </table>
-
-
-  </div>
+        </tbody>
+      </table>
+    </div>
 </div>
 
 
-
-  </div>
-
-
-<div class="wizard-card" data-cardname="Projects">
-  <h3>Projects</h3>
+<div class="wizard-card" data-cardname="group">
+  <h3>Server Group</h3>
 
   <div class="wizard-input-section">
+    <p>
+      Where would you like server <strong class="create-server-name"></strong>
+      to go?
+    </p>
 
-
+    <%= image_tag "groups.png", class: "wizard-group-list" %>
   </div>
 </div>
 
 
 <div class="wizard-card" data-cardname="services">
-  <h3>Finances</h3>
+  <h3>Service Selection</h3>
 
   <div class="alert hide">
     It's recommended that you select at least one
@@ -185,7 +90,7 @@
 
 
 <div class="wizard-card" data-onload="" data-cardname="location">
-  <h3>Transactions</h3>
+  <h3>Monitoring Location</h3>
 
   <div class="wizard-input-section">
     <p>
@@ -240,7 +145,7 @@
 </div>
 
 <div class="wizard-card">
-  <h3>Review</h3>
+  <h3>Notification Schedule</h3>
 
   <div class="wizard-input-section">
     <p>

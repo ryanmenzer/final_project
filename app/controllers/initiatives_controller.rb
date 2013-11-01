@@ -16,15 +16,15 @@ class InitiativesController < ApplicationController
 	end
 
 	def show
-		@initiative = Initiative.find(params[:id])
-		@stories = Story.limit(10) # edit for specificity
-		@sponsorships = @initiative.sponsorships
-		@people = @initiative.people.sort_by { |p| p.full_name }
-		@projects = @initiative.projects.sort_by { |p| p.name }
-		@sum = @initiative.transactions.sum('amount')
+		@initiative   = Initiative.find(params[:id])
+		@stories      = Story.limit(10) # edit for specificity
+		@sponsorships = @initiative.sponsorships.includes(receivers: [:receiverable])
+		@people       = @initiative.people.sort_by { |p| p.full_name }
+		@projects     = @initiative.projects.sort_by { |p| p.name }
+		@sum          = @initiative.transactions.sum('amount')
 	end
 
-	def edit
+	def editreceivers
 		@initiative = Initiative.find(params[:id])
 	end
 
@@ -39,9 +39,7 @@ class InitiativesController < ApplicationController
 	end
 
 	def destroy
-		puts "====== method call ========="
 		@initiative = Initiative.find(params[:id])
-		puts "====== @ initiative ========"
 		puts @initiative
 		@initiative.destroy
 		redirect_to action: "index"
