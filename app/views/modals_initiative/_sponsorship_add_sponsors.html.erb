@@ -1,0 +1,57 @@
+<div id="spon-add-sponsors" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="area-top clearfix" style="margin-bottom: 0px">
+        <div class="pull-left header">
+
+        <h3 class="modal-title">Select sponsors</h3>
+        </div>
+          <ul class="list-inline pull-right sparkline-box" style="margin-top: 0px;">
+
+          <li class="sparkline-row">
+            <h4 class="blue"><span>People</span><p class="people">0</p></h4>
+          </li>
+
+          <li class="sparkline-row">
+            <h4 class="green"><span>Projects</span><p class="projects">0</p></h4>
+          </li>
+
+          <li class="sparkline-row">
+            <h4 class="red"><span>Sponsors</span><p class="sponsors">0</p></h4>
+          </li>
+
+        </ul>
+
+      </div>
+      <!-- <div class="modal-body"> -->
+        <div class="box-content" id="">
+          <div id="dataTables"></div>
+          <table cellpadding="0" cellspacing="0" border="0" class="dTable responsive">
+            <thead>
+            <tr>
+              <td style="width: 40px"></td>
+              <td>Name</td>
+              <td>Type</td>
+            </tr>
+            </thead>
+            <tbody>
+            <% Person.where("category_id = 3").each do |p| %>
+              <tr class="info">
+                <td><input type="checkbox" class="icheck" id="<%= p.id.to_s %>" style="position: absolute; opacity: 0;"></td>
+                <td><%= p.full_name %></td>
+                <td> Person or Project </td>
+              </tr>
+            <% end %>
+
+            </tbody>
+          </table>
+<!--   </div> -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-blue" id="sponsors-projects">Back</button>
+        <button type="button" class="btn btn-blue" id="submit-initiative">Next</button>
+      </div>
+    </div>
+  </div>
+</div>

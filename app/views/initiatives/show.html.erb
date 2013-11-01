@@ -25,20 +25,20 @@
 	  		<div class="row action-nav-row">
 
 			    <div class="col-sm-4 action-nav-button">
-			    	<%= link_to '<i class="icon-heart icon-2x"></i>
+			    	<%= link_to '<i class="icon-heart"></i>
 			        <span>Setup sponsorship</span>'.html_safe, "#spon-add-receivers", :data => {toggle: "modal"}  %>
 			    </div>
 
-			    <div class="col-sm-2 action-nav-button">
+			    <div class="col-sm-3 action-nav-button">
 			    	<%= link_to '<i class="icon-user"></i>
-			        <span>Add person</span>'.html_safe, new_receiver_path({:type => "person", :initiative_id => @initiative.id}), :class => "btn btn-lg btn-green" %>
+			        <span>Add people</span>'.html_safe, new_receiver_path({:type => "person", :initiative_id => @initiative.id}) %>
 			      <span class="triangle-button green"><i class="icon-plus"></i></span>
 			    </div>
 
-			    <div class="col-sm-2 action-nav-button">
+			    <div class="col-sm-3 action-nav-button">
 
 					<%= link_to '<i class="icon-building"></i>
-			        <span>Add project</span>'.html_safe, new_receiver_path({:type => "project", :initiative_id => @initiative.id}) %>
+			        <span>Add projects</span>'.html_safe, new_receiver_path({:type => "project", :initiative_id => @initiative.id}) %>
 			      <span class="triangle-button green"><i class="icon-plus"></i></span>
 			    </div>
 
@@ -46,9 +46,9 @@
 			    	<%= link_to(('<i class="icon-edit"></i><span>Edit</span>').html_safe, edit_initiative_path) %>
 			    </div>
 
-			    <div class="col-sm-2 action-nav-button">
-						<%= link_to(('<i class="icon-trash"></i><span>Delete</span>').html_safe, @initiative, :confirm => 'Are you sure?', :method => :delete) %>
-			    </div>
+			 <!--    <div class="col-sm-2 action-nav-button">
+						<#%= link_to(('<i class="icon-trash"></i><span>Delete</span>').html_safe, @initiative, :confirm => 'Are you sure?', :method => :delete) %>
+			    </div> -->
 	  		</div>
 			</div>
 			<hr class="divider">
@@ -247,4 +247,6 @@
 </var> <!-- end container -->
 
 
-<%= render 'modals/add_receivers' %>
+<%= render 'modals_initiative/sponsorship_add_people' %>
+<%= render 'modals_initiative/sponsorship_add_projects' %>
+<%= render 'modals_initiative/sponsorship_add_sponsors' %>
