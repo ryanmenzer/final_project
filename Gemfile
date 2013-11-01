@@ -7,7 +7,7 @@ gem 'rails', '3.2.13'
 
 gem 'pg'
 gem "algoliasearch"
-# gem 'rack-mini-profiler'
+gem 'rack-mini-profiler'
 
 # group :production do
 #   gem "mysql2", "~> 0.3.13"
@@ -36,7 +36,7 @@ gem "thin"
 
 gem 'faker'
 
-gem 'carrierwave'
+gem "carrierwave", "~> 0.9.0"
 gem 'mini_magick'
 gem 'fog'
 
