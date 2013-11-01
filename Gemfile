@@ -44,6 +44,7 @@ gem 'dotenv-rails', :groups => [:development, :test]
 gem 'milia', '~> 0.3.38'
 gem 'recaptcha', :require => 'recaptcha/rails'
 gem 'devise'
+gem 'warden'
 
 gem 'paypal-recurring'
 
@@ -63,7 +64,7 @@ group :development, :test do
   # gem 'rspec'
   gem 'capybara'
   gem 'factory_girl_rails'
-  # gem 'launchy'
+  gem 'launchy'
   # gem 'selenium-webdriver'
 end
 
