@@ -2,7 +2,7 @@ Oliwi::Application.routes.draw do
 
 
   scope "(:locale)", locale: /en|no|es|tl/ do
-    match '/' => 'homes#home', :constraints => { :subdomain => /.+/ }
+    match '/' => 'homes#oliwi', :constraints => { :subdomain => /.+/ }
     root :to => 'homes#oliwi'
     get '/dashboard' => 'homes#index'
     devise_for :users, :controllers => { :registrations => "milia/registrations" }
